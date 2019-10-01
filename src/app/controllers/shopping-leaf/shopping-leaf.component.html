@@ -1,0 +1,638 @@
+<div>
+    <body>
+    <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Shop Price</h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content shopPrice">
+            <div class="row" style="margin-bottom: 0">
+                <div class="col-xs-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#reportInfo" data-toggle="tab">Report Information</a></li>
+                            <li><a href="#journeyInfo" data-toggle="tab">Journey Information</a></li>
+                            <li><a href="#dates" data-toggle="tab">Dates</a></li>
+                            <li><a href="#channel" data-toggle="tab">Channel</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="reportInfo">
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" placeholder="Report Name"/>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p>
+                                            <input type="checkbox" id="scheduledReportButton"/><label for="scheduledReportButton" style="font-weight: normal">Schedule the Report</label>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div id="ScheduledReport">
+                                    <h4>Scheduled Report</h4>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <h5>Repeat</h5>
+                                            <select class="form-control durationDropdown">
+                                                <option value="Daily">Daily</option>
+                                                <option value="Weekly">Weekly</option>
+                                                <option value="Monthly">Monthly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="Daily">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <ul class="nav nav-tabs nopadding radioButton">
+                                                        <li class="active"><a href="#Every" data-toggle="tab">Every</a></li>
+                                                        <li><a href="#EveryWeekday" data-toggle="tab">Every Weekday</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="Every">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control" placeholder="Every Day(s)"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.tab-pane -->
+                                                        <div class="tab-pane" id="EveryWeekday">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="Weekly">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="dropBoxSection">
+                                                        <div class="form-control dropboxHead">On days <i class="fa fa-caret-down pull-right"></i></div>
+                                                        <ul class="dropbox">
+                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
+                                                            <li><input type="checkbox" id="Monday" /> <label for="Monday">Monday</label></li>
+                                                            <li><input type="checkbox" id="Tuesday" /> <label for="Tuesday">Tuesday</label></li>
+                                                            <li><input type="checkbox" id="Wednesday" /> <label for="Wednesday">Wednesday</label></li>
+                                                            <li><input type="checkbox" id="Thursday" /> <label for="Thursday">Thursday</label></li>
+                                                            <li><input type="checkbox" id="Friday" /> <label for="Friday">Friday</label></li>
+                                                            <li><input type="checkbox" id="Saturday" /> <label for="Saturday">Saturday</label></li>
+                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="Monthly">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="dropBoxSection">
+                                                        <div class="form-control dropboxHead">On days <i class="fa fa-caret-down pull-right"></i></div>
+                                                        <ul class="dropbox">
+                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
+                                                            <li><input type="checkbox" id="Monday" /> <label for="Monday">Monday</label></li>
+                                                            <li><input type="checkbox" id="Tuesday" /> <label for="Tuesday">Tuesday</label></li>
+                                                            <li><input type="checkbox" id="Wednesday" /> <label for="Wednesday">Wednesday</label></li>
+                                                            <li><input type="checkbox" id="Thursday" /> <label for="Thursday">Thursday</label></li>
+                                                            <li><input type="checkbox" id="Friday" /> <label for="Friday">Friday</label></li>
+                                                            <li><input type="checkbox" id="Saturday" /> <label for="Saturday">Saturday</label></li>
+                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <ul class="nav nav-tabs nopadding radioButton">
+                                                        <li class="active"><a href="#EveryMonth" data-toggle="tab">Every</a></li>
+                                                        <li><a href="#Recuron" data-toggle="tab">Recur on</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="EveryMonth">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <div class="dropBoxSection">
+                                                                        <div class="form-control dropboxHead">Week Number <i class="fa fa-caret-down pull-right"></i></div>
+                                                                        <ul class="dropbox">
+                                                                            <li><input type="checkbox" id="First" /> <label for="First">First</label></li>
+                                                                            <li><input type="checkbox" id="Second" /> <label for="Second">Second</label></li>
+                                                                            <li><input type="checkbox" id="Third" /> <label for="Third">Third</label></li>
+                                                                            <li><input type="checkbox" id="Fourth" /> <label for="Fourth">Fourth</label></li>
+                                                                            <li><input type="checkbox" id="Fifth" /> <label for="Fifth">Fifth</label></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="dropBoxSection">
+                                                                        <select class="form-control">
+                                                                            <option value="Daily">On days</option>
+                                                                            <option value="Weekly">Monday</option>
+                                                                            <option value="Monthly">Tuesday</option>
+                                                                            <option value="Daily">Wednesday</option>
+                                                                            <option value="Weekly">Thursday</option>
+                                                                            <option value="Monthly">Friday</option>
+                                                                            <option value="Daily">Saturday</option>
+                                                                            <option value="Daily">Sunday</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.tab-pane -->
+                                                        <div class="tab-pane" id="Recuron">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <div class="dropBoxSection">
+                                                                        <div class="form-control dropboxHead">Week Number <i class="fa fa-caret-down pull-right"></i></div>
+                                                                        <ul class="dropbox">
+                                                                            <li><input type="checkbox" id="WeekNumber1" /> <label for="WeekNumber1">1</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber2" /> <label for="WeekNumber2">2</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber3" /> <label for="WeekNumber3">3</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber4" /> <label for="WeekNumber4">4</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber5" /> <label for="WeekNumber5">5</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber6" /> <label for="WeekNumber6">6</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber7" /> <label for="WeekNumber7">7</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber8" /> <label for="WeekNumber8">8</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber9" /> <label for="WeekNumber9">9</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber10" /> <label for="WeekNumber10">10</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber11" /> <label for="WeekNumber11">11</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber12" /> <label for="WeekNumber12">12</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber13" /> <label for="WeekNumber13">13</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber14" /> <label for="WeekNumber14">14</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber15" /> <label for="WeekNumber15">15</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber16" /> <label for="WeekNumber16">16</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber17" /> <label for="WeekNumber17">17</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber18" /> <label for="WeekNumber18">18</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber19" /> <label for="WeekNumber19">19</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber20" /> <label for="WeekNumber20">20</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber21" /> <label for="WeekNumber21">21</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber22" /> <label for="WeekNumber22">22</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber23" /> <label for="WeekNumber23">23</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber24" /> <label for="WeekNumber24">24</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber25" /> <label for="WeekNumber25">25</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber26" /> <label for="WeekNumber26">26</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber27" /> <label for="WeekNumber27">27</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber28" /> <label for="WeekNumber28">28</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber29" /> <label for="WeekNumber29">29</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber30" /> <label for="WeekNumber30">30</label></li>
+                                                                            <li><input type="checkbox" id="WeekNumber31" /> <label for="WeekNumber31">31</label></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <h5>Repeat Generation Time</h5>
+                                                <select class="form-control">
+                                                    <option>0:00</option>
+                                                    <option>0:30</option>
+                                                    <option>1:00</option>
+                                                    <option>1:30</option>
+                                                    <option>2:00</option>
+                                                    <option>2:30</option>
+                                                    <option>3:00</option>
+                                                    <option>3:30</option>
+                                                    <option>4:00</option>
+                                                    <option>4:30</option>
+                                                    <option>5:00</option>
+                                                    <option>5:30</option>
+                                                    <option>6:00</option>
+                                                    <option>6:30</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <h4>Range of Schedule </h4>
+                                        <div class="row">
+
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control datepicker outbonffrom" placeholder="From"/>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control datepicker outbonfto" placeholder="To"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.tab-pane -->
+
+                            </div>
+
+
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="journeyInfo">
+                                <h4>Journey &amp; Flight Information</h4>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <select class="form-control">
+                                            <option>Journey Type</option>
+                                            <option>One way</option>
+                                            <option>Round Trip</option>
+                                            <option>Both</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="form-control">
+                                            <option>Currency Type</option>
+                                            <option>Rupee</option>
+                                            <option>USD</option>
+                                            <option>EUR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4>Passenger Type</h4>
+                                        <p>Passenger Count</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p>Adult</p>
+                                        <select class="form-control">
+                                            <option>All</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                        </select>
+                                        <p>12+ Years</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p>Child</p>
+                                        <select class="form-control">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                        </select>
+                                        <p>2 to 12 Years</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p>Infant</p>
+                                        <select class="form-control">
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select>
+                                        <p>0 to 2 Years</p>
+                                    </div>
+                                </div>
+                                <h4>Flight Information</h4>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="dropBoxSection">
+                                            <div class="form-control dropboxHead">Class of Service <i class="fa fa-caret-down pull-right"></i></div>
+                                            <ul class="dropbox">
+                                                <li><input type="checkbox" id="eco" /> <label for="eco">Economy</label></li>
+                                                <li><input type="checkbox" id="prem" /> <label for="prem">Premium Economy</label></li>
+                                                <li><input type="checkbox" id="busi" /> <label for="busi">Business</label></li>
+                                                <li><input type="checkbox" id="first" /> <label for="first">First</label></li>
+                                                <li><input type="checkbox" value="all" id="all" /> <label for="all">All</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="dropBoxSection">
+                                            <div class="form-control dropboxHead">Stops <i class="fa fa-caret-down pull-right"></i></div>
+                                            <ul class="dropbox">
+                                                <li><input type="checkbox" id="zero" /> <label for="zero">0</label></li>
+                                                <li><input type="checkbox" id="one" /> <label for="one">1</label></li>
+                                                <li><input type="checkbox" id="two" /> <label for="two">2</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <input class="form-control originDestination" placeholder="Origin and Destination"/>  
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <button type="button" class="btn bggreen addOriginDestination"><i class="fa fa-plus-circle"></i> Add</button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="selectedOrigin">
+                                            <div class="table table-responsive">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Origin</th>
+                                                            <th>Destination</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-sm-4">
+                                        <div class="dropBoxSection">
+                                            <div class="form-control dropboxHead">Airlines <i class="fa fa-caret-down pull-right"></i></div>
+                                            <ul class="dropbox">
+                                                <li><input type="checkbox" id="A1" /> <label for="A1">Airline1</label></li>
+                                                <li><input type="checkbox" id="A2" /> <label for="A2">Airline2</label></li>
+                                                <li><input type="checkbox" id="A3" /> <label for="A3">Airline3</label></li>
+                                                <li><input type="checkbox" id="A4" /> <label for="A4">Airline4</label></li>
+                                                <li><input type="checkbox" id="A5" value="all" /> <label for="A5">All</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row margin30pxTop">
+                                    <div class="col-sm-12">
+                                        <p><input type="checkbox" id="term" /><label for="term">Apply OND in Reverse order</label></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="dates">
+                                <h4>Apply Dates</h4>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="nav nav-tabs nopadding radioButton">
+                                            <li class="active"><a href="#Consecutive" data-toggle="tab">Continuos</a></li>
+                                            <li><a href="#Preferred" data-toggle="tab">Preferred</a></li>
+                                            <li><a href="#Range" data-toggle="tab">Range</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="Consecutive">
+                                                <h4>Outbond Date Range</h4>
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <input type="text" class="form-control datepicker outbonffrom" placeholder="From"/>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <input type="text" class="form-control datepicker outbonfto" placeholder="To"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <button type="button" class="btn bggreen addDateBtn"><i class="fa fa-plus-circle"></i> Add</button>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="selectedDate" style="margin-top: 10px;">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="dropBoxSection active">
+                                                                    <div class="form-control dropboxHead">Days of week <i class="fa fa-caret-down pull-right"></i></div>
+                                                                    <ul class="dropbox">
+                                                                        <li><input type="checkbox" id="wA1" /> <label for="wA1">Sunday</label></li>
+                                                                        <li><input type="checkbox" id="wA2" /> <label for="wA2">Monday</label></li>
+                                                                        <li><input type="checkbox" id="wA5" value="all" /> <label for="wA5">All</label></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row" style="margin-top: 40px">
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" placeholder="Return Parameter"/>
+                                                        <p>4,5,8 days of departure</p>
+                                                    </div>
+
+                                                </div>
+
+                                                <h4>Departure Time</h4>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="dropBoxSection">
+                                                            <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
+                                                            <ul class="dropbox">
+                                                                <li><input type="checkbox" id="B6" /> <label for="B6">Before 6AM</label></li>
+                                                                <li><input type="checkbox" id="6A" /> <label for="6A">6AM to 12Noon</label></li>
+                                                                <li><input type="checkbox" id="12" /> <label for="12">12Noon to 6PM</label></li>
+                                                                <li><input type="checkbox" id="A6" /> <label for="A6">After 6PM</label></li>
+                                                                <li><input type="checkbox" id="All" value="all" /> <label for="All">All</label></li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="dropBoxSection">
+                                                            <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
+                                                            <ul class="dropbox">
+                                                                <li><input type="checkbox" id="B61" /> <label for="B61">Before 6AM</label></li>
+                                                                <li><input type="checkbox" id="6A1" /> <label for="6A1">6AM to 12Noon</label></li>
+                                                                <li><input type="checkbox" id="121" /> <label for="121">12Noon to 6PM</label></li>
+                                                                <li><input type="checkbox" id="A61" /> <label for="A61">After 6PM</label></li>
+                                                                <li><input type="checkbox" id="All1" value="all" /> <label for="All1">All</label></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row margin30pxTop">
+                                                    <div class="col-sm-12">
+                                                        <p><input type="checkbox" id="term1" /><label for="term1">Apply Reverse shopping from farthest date</label></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.tab-pane -->
+                                            <div class="tab-pane" id="Preferred">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control datepicker PreferredDate" placeholder="Departure Date"/>
+                                                    </div>
+                                                    <!-- <div class="col-sm-4"> -->
+                                                    <!-- <input type="text" class="form-control datepicker" placeholder="Inbound Days"> -->
+                                                    <!-- </div> -->
+                                                    <!-- <div class="col-sm-4"> -->
+                                                    <!-- <select class="form-control"> -->
+                                                    <!-- <option>Days of week</option> -->
+                                                    <!-- </select> -->
+                                                    <!-- </div> -->
+                                                    <div class="col-sm-2">
+                                                        <button type="button" class="btn bggreen addPreferredDateBtn"><i class="fa fa-plus-circle"></i> Add</button>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="selectedPreferredDate" style="margin-top: 10px;">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 40px">
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" placeholder="Return Parameter"/>
+                                                        <p>4,5,8 days from departure</p>
+                                                    </div>
+
+                                                </div>
+                                                <h4>Departure Time</h4>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="dropBoxSection">
+                                                            <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
+                                                            <ul class="dropbox">
+                                                                <li><input type="checkbox" id="B62" /> <label for="B62">Before 6AM</label></li>
+                                                                <li><input type="checkbox" id="6A2" /> <label for="6A2">6AM to 12Noon</label></li>
+                                                                <li><input type="checkbox" id="122" /> <label for="122">12Noon to 6PM</label></li>
+                                                                <li><input type="checkbox" id="A62" /> <label for="A62">After 6PM</label></li>
+                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="dropBoxSection">
+                                                            <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
+                                                            <ul class="dropbox">
+                                                                <li><input type="checkbox" id="B63" /> <label for="B63">Before 6AM</label></li>
+                                                                <li><input type="checkbox" id="6A3" /> <label for="6A3">6AM to 12Noon</label></li>
+                                                                <li><input type="checkbox" id="123" /> <label for="123">12Noon to 6PM</label></li>
+                                                                <li><input type="checkbox" id="A63" /> <label for="A63">After 6PM</label></li>
+                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row margin30pxTop">
+                                                    <div class="col-sm-12">
+                                                        <p><input type="checkbox" id="term" /><label for="term">Apply Reverse shopping from farthest date</label></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- /.tab-pane -->
+                                            <div class="tab-pane" id="Range">
+
+                                                <div class="row" style="margin-top: 40px">
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" placeholder="Days Out Days"/>
+                                                        <p>0-60, 82, 89, 104-110 departure days from today</p>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <select class="form-control">
+                                                                    <option>Days of week</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 40px">
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" placeholder="Return Parameter"/>
+                                                        <p>4,5,8 days of departure</p>
+                                                    </div>
+
+                                                </div>
+
+                                                <h4>Departure Time</h4>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="dropBoxSection">
+                                                            <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
+                                                            <ul class="dropbox">
+                                                                <li><input type="checkbox" id="B62" /> <label for="B62">Before 6AM</label></li>
+                                                                <li><input type="checkbox" id="6A2" /> <label for="6A2">6AM to 12Noon</label></li>
+                                                                <li><input type="checkbox" id="122" /> <label for="122">12Noon to 6PM</label></li>
+                                                                <li><input type="checkbox" id="A62" /> <label for="A62">After 6PM</label></li>
+                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="dropBoxSection">
+                                                            <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
+                                                            <ul class="dropbox">
+                                                                <li><input type="checkbox" id="B63" /> <label for="B63">Before 6AM</label></li>
+                                                                <li><input type="checkbox" id="6A3" /> <label for="6A3">6AM to 12Noon</label></li>
+                                                                <li><input type="checkbox" id="123" /> <label for="123">12Noon to 6PM</label></li>
+                                                                <li><input type="checkbox" id="A63" /> <label for="A63">After 6PM</label></li>
+                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row margin30pxTop">
+                                                    <div class="col-sm-12">
+                                                        <p><input type="checkbox" id="term" /><label for="term">Apply Reverse shopping from farthest date</label></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="channel">
+                                <h4>Channel</h4>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <select class="form-control">
+                                            <option>Competitors</option>
+                                            <option>Make my trip</option>
+                                            <option>Go-IBIBO</option>
+                                            <option>Yatra</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row buttonEvents">
+                <div class="col-sm-12">
+                    <button class="btn prev nextBtn"> Previous </button> 
+                    <button class="btn next nextBtn"> Next </button>
+                    <button class="btn saveBtn">Save</button>
+                    <button class="btn submitBtn">Submit</button>
+                </div>
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </body>
+    </div>

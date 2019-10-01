@@ -1,0 +1,7 @@
+.leftSidebar {
+  position: fixed;
+  top: 5px;
+  transition: top 0.3s;
+  background: #41464c;
+  height:108%;
+}
