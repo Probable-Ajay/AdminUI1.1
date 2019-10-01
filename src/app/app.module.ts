@@ -12,7 +12,11 @@ import { DashboardRoutesComponent } from './controllers/dashboard-routes/dashboa
 import { ShoppingLeafComponent } from './controllers/shopping-leaf/shopping-leaf.component';
 import { ShoppingStatsComponent } from './controllers/shopping-stats/shopping-stats.component';
 import { PriceTrendsComponent } from './controllers/price-trends/price-trends.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidebarModule } from 'ng-sidebar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule, MatCheckboxModule, MatRadioModule } from '@angular/material';
+import { MockingGroundComponent } from './controllers/mocking-ground/mocking-ground.component';
 
 // Protected Routes for Release...
 // const appRoutes: Routes = [
@@ -42,6 +46,7 @@ const appRoutes: Routes = [
       { path: 'shoppingStats', component: ShoppingStatsComponent },
       { path: 'priceTrends', component: PriceTrendsComponent },
       { path: 'admin', component: AdminComponent },
+      { path: 'mock', component: MockingGroundComponent }
     ]
   }
 ];
@@ -55,7 +60,8 @@ const appRoutes: Routes = [
     DashboardRoutesComponent,
     ShoppingLeafComponent,
     ShoppingStatsComponent,
-    PriceTrendsComponent
+    PriceTrendsComponent,
+    MockingGroundComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
-    HttpClientModule
+    SidebarModule.forRoot(),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
