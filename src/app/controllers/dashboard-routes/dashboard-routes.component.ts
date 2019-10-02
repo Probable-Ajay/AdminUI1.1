@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-dashboard-routes',
@@ -7,9 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-routes.component.css']
 })
 export class DashboardRoutesComponent implements OnInit {
-
-  constructor(private router: Router) { }
-
+  options: FormGroup;
+ 
+ 
+  constructor(private router: Router, fb: FormBuilder) {
+    this.options = fb.group({
+      bottom: 0,
+      fixed: true,
+      top: 0
+    });
+  }
   ngOnInit() {
   }
 
@@ -17,4 +26,5 @@ export class DashboardRoutesComponent implements OnInit {
     this.router.navigate(['']);
     localStorage.removeItem('usermanagementToken');
   }
+ 
 }
