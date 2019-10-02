@@ -115,7 +115,7 @@
                                   
                                     <div class="col-sm-8">
                                         <p>
-                                            <mat-checkbox formControlName="hideRequired"></mat-checkbox>
+                                            <mat-checkbox></mat-checkbox>
                                             <label for="cloneMainUser" style="font-weight: normal">Clone Main User Attributes</label>
                                         </p>
                                     </div>
@@ -130,19 +130,16 @@
                                         <label for="FunctionalityA" style="font-weight: normal">Functionality A</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <label class="switch">
-                                          <input type="checkbox"/>
-                                          <span class="slider round"></span>
-                                        </label>
+                                        <mat-slide-toggle class = "tp-margin"></mat-slide-toggle>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkRead"/><label for="chkRead" style="font-weight: normal">Read</label>
+                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkWrite"/><label for="chkWrite" style="font-weight: normal">Write</label>
+                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="checkbox" id="chckFullAccess"/><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
+                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
                                     </div>
                                     
                          </div>
@@ -153,19 +150,16 @@
                                         <label for="Features" style="font-weight: normal">Features</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <label class="switch">
-                                          <input type="checkbox"/>
-                                          <span class="slider round"></span>
-                                        </label>
+                                        <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkRead"/><label for="chkRead" style="font-weight: normal">Read</label>
+                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkWrite"/><label for="chkWrite" style="font-weight: normal">Write</label>
+                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="checkbox" id="chckFullAccess"/><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
+                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
                                     </div>
                                     
                          </div>
@@ -176,19 +170,16 @@
                                         <label for="FunctionalityA" style="font-weight: normal">Functionality B</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <label class="switch">
-                                          <input type="checkbox"/>
-                                          <span class="slider round"></span>
-                                        </label>
+                                        <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkRead"/><label for="chkRead" style="font-weight: normal">Read</label>
+                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkWrite"/><label for="chkWrite" style="font-weight: normal">Write</label>
+                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="checkbox" id="chckFullAccess"/><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
+                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
                                     </div>
                                     
                          </div>
@@ -198,19 +189,16 @@
                                         <label for="FunctionalityA" style="font-weight: normal">Functionality C</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <label class="switch">
-                                          <input type="checkbox"/>
-                                          <span class="slider round"></span>
-                                        </label>
+                                       <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkRead"/><label for="chkRead" style="font-weight: normal">Read</label>
+                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkWrite"/><label for="chkWrite" style="font-weight: normal">Write</label>
+                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="checkbox" id="chckFullAccess"/><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
+                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
                                     </div>
                                     
                          </div>
@@ -220,23 +208,21 @@
                                         <label for="FunctionalityA" style="font-weight: normal">Functionality D</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <label class="switch">
+
+                                        <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
+                                        <!-- <label class="switch">
                                           <input type="checkbox"/>
                                           <span class="slider round"></span>
-                                        </label>
-                                    </div>
-                                    <!-- <div class="custom-control custom-switch"> -->
-                                      <!-- <input type="checkbox" class="custom-control-input" id="customSwitch2" disabled> -->
-                                      <!-- <label class="custom-control-label" for="customSwitch2"></label> -->
-                                    <!-- </div> -->
-                                    <div class="col-sm-1">
-                                        <input type="checkbox" id="chkRead"/><label for="chkRead" style="font-weight: normal">Read</label>
+                                        </label> -->
+                                    </div>                                  
+                                   <div class="col-sm-1">
+                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="checkbox" id="chkWrite"/><label for="chkWrite" style="font-weight: normal">Write</label>
+                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="checkbox" id="chckFullAccess"/><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
+                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
                                     </div>
                                     
                          </div>													  

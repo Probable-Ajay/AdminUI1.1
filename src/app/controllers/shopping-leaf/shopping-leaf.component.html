@@ -24,7 +24,9 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <p>
-                                            <input type="checkbox" id="scheduledReportButton"/><label for="scheduledReportButton" style="font-weight: normal">Schedule the Report</label>
+                                             <mat-checkbox [(ngModel)]="scheduledReportButton"></mat-checkbox>
+                                            <!-- <input type="checkbox" id="scheduledReportButton"/> -->
+                                            <label for="scheduledReportButton" style="font-weight: normal">Schedule the Report</label>
                                         </p>
                                     </div>
                                 </div>
@@ -300,11 +302,11 @@
                                         <div class="dropBoxSection">
                                             <div class="form-control dropboxHead">Class of Service <i class="fa fa-caret-down pull-right"></i></div>
                                             <ul class="dropbox">
-                                                <li><input type="checkbox" id="eco" /> <label for="eco">Economy</label></li>
-                                                <li><input type="checkbox" id="prem" /> <label for="prem">Premium Economy</label></li>
-                                                <li><input type="checkbox" id="busi" /> <label for="busi">Business</label></li>
-                                                <li><input type="checkbox" id="first" /> <label for="first">First</label></li>
-                                                <li><input type="checkbox" value="all" id="all" /> <label for="all">All</label></li>
+                                                <li><mat-checkbox [(ngModel)]="eco"></mat-checkbox><label for="eco">Economy</label></li>
+                                                <li><mat-checkbox [(ngModel)]="prem"></mat-checkbox> <label for="prem">Premium Economy</label></li>
+                                                <li><mat-checkbox [(ngModel)]="busi"></mat-checkbox> <label for="busi">Business</label></li>
+                                                <li><mat-checkbox [(ngModel)]="first"></mat-checkbox> <label for="first">First</label></li>
+                                                <li><mat-checkbox [(ngModel)]="all"></mat-checkbox> <label for="all">All</label></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -315,9 +317,9 @@
                                         <div class="dropBoxSection">
                                             <div class="form-control dropboxHead">Stops <i class="fa fa-caret-down pull-right"></i></div>
                                             <ul class="dropbox">
-                                                <li><input type="checkbox" id="zero" /> <label for="zero">0</label></li>
-                                                <li><input type="checkbox" id="one" /> <label for="one">1</label></li>
-                                                <li><input type="checkbox" id="two" /> <label for="two">2</label></li>
+                                                <li><mat-checkbox [(ngModel)]="zero"></mat-checkbox> <label for="zero">0</label></li>
+                                                <li><mat-checkbox [(ngModel)]="one"></mat-checkbox> <label for="one">1</label></li>
+                                                <li><mat-checkbox [(ngModel)]="two"></mat-checkbox> <label for="two">2</label></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -359,11 +361,11 @@
                                         <div class="dropBoxSection">
                                             <div class="form-control dropboxHead">Airlines <i class="fa fa-caret-down pull-right"></i></div>
                                             <ul class="dropbox">
-                                                <li><input type="checkbox" id="A1" /> <label for="A1">Airline1</label></li>
-                                                <li><input type="checkbox" id="A2" /> <label for="A2">Airline2</label></li>
-                                                <li><input type="checkbox" id="A3" /> <label for="A3">Airline3</label></li>
-                                                <li><input type="checkbox" id="A4" /> <label for="A4">Airline4</label></li>
-                                                <li><input type="checkbox" id="A5" value="all" /> <label for="A5">All</label></li>
+                                                <li><mat-checkbox [(ngModel)]="A1"></mat-checkbox> <label for="A1">Airline1</label></li>
+                                                <li><mat-checkbox [(ngModel)]="A2"></mat-checkbox> <label for="A2">Airline2</label></li>
+                                                <li><mat-checkbox [(ngModel)]="A3"></mat-checkbox> <label for="A3">Airline3</label></li>
+                                                <li><mat-checkbox [(ngModel)]="A4"></mat-checkbox> <label for="A4">Airline4</label></li>
+                                                <li><mat-checkbox [(ngModel)]="A5"></mat-checkbox> <label for="A5">All</label></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -372,7 +374,7 @@
 
                                 <div class="row margin30pxTop">
                                     <div class="col-sm-12">
-                                        <p><input type="checkbox" id="term" /><label for="term">Apply OND in Reverse order</label></p>
+                                        <p><mat-checkbox [(ngModel)]="term"></mat-checkbox><label for="term">Apply OND in Reverse order</label></p>
                                     </div>
                                 </div>
                             </div>
@@ -414,9 +416,9 @@
                                                                 <div class="dropBoxSection active">
                                                                     <div class="form-control dropboxHead">Days of week <i class="fa fa-caret-down pull-right"></i></div>
                                                                     <ul class="dropbox">
-                                                                        <li><input type="checkbox" id="wA1" /> <label for="wA1">Sunday</label></li>
-                                                                        <li><input type="checkbox" id="wA2" /> <label for="wA2">Monday</label></li>
-                                                                        <li><input type="checkbox" id="wA5" value="all" /> <label for="wA5">All</label></li>
+                                                                        <li><mat-checkbox [(ngModel)]="wA1"></mat-checkbox><label for="wA1">Sunday</label></li>
+                                                                        <li><mat-checkbox [(ngModel)]="wA2"></mat-checkbox><label for="wA2">Monday</label></li>
+                                                                        <li><mat-checkbox [(ngModel)]="wA5"></mat-checkbox><label for="wA5">All</label></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -439,11 +441,12 @@
                                                         <div class="dropBoxSection">
                                                             <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
                                                             <ul class="dropbox">
-                                                                <li><input type="checkbox" id="B6" /> <label for="B6">Before 6AM</label></li>
-                                                                <li><input type="checkbox" id="6A" /> <label for="6A">6AM to 12Noon</label></li>
-                                                                <li><input type="checkbox" id="12" /> <label for="12">12Noon to 6PM</label></li>
-                                                                <li><input type="checkbox" id="A6" /> <label for="A6">After 6PM</label></li>
-                                                                <li><input type="checkbox" id="All" value="all" /> <label for="All">All</label></li>
+                                                                <li>
+                                                                    <mat-checkbox ></mat-checkbox><label for="B6">Before 6AM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="6A">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="12">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="A6">After 6PM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="All">All</label></li>
 
                                                             </ul>
                                                         </div>
@@ -452,11 +455,11 @@
                                                         <div class="dropBoxSection">
                                                             <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
                                                             <ul class="dropbox">
-                                                                <li><input type="checkbox" id="B61" /> <label for="B61">Before 6AM</label></li>
-                                                                <li><input type="checkbox" id="6A1" /> <label for="6A1">6AM to 12Noon</label></li>
-                                                                <li><input type="checkbox" id="121" /> <label for="121">12Noon to 6PM</label></li>
-                                                                <li><input type="checkbox" id="A61" /> <label for="A61">After 6PM</label></li>
-                                                                <li><input type="checkbox" id="All1" value="all" /> <label for="All1">All</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="B61">Before 6AM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="6A1">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="121">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="A61">After 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="All1">All</label></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -464,7 +467,7 @@
 
                                                 <div class="row margin30pxTop">
                                                     <div class="col-sm-12">
-                                                        <p><input type="checkbox" id="term1" /><label for="term1">Apply Reverse shopping from farthest date</label></p>
+                                                        <p><mat-checkbox [(ngModel)]="term1"></mat-checkbox><label for="term1">Apply Reverse shopping from farthest date</label></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -504,11 +507,11 @@
                                                         <div class="dropBoxSection">
                                                             <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
                                                             <ul class="dropbox">
-                                                                <li><input type="checkbox" id="B62" /> <label for="B62">Before 6AM</label></li>
-                                                                <li><input type="checkbox" id="6A2" /> <label for="6A2">6AM to 12Noon</label></li>
-                                                                <li><input type="checkbox" id="122" /> <label for="122">12Noon to 6PM</label></li>
-                                                                <li><input type="checkbox" id="A62" /> <label for="A62">After 6PM</label></li>
-                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="B62">Before 6AM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="6A2">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="122">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="A62">After 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="All2">All</label></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -516,11 +519,11 @@
                                                         <div class="dropBoxSection">
                                                             <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
                                                             <ul class="dropbox">
-                                                                <li><input type="checkbox" id="B63" /> <label for="B63">Before 6AM</label></li>
-                                                                <li><input type="checkbox" id="6A3" /> <label for="6A3">6AM to 12Noon</label></li>
-                                                                <li><input type="checkbox" id="123" /> <label for="123">12Noon to 6PM</label></li>
-                                                                <li><input type="checkbox" id="A63" /> <label for="A63">After 6PM</label></li>
-                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="B63">Before 6AM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="6A3">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="123">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="A63">After 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="All2">All</label></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -528,7 +531,7 @@
 
                                                 <div class="row margin30pxTop">
                                                     <div class="col-sm-12">
-                                                        <p><input type="checkbox" id="term" /><label for="term">Apply Reverse shopping from farthest date</label></p>
+                                                        <p><mat-checkbox [(ngModel)]="A63"></mat-checkbox><label for="term">Apply Reverse shopping from farthest date</label></p>
                                                     </div>
                                                 </div>
                                             </div>
