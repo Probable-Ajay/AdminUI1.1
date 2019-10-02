@@ -19,10 +19,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #222d32;;
-  width: 270px;
+  background: #222d32;
+  width: 300px;
   color: #b8c7ce;
- 
 }
 
 .example-header {
@@ -32,8 +31,29 @@
   right: 0;
 }
 
-
-.rightSideNavDiv{
+.rightSideNavDiv {
   background: #222d32;
   color: #b8c7ce;
+}
+
+.control-sidebar {
+  padding-top: 0px;
+}
+.control-sidebar,
+.control-sidebar-bg {
+  width: 300px;
+}
+body {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.btn {
+  margin-right: 4px;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: #8cbe27;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: #8cbe27 !important;
 }

@@ -6,7 +6,8 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .mat-drawer-inner-container {
   overflow: hidden !important;
@@ -22,4 +23,12 @@ body {
 }
 .mat-checkbox-checked {
   color: greenyellow !important;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: darkorange;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: darkcyan !important;
 }
