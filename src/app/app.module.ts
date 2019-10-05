@@ -90,7 +90,7 @@ const appRoutes: Routes = [
     path: "dashboard",
     component: DashboardRoutesComponent,
     children: [
-      { path: "", redirectTo: "shopLeaf", pathMatch: "full" },
+      { path: "", redirectTo: "admin", pathMatch: "full" },
       { path: "shopLeaf", component: ShoppingLeafComponent },
       { path: "shoppingStats", component: ShoppingStatsComponent },
       { path: "priceTrends", component: PriceTrendsComponent },
@@ -176,4 +176,4 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
