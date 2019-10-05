@@ -1,17 +1,30 @@
 export class userParam {
-    password : String;
-    email : String;
-    name : String;
-    companyListing : String;
-    location : String;
-    contactNumber : String;
+  companyName: String;
+  name: String;
+  email: String;
+  password: String;
+  contactNumber: String;
+  location: String[];
 
-    constructor() {
-        this.password = '';
-        this.email = '';
-        this.name = '';
-        this.companyListing = '';
-        this.location = '';
-        this.contactNumber = '';
-    }
+  constructor() {
+    this.password = "";
+    this.email = "";
+    this.name = "";
+    this.companyName = "";
+    this.contactNumber = "";
+    this.location = this.location = [
+      "Delhi",
+      "Bangalore",
+      "Hyderabad",
+      "Ahmedabad",
+      "Chennai",
+      "Kolkata",
+      "Surat",
+      "Pune",
+      "Jaipur",
+      "Lucknow",
+      "Kanpur",
+      "Nagpur"
+    ];
+  }
 }

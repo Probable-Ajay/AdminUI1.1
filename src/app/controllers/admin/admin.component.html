@@ -1,289 +1,261 @@
-  <!-- Content Wrapper. Contains page content -->
-  <div>
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>PriceTalk Customer Management</h1>
-        </section>
+<!-- Content Wrapper. Contains page content -->
+<div>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>PriceTalk Customer Management</h1>
+  </section>
 
-        <!-- Main content -->
-        <section class="content shopPrice" >
-            <div class="row" style="margin-bottom: 0; overflow-y: auto;">
-                <div class="col-xs-12">
-                    <div class="nav-tabs-custom">
-                        <h3>New Customer </h3>
-                        <!-- <ul class="nav nav-tabs"> -->
-                            <!-- <li class="active"><a ng-href="#reportInfo" data-toggle="tab">Report Information</a></li> -->
-                            <!-- <li><a ng-href="#journeyInfo" data-toggle="tab">Journey Information</a></li> -->
-                            <!-- <li><a ng-href="#dates" data-toggle="tab">Dates</a></li> -->
-                            <!-- <li><a ng-href="#channel" data-toggle="tab">Channel</a></li> -->
-                        <!-- </ul> -->
-                        <div class="tab-content">
-                        
-                        <h4>Company Information  {{CompanyName}} </h4>
-                        <div class="tab-pane active" id="customerInfo">
-                         <div class="row" style="margin-top: 20px">
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Company Name"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Company Address"/>
-                                    </div>
-                                    <div class="col-sm-4">                                                
-                                            <select class="form-control durationDropdown">
-                                                <option value="IN">India</option>
-                                                <option value="US">United States</option>
-                                                <option value="UAE">United Arab Emirates</option>
-                                            </select>
-                                        </div>
-                         </div>
-                        </div>
-                        
-                        <!--Company Info-->
-                        <div class="tab-pane active" id="companyTypeInfo">
-                         <div class="row" style="margin-top: 20px">
-                                   <div class="col-sm-4">                                                
-                                            <select class="form-control durationDropdown">
-                                                <option value="IN">Company Type</option>                                                    
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-4">                                                
-                                            <select class="form-control durationDropdown">
-                                                <option value="IN">Nature of Business</option>
-                                                
-                                            </select>
-                                        </div>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Phone"/>
-                                    </div>
-                                    
-                         </div>
-                        </div>
-                        
-                        <div class="tab-pane active" id="emailInfo">
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Email ID"/>
-                                    </div>
-                                    
-                         </div>
-                        </div>
-                        
-                        
-                        <!--Company Info end -->
-                        
-                        <!--Contact Information -->				
-                        
-                        
-                        <h4>Contact Information </h4>	
+  <!-- Main content -->
+  <section class="content shopPrice">
+    <div class="row" style="margin-bottom: 0; overflow-y: auto;">
+      <div class="col-xs-12">
+        <div class="nav-tabs-custom">
+          <h3>New Customer</h3>
+          <div class="tab-content">
+            <h4>Company Information</h4>
+            <div class="tab-pane active" id="companyInfo">
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Company Name"
+                    [(ngModel)]="user.companyInformation.companyName"
+                  />
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Company Address"
+                    [(ngModel)]="user.companyInformation.companyAddress"
+                  />
+                </div>
+                <div class="col-sm-4">
+                  <select class="form-control durationDropdown">
+                    <option
+                      *ngFor="let country of user.companyInformation.countries"
+                      [value]="country"
+                      >{{ country }}</option
+                    >
+                  </select>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <select class="form-control durationDropdown">
+                    <option
+                      *ngFor="let ctype of user.companyInformation.companyType"
+                      [value]="ctype"
+                      >{{ ctype }}</option
+                    >
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <select class="form-control durationDropdown">
+                    <option
+                      *ngFor="
+                        let businessType of user.companyInformation
+                          .natureOfBusiness
+                      "
+                      [value]="businessType"
+                      >{{ businessType }}</option
+                    >
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Phone"
+                    [(ngModel)]="user.companyInformation.phone"
+                  />
+                </div>
+              </div>
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Email ID"
+                    [(ngModel)]="user.companyInformation.emailID"
+                  />
+                </div>
+              </div>
+            </div>
 
+            <!--Company Info end -->
 
-                    <div class="tab-pane active" id="customerInfo">
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="First Name"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Middle Name"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Last Name"/>
-                                    </div>
-                                    
-                         </div>
-                        </div>
-                        
-                        
-                        <div class="tab-pane active" id="customerInfo">
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Contact Number"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Email ID"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Designation/Role"/>
-                                    </div>
-                                    
-                         </div>
-                        </div>
-                        <div class="tab-pane active" id="customerInfo">
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-8">
-                                        <p>
-                                            <mat-checkbox></mat-checkbox>
-                                            <label for="cloneMainUser" style="font-weight: normal">Clone Main User Attributes</label>
-                                        </p>
-                                    </div>
-                                    
-                         </div>
-                        </div>								
-<h4><b>Access To</b> </h4>		
-<div class="tab-pane active" id="userAccessInfo">
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                  <div class="col-sm-2">
-                                        <label for="FunctionalityA" style="font-weight: normal">Functionality A</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-slide-toggle class = "tp-margin"></mat-slide-toggle>
-                                    </div>
-                                    <div class="col-sm-1">
-                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
-                                    </div>
-                                    
-                         </div>
-                         
-                          <div class="row" style="margin-top: 10px">
-                                  
-                                  <div class="col-sm-2">
-                                        <label for="Features" style="font-weight: normal">Features</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
-                                    </div>
-                                    <div class="col-sm-1">
-                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
-                                    </div>
-                                    
-                         </div>
-                         
-                          <div class="row" style="margin-top: 10px">
-                                  
-                                  <div class="col-sm-2">
-                                        <label for="FunctionalityA" style="font-weight: normal">Functionality B</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
-                                    </div>
-                                    <div class="col-sm-1">
-                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
-                                    </div>
-                                    
-                         </div>
-                          <div class="row" style="margin-top: 10px">
-                                  
-                                  <div class="col-sm-2">
-                                        <label for="FunctionalityA" style="font-weight: normal">Functionality C</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                       <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
-                                    </div>
-                                    <div class="col-sm-1">
-                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
-                                    </div>
-                                    
-                         </div>
-                          <div class="row" style="margin-top: 10px">
-                                  
-                                  <div class="col-sm-2">
-                                        <label for="FunctionalityA" style="font-weight: normal">Functionality D</label>
-                                    </div>
-                                    <div class="col-sm-1">
+            <!--Contact Information -->
+            <h4>Contact Information</h4>
+            <div class="tab-pane active" id="customerInfo">
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="First Name"
+                    [(ngModel)]="user.contactInformation.firstName"
+                  />
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Middle Name"
+                    [(ngModel)]="user.contactInformation.middleName"
+                  />
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Last Name"
+                    [(ngModel)]="user.contactInformation.lastName"
+                  />
+                </div>
+              </div>
 
-                                        <mat-slide-toggle class = "tp-margin" ></mat-slide-toggle>
-                                        <!-- <label class="switch">
-                                          <input type="checkbox"/>
-                                          <span class="slider round"></span>
-                                        </label> -->
-                                    </div>                                  
-                                   <div class="col-sm-1">
-                                       <mat-checkbox [(ngModel)]="chkRead"></mat-checkbox><label for="chkRead" style="font-weight: normal">Read</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <mat-checkbox [(ngModel)]="chkWrite"></mat-checkbox><label for="chkWrite" style="font-weight: normal">Write</label>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <mat-checkbox [(ngModel)]="chckFullAccess"></mat-checkbox><label for="chckFullAccess" style="font-weight: normal">Full Access</label>
-                                    </div>
-                                    
-                         </div>													  
-                        </div>
-                    
-                           <h4><b>Requirement Setup</b></h4>	
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Contact Number"
+                    [(ngModel)]="user.contactInformation.contactNumber"
+                  />
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Email ID"
+                    [(ngModel)]="user.contactInformation.emailID"
+                  />
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    name="user.contactInformation.designationRole"
+                    type="text"
+                    class="form-control"
+                    placeholder="Designation/Role"
+                    [(ngModel)]="user.contactInformation.designationRole"
+                    ngDefaultControl
+                  />
+                </div>
+              </div>
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-8">
+                  <mat-checkbox
+                    [(ngModel)]="user.userAccess.cloneMainUser"
+                  ></mat-checkbox>
+                  <label for="cloneMainUser" style="font-weight: normal"
+                    >Clone Main User Attributes</label
+                  >
+                </div>
+              </div>
+            </div>
+            <!--Contact Information end -->
 
-
-                    <div class="tab-pane active" id="requirementSetup">
-                    
-                    <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-4">
-                                        <button id="btndownloadReqTemplate" class="btn next nextBtn"><i class="fa fa-arrow-circle-o-down downloadIcon" aria-hidden="true"></i> Download<br/>Requirement template</button>
-                                    </div>
-                                    <div class="col-sm-4">
-                                       <button  id="btnuploadReqTemplate" class="btn next nextBtn"> <i class="fa fa-arrow-circle-o-up downloadIcon" aria-hidden="true"></i> Upload<br/>Requirement template</button>
-                                    </div>
-                                    
-                                    
-                    </div>
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="First Name"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <i class="fa fa-pencil btn submitBtn"> Edit</i>
-                                    </div>
-                                    
-                                    
-                         </div>
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-4">
-                                        <select class="form-control classofServiceDropdown">
-                                                <option value="IN">Class of Service</option>                                                    
-                                            </select>
-                                    </div>
-                                    
-                                    
-                         </div>
-                         <div class="row" style="margin-top: 20px">
-                                  
-                                    <div class="col-sm-12">
-                                         <select class="form-control shoppingSourceDropdown">
-                                                <option value="IN">Shopping Sources</option>                                                    
-                                            </select>
-                                    </div>
-                                    
-                                    
-                         </div>
-                        </div>
-                        </div>
-                          
-                          
-                        </div>
-                       
-                    </div>
-                </div>             
-         
-        </section>
-        <!-- /.content -->
+            <h4><b>Access To</b></h4>
+            <div class="tab-pane active" id="userAccessInfo">
+              <div
+                class="row"
+                style="margin-top: 20px"
+                *ngFor="let func of user.userAccess.functionalities"
+              >
+                <div class="col-sm-2">
+                  <label style="font-weight: normal">{{
+                    func.functionalityName
+                  }}</label>
+                </div>
+                <div class="col-sm-1">
+                  <mat-slide-toggle
+                    class="tp-margin"
+                    [(ngModel)]="func.isToggle"
+                  ></mat-slide-toggle>
+                </div>
+                <div class="col-sm-1">
+                  <mat-checkbox [(ngModel)]="func.readAccess"></mat-checkbox>
+                  <label style="font-weight: normal">Read</label>
+                </div>
+                <div class="col-sm-1">
+                  <mat-checkbox [(ngModel)]="func.writeAccess"></mat-checkbox>
+                  <label style="font-weight: normal">Write</label>
+                </div>
+                <div class="col-sm-2">
+                  <mat-checkbox [(ngModel)]="func.fullAccess"></mat-checkbox>
+                  <label style="font-weight: normal">Full Access</label>
+                </div>
+              </div>
+            </div>
+            <h4><b>Requirement Setup</b></h4>
+            <div class="tab-pane active" id="requirementSetup">
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <button id="btndownloadReqTemplate" class="btn next nextBtn">
+                    <i
+                      class="fa fa-arrow-circle-o-down downloadIcon"
+                      aria-hidden="true"
+                    ></i>
+                    Download<br />Requirement template
+                  </button>
+                </div>
+                <div class="col-sm-4">
+                  <button id="btnuploadReqTemplate" class="btn next nextBtn">
+                    <i
+                      class="fa fa-arrow-circle-o-up downloadIcon"
+                      aria-hidden="true"
+                    ></i>
+                    Upload<br />Requirement template
+                  </button>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="First Name"
+                    [(ngModel)]="user.requirementSetup.firstName"
+                  />
+                </div>
+                <div class="col-sm-4">
+                  <i class="fa fa-pencil btn submitBtn"> Edit</i>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <select class="form-control classofServiceDropdown">
+                    <option
+                      *ngFor="
+                        let service of user.requirementSetup.classOfService
+                      "
+                      value="IN"
+                      >{{ service }}</option
+                    >
+                  </select>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 20px">
+                <div class="col-sm-4">
+                  <select class="form-control shoppingSourceDropdown">
+                    <option
+                      *ngFor="
+                        let shoppingSource of user.requirementSetup
+                          .shoppingSources
+                      "
+                      value="IN"
+                      >{{ shoppingSource }}</option
+                    >
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+  <!-- /.content -->
+</div>

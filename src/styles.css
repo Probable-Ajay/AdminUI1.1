@@ -15,7 +15,7 @@ body {
 
 .mat-drawer-inner-container {
   background: #41464c !important;
-  color: #afb2b6 !important;
+  /* color: #afb2b6 !important; */
 }
 
 .mat-checkbox-inner-container {

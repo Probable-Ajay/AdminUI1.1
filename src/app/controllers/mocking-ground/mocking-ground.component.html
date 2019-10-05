@@ -1,14 +1,5 @@
-<div class="example-container" style="padding: 5%;">
-        <form class="example-container" [formGroup]="options">
-          <mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
-          <div>
-            <label>Float label: </label>
-            <mat-radio-group formControlName="floatLabel">
-              <mat-radio-button value="auto">Auto</mat-radio-button>
-              <mat-radio-button value="always">Always</mat-radio-button>
-              <mat-radio-button value="never">Never</mat-radio-button>
-            </mat-radio-group>
-          </div>
-        </form>
-</div>
-      
+<h1>
+  File Upload
+</h1>
+<input type="file" (change)="onFileSelected($event)" />
+<button type="button" (click)="onUpload()">Upload</button>
