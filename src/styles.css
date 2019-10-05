@@ -18,6 +18,12 @@ body {
   /* color: #afb2b6 !important; */
 }
 
+.mat-select-trigger {
+  border-bottom: 1px solid #ddd;
+}
+.mat-select-placeholder {
+  color: #555;
+}
 .mat-checkbox-inner-container {
   margin-right: 10px !important;
 }
@@ -31,4 +37,7 @@ body {
 
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background {
   background-color: darkcyan !important;
+}
+.mat-input-element {
+  border-bottom: 0px !important;
 }

@@ -1,416 +1,415 @@
 @font-face {
-    font-family: 'Roboto-Medium';
-    src: url('/assets/fonts/Roboto-Medium.woff2') format('woff2'), url('/assets/fonts/Roboto-Medium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Roboto-Medium";
+  src: url("/assets/fonts/Roboto-Medium.woff2") format("woff2"),
+    url("/assets/fonts/Roboto-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Roboto-Regular';
-    src: url('/assets/fonts/Roboto-Regular.woff2') format('woff2'), url('/assets/fonts/Roboto-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Roboto-Regular";
+  src: url("/assets/fonts/Roboto-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Roboto-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .nomargin {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .nopadding {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .margin30pxTop {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .main-header .logo {
-    padding: 5px 25px;
-    background: #fafafa;
+  padding: 5px 25px;
+  background: #fafafa;
 }
 
 .main-header .logo img {
-    width: 250px;
-
+  width: 250px;
 }
 
 .main-header .navbar {
-    background: #fff;
+  background: #fff;
 }
 
 .main-sidebar {
-    background: #41464c;
+  background: #41464c;
 }
 
 .progress.progress-xxs {
-    height: 20px;
-    position: relative;
-    background: #bdbbbb;
+  height: 20px;
+  position: relative;
+  background: #bdbbbb;
 }
 
 .progress.progress-xxs span {
-    padding: 10px;
-    position: relative;
-    z-index: 999;
-    color: #fff;
+  padding: 10px;
+  position: relative;
+  z-index: 999;
+  color: #fff;
 }
 
 .progress.progress-xxs .progress-bar {
-    position: absolute;
-    top: 0;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  z-index: 1;
 }
 
 .downloadIcon {
-    color: #82b726;
-    font-size: 24px;
+  color: #82b726;
+  font-size: 24px;
 }
 
 table thead tr {
-    background: #f8f8fa;
+  background: #f8f8fa;
 }
 
 table thead tr th {
-    color: #000;
-    font-weight: 600;
+  color: #000;
+  font-weight: 600;
 }
 
 .sidebar-menu li a {
-    color: #afb2b6;
-    font-size: 16px;
+  color: #afb2b6;
+  font-size: 16px;
 }
 
 .sidebar-menu .header {
-    color: #afb2b6;
-    font-size: 18px !important;
-    padding-top: 30px !important;
+  color: #afb2b6;
+  font-size: 18px !important;
+  padding-top: 30px !important;
 }
 
 .navbar-custom-menu li a {
-    color: #999999;
-    font-weight: 600;
+  color: #999999;
+  font-weight: 600;
 }
 
 .navbar-custom-menu li a i {
-    position: relative;
-    margin-right: 3px;
+  position: relative;
+  margin-right: 3px;
 }
 
 .control-sidebar,
 .control-sidebar-bg {
-    padding-left: 25px;
-    padding-right: 25px;
-    width: 280px;
-    right: -280px;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: 280px;
+  right: -280px;
 }
 
 .filterForm .row,
 .shopPrice .row {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .filterForm input[type="text"],
 .filterForm select {
-    background: none;
-    border: 0;
-    border-bottom: 1px solid #fff;
-    padding: 0;
-    font-size: 14px;
-    color: #fff;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  padding: 0;
+  font-size: 14px;
+  color: #fff;
 }
 
 .filterForm button {
-    background: #727476;
-    font-size: 15px;
-    color: #fff;
-    font-weight: 600;
+  background: #727476;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
 }
 
 .filterForm button.green,
 .bggreen {
-    background: #82b726;
-    color: #fff;
+  background: #82b726;
+  color: #fff;
 }
 
 .filterForm input[type="radio"] + label {
-    background: url(../images/radio-button.png) no-repeat left top 0px;
-    padding-left: 28px;
-    background-size: 20px;
-    line-height: 20px;
+  background: url(../images/radio-button.png) no-repeat left top 0px;
+  padding-left: 28px;
+  background-size: 20px;
+  line-height: 20px;
 }
 
 .filterForm input[type="radio"]:checked + label {
-    background: url(../images/radio-button-selected.png) no-repeat left top 0px;
-    background-size: 20px;
-    line-height: 20px;
+  background: url(../images/radio-button-selected.png) no-repeat left top 0px;
+  background-size: 20px;
+  line-height: 20px;
 }
 
 input[type="checkbox"] {
-    display: none;
+  display: none;
 }
 
 input[type="checkbox"] + label {
-    background: url(../images/check-box.png) no-repeat left top 0px;
-    padding-left: 28px;
-    background-size: 20px;
-    line-height: 20px;
+  background: url(../images/check-box.png) no-repeat left top 0px;
+  padding-left: 28px;
+  background-size: 20px;
+  line-height: 20px;
 }
 
 input[type="checkbox"]:checked + label {
-    background: url(../images/check-box-checked.png) no-repeat left top 0px;
-    background-size: 20px;
-    line-height: 20px;
+  background: url(../images/check-box-checked.png) no-repeat left top 0px;
+  background-size: 20px;
+  line-height: 20px;
 }
 
-
 .nav-tabs-custom > .nav-tabs > li.active {
-    border-top-color: #83b728;
+  border-top-color: #83b728;
 }
 
 .nav-tabs-custom > .nav-tabs {
-    border-top: 1px solid #d5d5d5;
-    background: #ededed;
+  border-top: 1px solid #d5d5d5;
+  background: #ededed;
 }
 
-
 .nav-tabs-custom select {
-    border: 0;
-    border-bottom: 1px solid #ddd;
+  border: 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .shopPrice h4 {
-    margin: 30px 0;
+  margin: 30px 0;
 }
 
 .tab-content {
-    padding: 0 25px 25px !important;
+  padding: 0 25px 25px !important;
 }
 
 .tab-content .tab-content {
-    padding: 25px 0 !important;
+  padding: 25px 0 !important;
 }
 
 .tab-content .nav.nav-tabs,
 .tab-content .nav.nav-tabs li a {
-    border: 0;
-    font-size: 16px;
-    background: none;
-    padding: 0 0 0 35px;
-    color: #666666;
+  border: 0;
+  font-size: 16px;
+  background: none;
+  padding: 0 0 0 35px;
+  color: #666666;
 }
 
 input.datepicker {
-    background: url(../images/calender-icon.png) no-repeat right 10px center;
-    display: block;
+  background: url(../images/calender-icon.png) no-repeat right 10px center;
+  display: block;
 }
-
 
 input,
 .form-control {
-    border: 0 !important;
-    border-radius: 0 !important;
-    border-bottom: 1px solid #ddd !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #ddd !important;
 }
 
-
 .radioButton li {
-    background: url(../images/red-radioButton.png) no-repeat left center;
-    background-size: 20px !important;
-    margin-right: 30px;
+  background: url(../images/red-radioButton.png) no-repeat left center;
+  background-size: 20px !important;
+  margin-right: 30px;
 }
 
 .radioButton li.active {
-    background: url(../images/red-radioButton-selected.png) no-repeat left center;
+  background: url(../images/red-radioButton-selected.png) no-repeat left center;
 }
 
 .nav-tabs-custom > .nav-tabs > li {
-    border-right: 1px solid #ddd;
-    margin: 0;
-
+  border-right: 1px solid #ddd;
+  margin: 0;
 }
 
 .nav-tabs-custom > .nav-tabs > li a {
-    border-bottom: 0 !important;
-    font-size: 18px;
-    font-weight: 500;
+  border-bottom: 0 !important;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .noneBG {
-    background: none;
-    border: 0 !important;
+  background: none;
+  border: 0 !important;
 }
 
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
-    right: auto !important;
-    left: 0 !important;
+  right: auto !important;
+  left: 0 !important;
 }
 
 .navbar-custom-menu > .navbar-nav li.user.user-menu .dropdown-menu {
-    right: 0 !important;
-    left: auto !important;
-    background: #83b728;
+  right: 0 !important;
+  left: auto !important;
+  background: #83b728;
 }
 
 .prev.nextBtn {
-    background: #41464c;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
+  background: #41464c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 5px;
 }
 
 .prevBtn.focus,
 .prevBtn:focus,
 .prevBtn:hover {
-    color: #fff !important;
-    text-decoration: none;
+  color: #fff !important;
+  text-decoration: none;
 }
 
 .nextBtn,
 .submitBtn {
-    background: #006633;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
+  /* background: #006633; */
+  background: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 5px;
 }
 
 .nextBtn.focus,
 .nextBtn:focus,
 .nextBtn:hover {
-    color: #fff !important;
-    text-decoration: none;
+  color: #fff !important;
+  text-decoration: none;
 }
 
 .saveBtn {
-    background: #05301c;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
+  /* background: #05301c; */
+  background: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 5px;
 }
 
 .saveBtn.focus,
 .saveBtn:focus,
 .saveBtn:hover {
-    color: #fff !important;
-    text-decoration: none;
+  color: #fff !important;
+  text-decoration: none;
 }
 
 .submitBtn {
-    background: #8cbe27;
+  background: #8cbe27;
 }
 
 .daysofweek li {
-    border: 1px solid #fff;
-    color: #fff;
-    padding: 18px 10.2px 3px;
-    opacity: 0.5;
-    background: url(../images/right-icon.png) no-repeat center top 3px;
-    cursor: pointer;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 18px 10.2px 3px;
+  opacity: 0.5;
+  background: url(../images/right-icon.png) no-repeat center top 3px;
+  cursor: pointer;
 }
 
 .daysofweek li.active {
-    opacity: 1;
-
+  opacity: 1;
 }
 
 .graphFilter .datepicker {
-    background: url(../images/calender-black-icon.png) no-repeat right center !important;
+  background: url(../images/calender-black-icon.png) no-repeat right center !important;
 }
 
 .graphFilter h4 {
-    color: #797979;
-    font-family: 'Roboto-Medium';
-    font-weight: 500;
-    font-size: 16px;
+  color: #797979;
+  font-family: "Roboto-Medium";
+  font-weight: 500;
+  font-size: 16px;
 }
 
 #time-range .tooltip.tooltip-main.top {
-    display: none !important;
+  display: none !important;
 }
 
 .selectedOrigin span,
 .selectedDate span {
-    display: inline-block;
-    background: #ddd;
-    padding: 3px 15px 4px;
-    border-radius: 14px;
-    font-weight: 600;
-    margin-right: 10px;
-    margin-bottom: 5px;
+  display: inline-block;
+  background: #ddd;
+  padding: 3px 15px 4px;
+  border-radius: 14px;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 .selectedOrigin span i,
 .selectedDate span i {
-    background: #fff;
-    padding: 1px 3px 2px 3px;
-    border-radius: 100%;
-    position: relative;
-    right: -10px;
-    cursor: pointer;
+  background: #fff;
+  padding: 1px 3px 2px 3px;
+  border-radius: 100%;
+  position: relative;
+  right: -10px;
+  cursor: pointer;
 }
 
 .dropbox {
-    display: none;
-    border: 1px solid #ddd;
-    list-style: none;
-    padding: 10px;
-    font-weight: 400;
-    position: absolute;
-    z-index: 99;
-    background: #fff;
-    width: 91%;
-    max-height: 140px;
-    overflow: auto;
+  display: none;
+  border: 1px solid #ddd;
+  list-style: none;
+  padding: 10px;
+  font-weight: 400;
+  position: absolute;
+  z-index: 99;
+  background: #fff;
+  width: 91%;
+  max-height: 140px;
+  overflow: auto;
 }
 
 .dropBoxSection.active .dropbox {
-    display: block;
+  display: block;
 }
 
 .dropbox label {
-    font-weight: 400;
+  font-weight: 400;
 }
 
-#ScheduledReport {
+/* #ScheduledReport {
     display: none;
 }
 
 #ScheduledReport.active {
     display: block;
+} */
+
+@media (max-width: 767px) {
+  .main-header .logo img {
+    width: 190px;
+    margin: auto;
+  }
+
+  .main-header .nav > li > a {
+    padding: 15px 10px;
+  }
+
+  .main-header .nav > li > a span {
+    display: none;
+  }
+
+  .shopPrice .nav-tabs-custom > .nav-tabs > li a {
+    font-size: 15px;
+    font-weight: 400;
+  }
 }
 
-@media(max-width:767px) {
-    .main-header .logo img {
-        width: 190px;
-        margin: auto;
-    }
+@media (max-width: 420px) {
+  .shopPrice .nav-tabs-custom > .nav-tabs > li {
+    width: 49%;
+  }
 
-    .main-header .nav > li > a {
-        padding: 15px 10px;
-    }
+  .shopPrice .nav-tabs-custom > .nav-tabs > li a {
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+  }
 
-    .main-header .nav > li > a span {
-        display: none;
-    }
-
-    .shopPrice .nav-tabs-custom > .nav-tabs > li a {
-        font-size: 15px;
-        font-weight: 400;
-    }
-}
-
-@media(max-width:420px) {
-    .shopPrice .nav-tabs-custom > .nav-tabs > li {
-        width: 49%;
-    }
-
-    .shopPrice .nav-tabs-custom > .nav-tabs > li a {
-        padding-left: 5px;
-        padding-right: 5px;
-        text-align: center;
-    }
-
-    .radioButton li {
-        margin-right: 10px;
-    }
-
+  .radioButton li {
+    margin-right: 10px;
+  }
 }

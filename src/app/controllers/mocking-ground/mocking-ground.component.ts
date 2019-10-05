@@ -11,6 +11,7 @@ import { HttpClient, HttpEventType } from "@angular/common/http";
 })
 export class MockingGroundComponent implements OnInit {
   selectedFile = null;
+  scheduledReportButton: boolean;
   constructor(private http: HttpClient) {}
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
@@ -35,6 +36,10 @@ export class MockingGroundComponent implements OnInit {
           console.log(event);
         }
       });
+  }
+
+  onChange() {
+    this.scheduledReportButton = !this.scheduledReportButton;
   }
 
   ngOnInit() {}

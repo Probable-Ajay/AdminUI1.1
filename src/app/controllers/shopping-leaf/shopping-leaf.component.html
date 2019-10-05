@@ -20,33 +20,34 @@
                             <div class="tab-pane active" id="reportInfo">
                                 <div class="row" style="margin-top: 20px">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Report Name"/>
+                                        <input type="text" class="form-control" placeholder="Report Name" [(ngModel)]="shop.reportInfo.reportName"/>
                                     </div>
                                     <div class="col-sm-8">
                                         <p>
-                                             <mat-checkbox [(ngModel)]="scheduledReportButton"></mat-checkbox>
+                                            <!-- <mat-checkbox [checked]="scheduledReportButton"  (change)="onChange()"></mat-checkbox> -->
+                                             <mat-checkbox [checked]="scheduledReportButton" (change)="onChange()" ></mat-checkbox>
                                             <!-- <input type="checkbox" id="scheduledReportButton"/> -->
                                             <label for="scheduledReportButton" style="font-weight: normal">Schedule the Report</label>
                                         </p>
                                     </div>
                                 </div>
 
-                                <div id="ScheduledReport">
+                                <div id="ScheduledReport" *ngIf="scheduledReportButton">
                                     <h4>Scheduled Report</h4>
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <h5>Repeat</h5>
-                                            <select class="form-control durationDropdown">
-                                                <option value="Daily">Daily</option>
-                                                <option value="Weekly">Weekly</option>
-                                                <option value="Monthly">Monthly</option>
-                                            </select>
+                                        <mat-select [(ngModel)]="selectedFrequency">
+                                            <mat-option *ngFor = "let frequency of shop.reportInfo.frequency" [value] = "frequency">
+                                                {{frequency}}
+                                            </mat-option>
+                                        </mat-select>                                           
                                         </div>
                                     </div>
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="Daily">
+                                        <div id="Daily" *ngIf="selectedFrequency==='Daily'">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-12">                                                     
                                                     <ul class="nav nav-tabs nopadding radioButton">
                                                         <li class="active"><a href="#Every" data-toggle="tab">Every</a></li>
                                                         <li><a href="#EveryWeekday" data-toggle="tab">Every Weekday</a></li>
@@ -55,7 +56,12 @@
                                                         <div class="tab-pane active" id="Every">
                                                             <div class="row">
                                                                 <div class="col-sm-4">
-                                                                    <input type="text" class="form-control" placeholder="Every Day(s)"/>
+                                                                     <mat-select placeholder="Every Day(s)">
+                                                                        <mat-option *ngFor = "let daysOfDelivery of shop.reportInfo.daysOfDelivery" [value] = "daysOfDelivery">
+                                                                            {{daysOfDelivery}}
+                                                                        </mat-option>
+                                                                    </mat-select>  
+                                                                    <!-- <input type="text" class="form-control" placeholder="Every Day(s)"/> -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -68,39 +74,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="Weekly">
+                                        <div id="Weekly" *ngIf="selectedFrequency==='Weekly'">
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="dropBoxSection">
                                                         <div class="form-control dropboxHead">On days <i class="fa fa-caret-down pull-right"></i></div>
                                                         <ul class="dropbox">
-                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
-                                                            <li><input type="checkbox" id="Monday" /> <label for="Monday">Monday</label></li>
-                                                            <li><input type="checkbox" id="Tuesday" /> <label for="Tuesday">Tuesday</label></li>
-                                                            <li><input type="checkbox" id="Wednesday" /> <label for="Wednesday">Wednesday</label></li>
-                                                            <li><input type="checkbox" id="Thursday" /> <label for="Thursday">Thursday</label></li>
-                                                            <li><input type="checkbox" id="Friday" /> <label for="Friday">Friday</label></li>
-                                                            <li><input type="checkbox" id="Saturday" /> <label for="Saturday">Saturday</label></li>
-                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
+                                                            <li *ngFor="let classofService of shop.reportInfo.daysOfDelivery">
+                                                                <mat-checkbox [(ngModel)]="classofService"></mat-checkbox> 
+                                                                <label for="{{classofService}}">{{classofService}}</label>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="Monthly">
+                                        <div id="Monthly" *ngIf="selectedFrequency==='Monthly'">
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="dropBoxSection">
                                                         <div class="form-control dropboxHead">On days <i class="fa fa-caret-down pull-right"></i></div>
                                                         <ul class="dropbox">
-                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
-                                                            <li><input type="checkbox" id="Monday" /> <label for="Monday">Monday</label></li>
-                                                            <li><input type="checkbox" id="Tuesday" /> <label for="Tuesday">Tuesday</label></li>
-                                                            <li><input type="checkbox" id="Wednesday" /> <label for="Wednesday">Wednesday</label></li>
-                                                            <li><input type="checkbox" id="Thursday" /> <label for="Thursday">Thursday</label></li>
-                                                            <li><input type="checkbox" id="Friday" /> <label for="Friday">Friday</label></li>
-                                                            <li><input type="checkbox" id="Saturday" /> <label for="Saturday">Saturday</label></li>
-                                                            <li><input type="checkbox" id="Sunday" /> <label for="Sunday">Sunday</label></li>
+                                                            <li *ngFor="let onDays of shop.reportInfo.daysOfDelivery">
+                                                                <mat-checkbox [(ngModel)]="onDays"></mat-checkbox> 
+                                                                <label for="{{onDays}}">{{onDays}}</label>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -118,26 +116,20 @@
                                                                     <div class="dropBoxSection">
                                                                         <div class="form-control dropboxHead">Week Number <i class="fa fa-caret-down pull-right"></i></div>
                                                                         <ul class="dropbox">
-                                                                            <li><input type="checkbox" id="First" /> <label for="First">First</label></li>
-                                                                            <li><input type="checkbox" id="Second" /> <label for="Second">Second</label></li>
-                                                                            <li><input type="checkbox" id="Third" /> <label for="Third">Third</label></li>
-                                                                            <li><input type="checkbox" id="Fourth" /> <label for="Fourth">Fourth</label></li>
-                                                                            <li><input type="checkbox" id="Fifth" /> <label for="Fifth">Fifth</label></li>
+                                                                            <li *ngFor="let week of shop.reportInfo.weeksOfDelivery">
+                                                                                <mat-checkbox [(ngModel)]="week"></mat-checkbox> 
+                                                                                <label for="{{week}}">{{week}}</label>
+                                                                            </li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <div class="dropBoxSection">
-                                                                        <select class="form-control">
-                                                                            <option value="Daily">On days</option>
-                                                                            <option value="Weekly">Monday</option>
-                                                                            <option value="Monthly">Tuesday</option>
-                                                                            <option value="Daily">Wednesday</option>
-                                                                            <option value="Weekly">Thursday</option>
-                                                                            <option value="Monthly">Friday</option>
-                                                                            <option value="Daily">Saturday</option>
-                                                                            <option value="Daily">Sunday</option>
-                                                                        </select>
+                                                                        <mat-select placeholder="On Days">
+                                                                        <mat-option *ngFor = "let daysOfDelivery of shop.reportInfo.daysOfDelivery" [value] = "daysOfDelivery">
+                                                                            {{daysOfDelivery}}
+                                                                        </mat-option>
+                                                                    </mat-select> 
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -149,37 +141,10 @@
                                                                     <div class="dropBoxSection">
                                                                         <div class="form-control dropboxHead">Week Number <i class="fa fa-caret-down pull-right"></i></div>
                                                                         <ul class="dropbox">
-                                                                            <li><input type="checkbox" id="WeekNumber1" /> <label for="WeekNumber1">1</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber2" /> <label for="WeekNumber2">2</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber3" /> <label for="WeekNumber3">3</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber4" /> <label for="WeekNumber4">4</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber5" /> <label for="WeekNumber5">5</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber6" /> <label for="WeekNumber6">6</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber7" /> <label for="WeekNumber7">7</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber8" /> <label for="WeekNumber8">8</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber9" /> <label for="WeekNumber9">9</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber10" /> <label for="WeekNumber10">10</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber11" /> <label for="WeekNumber11">11</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber12" /> <label for="WeekNumber12">12</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber13" /> <label for="WeekNumber13">13</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber14" /> <label for="WeekNumber14">14</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber15" /> <label for="WeekNumber15">15</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber16" /> <label for="WeekNumber16">16</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber17" /> <label for="WeekNumber17">17</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber18" /> <label for="WeekNumber18">18</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber19" /> <label for="WeekNumber19">19</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber20" /> <label for="WeekNumber20">20</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber21" /> <label for="WeekNumber21">21</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber22" /> <label for="WeekNumber22">22</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber23" /> <label for="WeekNumber23">23</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber24" /> <label for="WeekNumber24">24</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber25" /> <label for="WeekNumber25">25</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber26" /> <label for="WeekNumber26">26</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber27" /> <label for="WeekNumber27">27</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber28" /> <label for="WeekNumber28">28</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber29" /> <label for="WeekNumber29">29</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber30" /> <label for="WeekNumber30">30</label></li>
-                                                                            <li><input type="checkbox" id="WeekNumber31" /> <label for="WeekNumber31">31</label></li>
+                                                                            <li *ngFor="let weekNo of shop.reportInfo.weekNumber">
+                                                                                <mat-checkbox [(ngModel)]="weekNo"></mat-checkbox> 
+                                                                                <label for="{{weekNo}}">{{weekNo}}</label>
+                                                                            </li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -194,33 +159,32 @@
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <h5>Repeat Generation Time</h5>
-                                                <select class="form-control">
-                                                    <option>0:00</option>
-                                                    <option>0:30</option>
-                                                    <option>1:00</option>
-                                                    <option>1:30</option>
-                                                    <option>2:00</option>
-                                                    <option>2:30</option>
-                                                    <option>3:00</option>
-                                                    <option>3:30</option>
-                                                    <option>4:00</option>
-                                                    <option>4:30</option>
-                                                    <option>5:00</option>
-                                                    <option>5:30</option>
-                                                    <option>6:00</option>
-                                                    <option>6:30</option>
-
-                                                </select>
+                                                
+                                                 <mat-select>
+                                                                        <mat-option *ngFor = "let reportTime of shop.reportInfo.repeateGenerationTime" [value] = "reportTime">
+                                                                            {{reportTime}}
+                                                                        </mat-option>
+                                                                    </mat-select>
                                             </div>
                                         </div>
                                         <h4>Range of Schedule </h4>
                                         <div class="row">
 
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control datepicker outbonffrom" placeholder="From"/>
+                                                <mat-form-field>
+                                                    <input matInput [matDatepicker]="pickerFrom" placeholder="From">
+                                                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                                    <mat-datepicker #pickerFrom></mat-datepicker>
+                                                </mat-form-field>
+                                                <!-- <input type="text" class="form-control datepicker outbonffrom" placeholder="From"/> -->
                                             </div>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control datepicker outbonfto" placeholder="To"/>
+                                                <mat-form-field>
+                                                    <input matInput [matDatepicker]="pickerTo" placeholder="To">
+                                                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                                                    <mat-datepicker #pickerTo></mat-datepicker>
+                                                </mat-form-field>
+                                                <!-- <input type="text" class="form-control datepicker outbonfto" placeholder="To"/> -->
                                             </div>
                                         </div>
                                     </div>
@@ -235,20 +199,19 @@
                                 <h4>Journey &amp; Flight Information</h4>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <select class="form-control">
-                                            <option>Journey Type</option>
-                                            <option>One way</option>
-                                            <option>Round Trip</option>
-                                            <option>Both</option>
-                                        </select>
+                                       <mat-select placeholder="Journey Type">
+                                            <mat-option *ngFor = "let journeyType of shop.journeyInfo.journeyType" [value] = "journeyType">
+                                                {{journeyType}}
+                                            </mat-option>
+                                        </mat-select>  
                                     </div>
                                     <div class="col-sm-4">
-                                        <select class="form-control">
-                                            <option>Currency Type</option>
-                                            <option>Rupee</option>
-                                            <option>USD</option>
-                                            <option>EUR</option>
-                                        </select>
+
+                                        <mat-select placeholder="Currency Type">
+                                            <mat-option *ngFor = "let currencyType of shop.journeyInfo.currencyType" [value] = "currencyType">
+                                                {{currencyType}}
+                                            </mat-option>
+                                        </mat-select>                                        
                                     </div>
                                 </div>
                                 <div class="row">
@@ -257,42 +220,33 @@
                                         <p>Passenger Count</p>
                                     </div>
                                     <div class="col-sm-4">
-                                        <p>Adult</p>
-                                        <select class="form-control">
-                                            <option>All</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                        </select>
+                                        <!-- <p>Adult</p> -->
+                                         <mat-select placeholder = "Adult" >
+                                        <mat-option *ngFor = "let adultCount of shop.journeyInfo.adultPaxCount" 
+                                            [value] = "adultCount">
+                                            {{adultCount}}
+                                        </mat-option>
+                                        </mat-select>                                       
                                         <p>12+ Years</p>
                                     </div>
                                     <div class="col-sm-4">
-                                        <p>Child</p>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                        </select>
+                                        <!-- <p>Child</p> -->
+                                        <mat-select placeholder = "Child" >
+                                        <mat-option *ngFor = "let childCount of shop.journeyInfo.childPaxCount" 
+                                            [value] = "childCount">
+                                            {{childCount}}
+                                        </mat-option>
+                                        </mat-select>                                        
                                         <p>2 to 12 Years</p>
                                     </div>
                                     <div class="col-sm-4">
-                                        <p>Infant</p>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                        </select>
+                                        <!-- <p>Infant</p> -->
+                                        <mat-select placeholder = "Infant" >
+                                        <mat-option *ngFor = "let infantCount of shop.journeyInfo.infantPaxCount" 
+                                            [value] = "infantCount">
+                                            {{infantCount}}
+                                        </mat-option>
+                                        </mat-select>
                                         <p>0 to 2 Years</p>
                                     </div>
                                 </div>
@@ -302,12 +256,11 @@
                                         <div class="dropBoxSection">
                                             <div class="form-control dropboxHead">Class of Service <i class="fa fa-caret-down pull-right"></i></div>
                                             <ul class="dropbox">
-                                                <li><mat-checkbox [(ngModel)]="eco"></mat-checkbox><label for="eco">Economy</label></li>
-                                                <li><mat-checkbox [(ngModel)]="prem"></mat-checkbox> <label for="prem">Premium Economy</label></li>
-                                                <li><mat-checkbox [(ngModel)]="busi"></mat-checkbox> <label for="busi">Business</label></li>
-                                                <li><mat-checkbox [(ngModel)]="first"></mat-checkbox> <label for="first">First</label></li>
-                                                <li><mat-checkbox [(ngModel)]="all"></mat-checkbox> <label for="all">All</label></li>
-                                            </ul>
+                                                <li *ngFor="let classofService of shop.journeyInfo.flightInfo.classOfServices">
+                                                    <mat-checkbox [(ngModel)]="classofService"></mat-checkbox> 
+                                                    <label for="{{classofService}}">{{classofService}}</label>
+                                                </li>                                                                                              
+                                            </ul>                                         
                                         </div>
                                     </div>
                                 </div>
@@ -317,9 +270,10 @@
                                         <div class="dropBoxSection">
                                             <div class="form-control dropboxHead">Stops <i class="fa fa-caret-down pull-right"></i></div>
                                             <ul class="dropbox">
-                                                <li><mat-checkbox [(ngModel)]="zero"></mat-checkbox> <label for="zero">0</label></li>
-                                                <li><mat-checkbox [(ngModel)]="one"></mat-checkbox> <label for="one">1</label></li>
-                                                <li><mat-checkbox [(ngModel)]="two"></mat-checkbox> <label for="two">2</label></li>
+                                                <li *ngFor="let stop of shop.journeyInfo.flightInfo.stops">
+                                                    <mat-checkbox [(ngModel)]="stop"></mat-checkbox> 
+                                                    <label for="stop">{{stop}}</label>
+                                                </li>                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -327,7 +281,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <input class="form-control originDestination" placeholder="Origin and Destination"/>  
+                                        <input type="text" [(ngModel)]="shop.journeyInfo.flightInfo.originAndDestinations" class="form-control originDestination" placeholder="Origin and Destination"/>  
                                     </div>
 
                                     <div class="col-sm-2">
@@ -360,12 +314,11 @@
                                     <div class="col-sm-4">
                                         <div class="dropBoxSection">
                                             <div class="form-control dropboxHead">Airlines <i class="fa fa-caret-down pull-right"></i></div>
-                                            <ul class="dropbox">
-                                                <li><mat-checkbox [(ngModel)]="A1"></mat-checkbox> <label for="A1">Airline1</label></li>
-                                                <li><mat-checkbox [(ngModel)]="A2"></mat-checkbox> <label for="A2">Airline2</label></li>
-                                                <li><mat-checkbox [(ngModel)]="A3"></mat-checkbox> <label for="A3">Airline3</label></li>
-                                                <li><mat-checkbox [(ngModel)]="A4"></mat-checkbox> <label for="A4">Airline4</label></li>
-                                                <li><mat-checkbox [(ngModel)]="A5"></mat-checkbox> <label for="A5">All</label></li>
+                                            <ul class="dropbox" >
+                                                <li *ngFor="let airline of shop.journeyInfo.flightInfo.airlines">
+                                                    <mat-checkbox [(ngModel)]="airline.airlineCode"></mat-checkbox> 
+                                                    <label for="{{airline.airlineCode}}">{{airline.airlineName}}</label>
+                                                </li>                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -395,10 +348,20 @@
                                                     <div class="col-sm-8">
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control datepicker outbonffrom" placeholder="From"/>
+                                                                <mat-form-field>
+                                                                    <input matInput [matDatepicker]="outbonffrom" placeholder="From">
+                                                                    <mat-datepicker-toggle matSuffix [for]="outbonffrom"></mat-datepicker-toggle>
+                                                                    <mat-datepicker #outbonffrom></mat-datepicker>
+                                                                </mat-form-field>
+                                                                <!-- <input type="text" class="form-control datepicker outbonffrom" placeholder="From"/> -->
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control datepicker outbonfto" placeholder="To"/>
+                                                                          <mat-form-field>
+                                                                                <input matInput [matDatepicker]="outbonfto" placeholder="To">
+                                                                                <mat-datepicker-toggle matSuffix [for]="outbonfto"></mat-datepicker-toggle>
+                                                                                <mat-datepicker #outbonfto></mat-datepicker>
+                                                                          </mat-form-field>
+                                                                <!-- <input type="text" class="form-control datepicker outbonfto" placeholder="To"/> -->
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <button type="button" class="btn bggreen addDateBtn"><i class="fa fa-plus-circle"></i> Add</button>
@@ -475,7 +438,12 @@
                                             <div class="tab-pane" id="Preferred">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control datepicker PreferredDate" placeholder="Departure Date"/>
+                                                        <mat-form-field>
+                                                            <input matInput [matDatepicker]="PreferredDate" placeholder="Departure Date">
+                                                            <mat-datepicker-toggle matSuffix [for]="PreferredDate"></mat-datepicker-toggle>
+                                                            <mat-datepicker #PreferredDate></mat-datepicker>
+                                                        </mat-form-field>
+                                                        <!-- <input type="text" class="form-control datepicker PreferredDate" placeholder="Departure Date"/> -->
                                                     </div>
                                                     <!-- <div class="col-sm-4"> -->
                                                     <!-- <input type="text" class="form-control datepicker" placeholder="Inbound Days"> -->
@@ -609,12 +577,19 @@
                                 <h4>Channel</h4>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <select class="form-control">
+                                         <mat-select placeholder = "Competitors" [(ngModel)] = "selectedChannel" >
+                                        <mat-option *ngFor = "let channel of shop.shoppingChannels" 
+                                            [value] = "channel">
+                                            {{channel}}
+                                        </mat-option>
+                                        </mat-select>
+
+                                        <!-- <select class="form-control">
                                             <option>Competitors</option>
                                             <option>Make my trip</option>
                                             <option>Go-IBIBO</option>
                                             <option>Yatra</option>
-                                        </select>
+                                        </select> -->
                                     </div>
                                 </div>
                             </div>
@@ -628,8 +603,8 @@
 
             <div class="row buttonEvents">
                 <div class="col-sm-12">
-                    <button class="btn prev nextBtn"> Previous </button> 
-                    <button class="btn next nextBtn"> Next </button>
+                    <button class="btn prev nextBtn">&laquo; Previous </button> 
+                    <button class="btn next nextBtn"> Next &raquo; </button>
                     <button class="btn saveBtn">Save</button>
                     <button class="btn submitBtn">Submit</button>
                 </div>

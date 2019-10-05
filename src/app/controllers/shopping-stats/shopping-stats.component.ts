@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-///import { ShopStatus } from "../../models/shopstatus";
+import { ShopStatus } from "../../models/shop/shopstatus";
 
 @Component({
   selector: "app-shopping-stats",
@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./shopping-stats.component.css"]
 })
 export class ShoppingStatsComponent implements OnInit {
-  //shopStatus: ShopStatus = new ShopStatus();
+  shopStatus: ShopStatus = new ShopStatus();
   constructor() {}
 
   ngOnInit() {}

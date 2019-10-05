@@ -31,20 +31,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>432442</td>
-                <td>Max Test</td>
-                <td>-</td>
-                <td>-</td>
-                <td>Hotel</td>
-                <td>Delhi</td>
-                <td>9, Jan 2019</td>
-                <td>10:12AM</td>
-                <td>12:12PM</td>
-                <td>2hr</td>
-                <td>2</td>
-                <td>0</td>
-                <td>NA</td>
+              <tr *ngFor="let report of shopStatus.reportDetail">
+                <td>{{ report.jobId }}</td>
+                <td>{{ report.jobName }}</td>
+                <td>{{ report.account }}</td>
+                <td>{{ report.reportType }}</td>
+                <td>{{ report.app }}</td>
+                <td>{{ report.ond }}</td>
+                <td>{{ report.ond }}</td>
+                <td>{{ report.startTime }}</td>
+                <td>{{ report.finishTime }}</td>
+                <td>{{ report.runDuration }}hr</td>
+                <td>{{ report.requestCount }}</td>
+                <td>{{ report.requestFailure }}</td>
+                <td>{{ report.sufficiency }}</td>
                 <td class="text-center">
                   <i
                     class="fa fa-arrow-circle-o-down downloadIcon"
@@ -53,7 +53,7 @@
                 </td>
                 <td>
                   <div class="progress progress-xxs">
-                    <span>70%</span>
+                    <span>{{ report.statusPercentage }}%</span>
                     <div
                       class="progress-bar progress-bar-success"
                       style="width: 70%"
