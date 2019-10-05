@@ -1,172 +1,142 @@
 <ng-container>
-  <mat-toolbar class="example-header" [formGroup]="options">
-    <div style="padding:2%">
-      <span class="logo-mini"
-        ><img
-          style="max-width: 60%"
-          src="/assets/images/mini-logo.png"
-          class="img-responsive"
-      /></span>
-    </div>
-    <div style="margin-left: 6%;">
-      <button mat-button (click)="sidenavRight.toggle()">ToggleLeft</button>
-      <button mat-button (click)="sidenavLeft.toggle()">ToggleRight</button>
-    </div>
-  </mat-toolbar>
-  <mat-sidenav-container class="example-container" hasBackdrop="false">
-    <mat-sidenav
-      #sidenavRight
-      mode="side"
-      opened
-      class="left-sidenav"
-      [fixedInViewport]="true"
-      [fixedTopGap]="0"
-      [fixedBottomGap]="0"
-    >
-      <div style="background: #ffffff; height:60px; padding:4%;">
-        <span class="logo-lg"
-          ><img src="/assets/images/logo.png" class="img-responsive"
-        /></span>
-      </div>
-      <div>
-        <section class="sidebar">
-          <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN</li>
-            <li>
-              <a routerLink="shopLeaf">
-                <i class="fa fa-shopping-bag"></i>
-                <span>Shop Price</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="shoppingStats">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <span>Shopping Stats</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="priceTrends">
-                <i class="fa fa-line-chart" aria-hidden="true"></i>
-                <span>Price Trends</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="admin">
-                <i class="fa fa-user-plus" aria-hidden="true"></i>
-                <span>Admin</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="mock">
-                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                <span>Mock</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </mat-sidenav>
-    <mat-sidenav
-      #sidenavLeft
-      mode="over"
-      closed
-      position="end"
-      class="right-sidenav"
-      [fixedInViewport]="false"
-      [fixedTopGap]="0"
-      [fixedBottomGap]="0"
-    >
-      <aside class="control-sidebar control-sidebar-dark control-sidebar-open">
-        <h3 class="control-sidebar-heading">Filter</h3>
-        <div class="filterForm">
-          <h5>Report Type</h5>
-          <div class="row">
-            <div class="col-sm-6">
-              <input type="radio" name="reortType" id="onDemand" class="hide" />
-              <label for="onDemand">On Demand</label>
-            </div>
-            <div class="col-sm-6">
-              <input type="radio" id="schedule" name="reortType" class="hide" />
-              <label for="schedule">Schedule</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <input
-                type="text"
-                name="reportId"
-                class="form-control"
-                placeholder="Enter Report ID/Name"
-              />
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <!-- <input type="checkbox" name="" class="hide" id="showReoprt" /> -->
-              <mat-checkbox [(ngModel)]="showReoprt"></mat-checkbox>
-              <label for="showReoprt"
-                >Show Archived Reports<br /><small
-                  >(Include Historical Reports)</small
-                ></label
-              >
-            </div>
-          </div>
-
-          <h5>OND</h5>
-          <div class="row">
-            <div class="col-sm-12">
-              <input
-                type="text"
-                name=""
-                class="form-control"
-                placeholder="Origin"
-              />
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <input
-                type="text"
-                name=""
-                class="form-control"
-                placeholder="Destination"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <select class="form-control">
-                <option>Journey Type</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <select class="form-control">
-                <option>Class of Service</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-12">
-              <button class="btn">Cancel</button>
-              <button class="btn green">Apply</button>
-              <button class="btn">Reset</button>
-            </div>
-          </div>
+    <mat-toolbar class="example-header" [formGroup]="options">
+        <div style="padding:2%; padding-left:1%;">
+            <span class="logo-mini"><img style="max-width: 45%" src="/assets/images/mini-logo.png"
+                    class="img-responsive" /></span>
         </div>
-      </aside>
-    </mat-sidenav>
+        <div style="margin-left: 2%; width: 85%">
+            <div style="float:left; width:50%;">
+                <button mat-button (click)="sidenavRight.toggle()" style="float:left;">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div style="float:right; width:50%;">
+                <button mat-button (click)="sidenavLeft.toggle()" style="float:right">
+                    <i class="fa fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-container" hasBackdrop="false">
+        <mat-sidenav #sidenavRight mode="side" opened class="left-sidenav" [fixedInViewport]="true" [fixedTopGap]="0"
+            [fixedBottomGap]="0">
+            <div style="background: #ffffff; height:60px; padding:4%;">
+                <span class="logo-lg"><img src="/assets/images/logo.png" class="img-responsive" /></span>
+            </div>
+            <div>
+                <section class="sidebar">
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MAIN</li>
+                        <li>
+                            <a routerLink="shopPrice">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span>Shop Price</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="shopStats">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <span>Shopping Stats</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="priceTrends">
+                                <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                <span>Price Trends</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="admin">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <span>Admin</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="mock">
+                                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                <span>Mock</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav #sidenavLeft mode="over" closed position="end" class="right-sidenav" [fixedInViewport]="false"
+            [fixedTopGap]="0" [fixedBottomGap]="0">
+            <aside class="control-sidebar control-sidebar-dark control-sidebar-open">
+                <h3 class="control-sidebar-heading">Filter</h3>
+                <div class="filterForm">
+                    <h5>Report Type</h5>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="radio" name="reortType" id="onDemand" class="hide" />
+                            <label for="onDemand">On Demand</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="radio" id="schedule" name="reortType" class="hide" />
+                            <label for="schedule">Schedule</label>
+                        </div>
+                    </div>
 
-    <mat-sidenav-content [formGroup]="options">
-      <div class="example-sidenav-content">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" name="reportId" class="form-control"
+                                placeholder="Enter Report ID/Name" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- <input type="checkbox" name="" class="hide" id="showReoprt" /> -->
+                            <mat-checkbox [(ngModel)]="showReoprt"></mat-checkbox>
+                            <label for="showReoprt">Show Archived Reports<br /><small>(Include Historical
+                                    Reports)</small></label>
+                        </div>
+                    </div>
+
+                    <h5>OND</h5>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" name="" class="form-control" placeholder="Origin" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" name="" class="form-control" placeholder="Destination" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <select class="form-control">
+                                <option>Journey Type</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <select class="form-control">
+                                <option>Class of Service</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn">Cancel</button>
+                            <button class="btn green">Apply</button>
+                            <button class="btn">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </mat-sidenav>
+
+        <mat-sidenav-content [formGroup]="options">
+            <div class="example-sidenav-content">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </ng-container>
