@@ -105,4 +105,52 @@ export class Airline {
   airlineName: string;
   airlineCode: string;
 }
-export class ShoppingDates {}
+export class ShoppingDates {
+  isContinuous: boolean;
+  isPreferred: boolean;
+  isRange: boolean;
+  rbApplyDateType: string[];
+  continuous_outbondFromDate: string;
+  continuous_outbondToDate: string;
+  continuous_daysOfWeek: string[];
+  preferred_DepartureDate: string;
+  range_DaysOutDays: string;
+  range_DaysOfWeek: string[];
+  returnParams: string;
+  departureTimeOrigin: string;
+  departureTimeDestination: string;
+  applyReverseShopping: boolean;
+
+  constructor() {
+    this.isContinuous = true;
+    this.isPreferred = false;
+    this.isRange = false;
+    this.rbApplyDateType = ["Continuous", "Preferred", "Range"];
+    this.continuous_outbondFromDate = Date.now.toString();
+    this.continuous_outbondToDate = Date.now.toString();
+    this.continuous_daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+    this.preferred_DepartureDate = Date.now.toString();
+    this.range_DaysOutDays = "0-60, 82, 89, 104-110";
+    this.range_DaysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+    this.returnParams = "4,5,8";
+    this.departureTimeOrigin = Date.now.toString();
+    this.departureTimeDestination = Date.now.toString();
+    this.applyReverseShopping = true;
+  }
+}

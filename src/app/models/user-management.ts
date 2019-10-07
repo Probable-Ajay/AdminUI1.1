@@ -19,8 +19,8 @@ export class CompanyInformation {
       "Japan",
       "Jordan"
     ];
-    this.companyType = ["Company Type", "Travel", "Airline", "Telecom"];
-    this.natureOfBusiness = ["Nature of Business", "Small", "Medium", "Large"];
+    this.companyType = ["Travel", "Airline", "Telecom"];
+    this.natureOfBusiness = ["Small", "Medium", "Large"];
     this.phone = "";
     this.emailID = "";
   }

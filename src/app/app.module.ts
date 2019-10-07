@@ -59,6 +59,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
+import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 
 // Protected Routes for Release...
 // const appRoutes: Routes = [
@@ -91,8 +92,8 @@ const appRoutes: Routes = [
     component: DashboardRoutesComponent,
     children: [
       { path: "", redirectTo: "admin", pathMatch: "full" },
-      { path: "shopLeaf", component: ShoppingLeafComponent },
-      { path: "shoppingStats", component: ShoppingStatsComponent },
+      { path: "shopPrice", component: ShoppingLeafComponent },
+      { path: "shopStats", component: ShoppingStatsComponent },
       { path: "priceTrends", component: PriceTrendsComponent },
       { path: "admin", component: AdminComponent },
       { path: "mock", component: MockingGroundComponent }
@@ -171,9 +172,10 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    AngularMultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

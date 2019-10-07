@@ -32,27 +32,53 @@
                   />
                 </div>
                 <div class="col-sm-4">
-                  <select class="form-control durationDropdown">
+                  <!-- <select class="form-control durationDropdown">
                     <option
                       *ngFor="let country of user.companyInformation.countries"
                       [value]="country"
                       >{{ country }}</option
                     >
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <mat-select>
+                      <mat-option
+                        *ngFor="
+                          let country of user.companyInformation.countries
+                        "
+                        [value]="country"
+                      >
+                        {{ country }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <select class="form-control durationDropdown">
+                  <!-- <select class="form-control durationDropdown">
                     <option
                       *ngFor="let ctype of user.companyInformation.companyType"
                       [value]="ctype"
                       >{{ ctype }}</option
                     >
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                    <mat-label>Company Type</mat-label>
+                    <mat-select>
+                      <mat-option
+                        *ngFor="
+                          let ctype of user.companyInformation.companyType
+                        "
+                        [value]="ctype"
+                      >
+                        {{ ctype }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                  <select class="form-control durationDropdown">
+                  <!-- <select class="form-control durationDropdown">
                     <option
                       *ngFor="
                         let businessType of user.companyInformation
@@ -61,7 +87,21 @@
                       [value]="businessType"
                       >{{ businessType }}</option
                     >
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                    <mat-label>Business Type</mat-label>
+                    <mat-select>
+                      <mat-option
+                        *ngFor="
+                          let businessType of user.companyInformation
+                            .natureOfBusiness
+                        "
+                        [value]="businessType"
+                      >
+                        {{ businessType }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
                   <input
@@ -229,7 +269,7 @@
               </div>
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <select class="form-control classofServiceDropdown">
+                  <!-- <select class="form-control classofServiceDropdown">
                     <option
                       *ngFor="
                         let service of user.requirementSetup.classOfService
@@ -237,12 +277,25 @@
                       value="IN"
                       >{{ service }}</option
                     >
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                    <mat-label>Class Of Service</mat-label>
+                    <mat-select>
+                      <mat-option
+                        *ngFor="
+                          let service of user.requirementSetup.classOfService
+                        "
+                        [value]="service"
+                      >
+                        {{ service }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <select class="form-control shoppingSourceDropdown">
+                  <!-- <select class="form-control shoppingSourceDropdown">
                     <option
                       *ngFor="
                         let shoppingSource of user.requirementSetup
@@ -251,7 +304,21 @@
                       value="IN"
                       >{{ shoppingSource }}</option
                     >
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                    <mat-label>Shopping Sources</mat-label>
+                    <mat-select>
+                      <mat-option
+                        *ngFor="
+                          let shoppingSource of user.requirementSetup
+                            .shoppingSources
+                        "
+                        [value]="shoppingSource"
+                      >
+                        {{ shoppingSource }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
             </div>

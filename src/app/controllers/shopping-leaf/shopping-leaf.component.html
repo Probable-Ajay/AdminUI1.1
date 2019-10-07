@@ -78,13 +78,18 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="dropBoxSection">
-                                                        <div class="form-control dropboxHead">On days <i class="fa fa-caret-down pull-right"></i></div>
-                                                        <ul class="dropbox">
+                                                        <div class="form-control dropboxHead">On days 
+                                                            <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                        </div>
+                                                        <!-- <ul class="dropbox">
                                                             <li *ngFor="let classofService of shop.reportInfo.daysOfDelivery">
                                                                 <mat-checkbox [(ngModel)]="classofService"></mat-checkbox> 
                                                                 <label for="{{classofService}}">{{classofService}}</label>
                                                             </li>
-                                                        </ul>
+                                                        </ul> -->
+                                                         <angular2-multiselect [data]="dropdownListOnDays" [(ngModel)]="selectedItemsOnDays" 
+                                                            [settings]="dropdownSettings">
+                                                        </angular2-multiselect>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,13 +98,18 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="dropBoxSection">
-                                                        <div class="form-control dropboxHead">On days <i class="fa fa-caret-down pull-right"></i></div>
-                                                        <ul class="dropbox">
+                                                         <div class="form-control dropboxHead">On days 
+                                                             <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                            </div>
+                                                       <!-- <ul class="dropbox">
                                                             <li *ngFor="let onDays of shop.reportInfo.daysOfDelivery">
                                                                 <mat-checkbox [(ngModel)]="onDays"></mat-checkbox> 
                                                                 <label for="{{onDays}}">{{onDays}}</label>
                                                             </li>
-                                                        </ul>
+                                                        </ul> -->
+                                                        <angular2-multiselect [data]="dropdownListOnDays" [(ngModel)]="selectedItemsOnDays" 
+                                                            [settings]="dropdownSettings">
+                                                        </angular2-multiselect>
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,13 +124,18 @@
                                                             <div class="row">
                                                                 <div class="col-sm-4">
                                                                     <div class="dropBoxSection">
-                                                                        <div class="form-control dropboxHead">Week Number <i class="fa fa-caret-down pull-right"></i></div>
-                                                                        <ul class="dropbox">
+                                                                        <div class="form-control dropboxHead">Week(s) of Delivery 
+                                                                            <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                                        </div>
+                                                                        <!-- <ul class="dropbox">
                                                                             <li *ngFor="let week of shop.reportInfo.weeksOfDelivery">
                                                                                 <mat-checkbox [(ngModel)]="week"></mat-checkbox> 
                                                                                 <label for="{{week}}">{{week}}</label>
                                                                             </li>
-                                                                        </ul>
+                                                                        </ul> -->
+                                                                         <angular2-multiselect [data]="ddlWeeksOfDelivery" [(ngModel)]="selectedWeeksOfDelivery" 
+                                                                            [settings]="dropdownSettings">
+                                                                        </angular2-multiselect>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -139,13 +154,20 @@
                                                             <div class="row">
                                                                 <div class="col-sm-4">
                                                                     <div class="dropBoxSection">
-                                                                        <div class="form-control dropboxHead">Week Number <i class="fa fa-caret-down pull-right"></i></div>
-                                                                        <ul class="dropbox">
+                                                                        <div class="form-control dropboxHead">Week Number 
+                                                                            <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                                        </div>
+                                                                        <!-- <ul class="dropbox">
                                                                             <li *ngFor="let weekNo of shop.reportInfo.weekNumber">
                                                                                 <mat-checkbox [(ngModel)]="weekNo"></mat-checkbox> 
                                                                                 <label for="{{weekNo}}">{{weekNo}}</label>
                                                                             </li>
-                                                                        </ul>
+                                                                        </ul> -->
+
+                                                                         <angular2-multiselect [data]="ddlWeeksOfDelivery" [(ngModel)]="selectedWeeksOfDelivery" 
+                                                                            [settings]="dropdownSettings">
+                                                                        </angular2-multiselect>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -160,7 +182,7 @@
                                             <div class="col-sm-4">
                                                 <h5>Repeat Generation Time</h5>
                                                 
-                                                 <mat-select>
+                                                                    <mat-select>
                                                                         <mat-option *ngFor = "let reportTime of shop.reportInfo.repeateGenerationTime" [value] = "reportTime">
                                                                             {{reportTime}}
                                                                         </mat-option>
@@ -254,13 +276,18 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="dropBoxSection">
-                                            <div class="form-control dropboxHead">Class of Service <i class="fa fa-caret-down pull-right"></i></div>
-                                            <ul class="dropbox">
+                                            <div class="form-control dropboxHead">Class of Service 
+                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                            </div>
+                                            <!-- <ul class="dropbox">
                                                 <li *ngFor="let classofService of shop.journeyInfo.flightInfo.classOfServices">
                                                     <mat-checkbox [(ngModel)]="classofService"></mat-checkbox> 
                                                     <label for="{{classofService}}">{{classofService}}</label>
                                                 </li>                                                                                              
-                                            </ul>                                         
+                                            </ul>-->
+                                            <angular2-multiselect [data]="ddListClassOfServices" [(ngModel)]="selectedItemsClassOfService" 
+                                                [settings]="dropdownSettings">
+                                            </angular2-multiselect>
                                         </div>
                                     </div>
                                 </div>
@@ -268,13 +295,18 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="dropBoxSection">
-                                            <div class="form-control dropboxHead">Stops <i class="fa fa-caret-down pull-right"></i></div>
-                                            <ul class="dropbox">
+                                            <div class="form-control dropboxHead">Stops 
+                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                            </div>
+                                            <!-- <ul class="dropbox">
                                                 <li *ngFor="let stop of shop.journeyInfo.flightInfo.stops">
                                                     <mat-checkbox [(ngModel)]="stop"></mat-checkbox> 
                                                     <label for="stop">{{stop}}</label>
                                                 </li>                                                
-                                            </ul>
+                                            </ul> -->
+                                            <angular2-multiselect [data]="ddListNoOfStops" [(ngModel)]="selectedItemsNoOfStops" 
+                                                [settings]="dropdownSettings">
+                                            </angular2-multiselect>
                                         </div>
                                     </div>
                                 </div>
@@ -313,13 +345,20 @@
 
                                     <div class="col-sm-4">
                                         <div class="dropBoxSection">
-                                            <div class="form-control dropboxHead">Airlines <i class="fa fa-caret-down pull-right"></i></div>
-                                            <ul class="dropbox" >
+                                            <div class="form-control dropboxHead">Airlines 
+                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                            </div>
+                                            <!-- <ul class="dropbox" >
                                                 <li *ngFor="let airline of shop.journeyInfo.flightInfo.airlines">
                                                     <mat-checkbox [(ngModel)]="airline.airlineCode"></mat-checkbox> 
                                                     <label for="{{airline.airlineCode}}">{{airline.airlineName}}</label>
                                                 </li>                                                
-                                            </ul>
+                                            </ul> -->
+
+                                            <angular2-multiselect [data]="ddListAirlines" [(ngModel)]="selectedItemsAirlines" 
+                                                [settings]="dropdownSettings">
+                                            </angular2-multiselect>
+
                                         </div>
                                     </div>
 
@@ -336,20 +375,21 @@
                                 <h4>Apply Dates</h4>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <ul class="nav nav-tabs nopadding radioButton">
-                                            <li class="active"><a href="#Consecutive" data-toggle="tab">Continuos</a></li>
-                                            <li><a href="#Preferred" data-toggle="tab">Preferred</a></li>
-                                            <li><a href="#Range" data-toggle="tab">Range</a></li>
-                                        </ul>
+                                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedDateType">
+                                                <mat-radio-button class = "tp-radio-button"
+                                                    *ngFor = "let dateType of dates.rbApplyDateType" [value] = "dateType">
+                                                    {{dateType}}
+                                                </mat-radio-button>                                                
+                                            </mat-radio-group>                                       
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="Consecutive">
+                                            <div id="Consecutive" *ngIf="selectedDateType==='Continuous'" >
                                                 <h4>Outbond Date Range</h4>
                                                 <div class="row">
                                                     <div class="col-sm-8">
                                                         <div class="row">
                                                             <div class="col-sm-5">
                                                                 <mat-form-field>
-                                                                    <input matInput [matDatepicker]="outbonffrom" placeholder="From">
+                                                                    <input matInput [matDatepicker]="outbonffrom" placeholder="From" [value]="dates.continuous_outbondFromDate">
                                                                     <mat-datepicker-toggle matSuffix [for]="outbonffrom"></mat-datepicker-toggle>
                                                                     <mat-datepicker #outbonffrom></mat-datepicker>
                                                                 </mat-form-field>
@@ -357,7 +397,7 @@
                                                             </div>
                                                             <div class="col-sm-5">
                                                                           <mat-form-field>
-                                                                                <input matInput [matDatepicker]="outbonfto" placeholder="To">
+                                                                                <input matInput [matDatepicker]="outbonfto" placeholder="To" [value]="dates.continuous_outbondToDate">
                                                                                 <mat-datepicker-toggle matSuffix [for]="outbonfto"></mat-datepicker-toggle>
                                                                                 <mat-datepicker #outbonfto></mat-datepicker>
                                                                           </mat-form-field>
@@ -377,12 +417,21 @@
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 <div class="dropBoxSection active">
-                                                                    <div class="form-control dropboxHead">Days of week <i class="fa fa-caret-down pull-right"></i></div>
-                                                                    <ul class="dropbox">
-                                                                        <li><mat-checkbox [(ngModel)]="wA1"></mat-checkbox><label for="wA1">Sunday</label></li>
-                                                                        <li><mat-checkbox [(ngModel)]="wA2"></mat-checkbox><label for="wA2">Monday</label></li>
-                                                                        <li><mat-checkbox [(ngModel)]="wA5"></mat-checkbox><label for="wA5">All</label></li>
-                                                                    </ul>
+                                                                    <div class="form-control dropboxHead">Days of week 
+                                                                        <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                                    </div>
+                                                                    <!-- <ul class="dropbox">
+                                                                        <li *ngFor="let day of dates.continuous_daysOfWeek">
+                                                                            <mat-checkbox [(ngModel)]="day"></mat-checkbox>
+                                                                            <label>{{day}}</label>
+                                                                        </li>
+                                                                        
+                                                                    </ul> -->
+
+                                                                     <angular2-multiselect [data]="dropdownListOnDays" [(ngModel)]="selectedItemsOnDays" 
+                                                                        [settings]="dropdownSettings">
+                                                                    </angular2-multiselect>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -402,28 +451,37 @@
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <div class="dropBoxSection">
-                                                            <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
-                                                            <ul class="dropbox">
-                                                                <li>
-                                                                    <mat-checkbox ></mat-checkbox><label for="B6">Before 6AM</label></li>
+                                                            <div class="form-control dropboxHead">Departure Time from Origin 
+                                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                            </div>
+                                                            <!-- <ul class="dropbox">
+                                                                <li><mat-checkbox ></mat-checkbox><label for="B6">Before 6AM</label></li>
                                                                 <li><mat-checkbox ></mat-checkbox><label for="6A">6AM to 12Noon</label></li>
                                                                 <li><mat-checkbox ></mat-checkbox><label for="12">12Noon to 6PM</label></li>
                                                                 <li><mat-checkbox ></mat-checkbox><label for="A6">After 6PM</label></li>
                                                                 <li><mat-checkbox ></mat-checkbox><label for="All">All</label></li>
 
-                                                            </ul>
+                                                            </ul> -->
+                                                            <angular2-multiselect [data]="ddlDepartureTimeFromOrigin" [(ngModel)]="selectedDepartureTimeFromOrigin" 
+                                                            [settings]="dropdownSettings">
+                                                            </angular2-multiselect>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="dropBoxSection">
-                                                            <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
-                                                            <ul class="dropbox">
+                                                            <div class="form-control dropboxHead">Departure Time from Destination 
+                                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                            </div>
+                                                            <!-- <ul class="dropbox">
                                                                 <li><mat-checkbox></mat-checkbox> <label for="B61">Before 6AM</label></li>
                                                                 <li><mat-checkbox></mat-checkbox> <label for="6A1">6AM to 12Noon</label></li>
                                                                 <li><mat-checkbox></mat-checkbox> <label for="121">12Noon to 6PM</label></li>
                                                                 <li><mat-checkbox></mat-checkbox> <label for="A61">After 6PM</label></li>
                                                                 <li><mat-checkbox></mat-checkbox> <label for="All1">All</label></li>
-                                                            </ul>
+                                                            </ul> -->
+                                                            <angular2-multiselect [data]="ddlDepartureTimeToOrigin" [(ngModel)]="selectedDepartureTimeToOrigin" 
+                                                            [settings]="dropdownSettings">
+                                                            </angular2-multiselect>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -435,7 +493,7 @@
                                                 </div>
                                             </div>
                                             <!-- /.tab-pane -->
-                                            <div class="tab-pane" id="Preferred">
+                                            <div id="Preferred" *ngIf="selectedDateType==='Preferred'">
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <mat-form-field>
@@ -473,26 +531,37 @@
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <div class="dropBoxSection">
-                                                            <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
-                                                            <ul class="dropbox">
-                                                                <li><mat-checkbox></mat-checkbox> <label for="B62">Before 6AM</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="6A2">6AM to 12Noon</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="122">12Noon to 6PM</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="A62">After 6PM</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="All2">All</label></li>
-                                                            </ul>
+                                                            <div class="form-control dropboxHead">Departure Time from Origin 
+                                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                            </div>
+                                                            <!-- <ul class="dropbox">
+                                                                <li><mat-checkbox ></mat-checkbox><label for="B6">Before 6AM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="6A">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="12">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="A6">After 6PM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="All">All</label></li>
+
+                                                            </ul> -->
+                                                            <angular2-multiselect [data]="ddlDepartureTimeFromOrigin" [(ngModel)]="selectedDepartureTimeFromOrigin" 
+                                                            [settings]="dropdownSettings">
+                                                            </angular2-multiselect>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="dropBoxSection">
-                                                            <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
-                                                            <ul class="dropbox">
-                                                                <li><mat-checkbox></mat-checkbox> <label for="B63">Before 6AM</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="6A3">6AM to 12Noon</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="123">12Noon to 6PM</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="A63">After 6PM</label></li>
-                                                                <li><mat-checkbox></mat-checkbox> <label for="All2">All</label></li>
-                                                            </ul>
+                                                            <div class="form-control dropboxHead">Departure Time from Destination 
+                                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                            </div>
+                                                            <!-- <ul class="dropbox">
+                                                                <li><mat-checkbox></mat-checkbox> <label for="B61">Before 6AM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="6A1">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="121">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="A61">After 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="All1">All</label></li>
+                                                            </ul> -->
+                                                            <angular2-multiselect [data]="ddlDepartureTimeToOrigin" [(ngModel)]="selectedDepartureTimeToOrigin" 
+                                                            [settings]="dropdownSettings">
+                                                            </angular2-multiselect>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -505,7 +574,7 @@
                                             </div>
 
                                             <!-- /.tab-pane -->
-                                            <div class="tab-pane" id="Range">
+                                            <div  id="Range" *ngIf="selectedDateType==='Range'">
 
                                                 <div class="row" style="margin-top: 40px">
                                                     <div class="col-sm-4">
@@ -534,26 +603,37 @@
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <div class="dropBoxSection">
-                                                            <div class="form-control dropboxHead">Departure Time from Origin <i class="fa fa-caret-down pull-right"></i></div>
-                                                            <ul class="dropbox">
-                                                                <li><input type="checkbox" id="B62" /> <label for="B62">Before 6AM</label></li>
-                                                                <li><input type="checkbox" id="6A2" /> <label for="6A2">6AM to 12Noon</label></li>
-                                                                <li><input type="checkbox" id="122" /> <label for="122">12Noon to 6PM</label></li>
-                                                                <li><input type="checkbox" id="A62" /> <label for="A62">After 6PM</label></li>
-                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
-                                                            </ul>
+                                                            <div class="form-control dropboxHead">Departure Time from Origin 
+                                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                            </div>
+                                                            <!-- <ul class="dropbox">
+                                                                <li><mat-checkbox ></mat-checkbox><label for="B6">Before 6AM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="6A">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="12">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="A6">After 6PM</label></li>
+                                                                <li><mat-checkbox ></mat-checkbox><label for="All">All</label></li>
+
+                                                            </ul> -->
+                                                            <angular2-multiselect [data]="ddlDepartureTimeFromOrigin" [(ngModel)]="selectedDepartureTimeFromOrigin" 
+                                                            [settings]="dropdownSettings">
+                                                            </angular2-multiselect>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="dropBoxSection">
-                                                            <div class="form-control dropboxHead">Departure Time from Destination <i class="fa fa-caret-down pull-right"></i></div>
-                                                            <ul class="dropbox">
-                                                                <li><input type="checkbox" id="B63" /> <label for="B63">Before 6AM</label></li>
-                                                                <li><input type="checkbox" id="6A3" /> <label for="6A3">6AM to 12Noon</label></li>
-                                                                <li><input type="checkbox" id="123" /> <label for="123">12Noon to 6PM</label></li>
-                                                                <li><input type="checkbox" id="A63" /> <label for="A63">After 6PM</label></li>
-                                                                <li><input type="checkbox" id="All2" value="all" /> <label for="All2">All</label></li>
-                                                            </ul>
+                                                            <div class="form-control dropboxHead">Departure Time from Destination 
+                                                                <!-- <i class="fa fa-caret-down pull-right"></i> -->
+                                                            </div>
+                                                            <!-- <ul class="dropbox">
+                                                                <li><mat-checkbox></mat-checkbox> <label for="B61">Before 6AM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="6A1">6AM to 12Noon</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="121">12Noon to 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="A61">After 6PM</label></li>
+                                                                <li><mat-checkbox></mat-checkbox> <label for="All1">All</label></li>
+                                                            </ul> -->
+                                                            <angular2-multiselect [data]="ddlDepartureTimeToOrigin" [(ngModel)]="selectedDepartureTimeToOrigin" 
+                                                            [settings]="dropdownSettings">
+                                                            </angular2-multiselect>
                                                         </div>
                                                     </div>
                                                 </div>

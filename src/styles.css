@@ -21,6 +21,9 @@ body {
 .mat-select-trigger {
   border-bottom: 1px solid #ddd;
 }
+.mat-select {
+  width: 340px !important;
+}
 .mat-select-placeholder {
   color: #555;
 }
@@ -28,7 +31,7 @@ body {
   margin-right: 10px !important;
 }
 .mat-checkbox-checked {
-  color: greenyellow !important;
+  color: #8cbe27 !important;
 }
 
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
@@ -40,4 +43,33 @@ body {
 }
 .mat-input-element {
   border-bottom: 0px !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 1px !important;
+}
+.form-control .dropboxHead {
+  border-bottom: 0px !important;
+}
+.dropboxHead {
+  border-bottom: 0px solid #ddd !important;
+}
+.mat-radio-label-content {
+  font-size: 16px !important;
+  color: #666666 !important;
+  margin-right: 30px !important;
+  font-weight: normal !important;
+  padding: 0 0px 0px 15px !important;
+}
+.mat-radio-label {
+  font-weight: normal !important;
+  margin-right: 2px !important;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #8cbe27;
+}
+.mat-radio-inner-circle {
+  background-color: #8cbe27 !important;
+}
+.mat-radio-outer-circle {
+  border-color: #8cbe27 !important;
 }

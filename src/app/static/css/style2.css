@@ -151,14 +151,14 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"] + label {
-  background: url(../images/check-box.png) no-repeat left top 0px;
+  /* background: url(../images/check-box.png) no-repeat left top 0px; */
   padding-left: 28px;
   background-size: 20px;
   line-height: 20px;
 }
 
 input[type="checkbox"]:checked + label {
-  background: url(../images/check-box-checked.png) no-repeat left top 0px;
+  /* background: url(../images/check-box-checked.png) no-repeat left top 0px; */
   background-size: 20px;
   line-height: 20px;
 }
