@@ -6,11 +6,15 @@
   right: 0;
 }
 
+.paddingRight{
+  padding-right: 10px;
+}
+
 .left-sidenav {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  max-width: 170px;
   background: #41464c(247, 244, 244, 0.5);
   color: #afb2b6;
 }
