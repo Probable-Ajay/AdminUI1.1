@@ -18,9 +18,10 @@ body {
   /* color: #afb2b6 !important; */
 }
 
-.mat-select-trigger {
+/* .mat-select-trigger {
   border-bottom: 1px solid #ddd;
-}
+} */
+
 .mat-select {
   width: 340px !important;
 }
@@ -41,8 +42,15 @@ body {
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background {
   background-color: darkcyan !important;
 }
+.mat-form-field {
+  width: 100% !important;
+}
+/* .mat-form-field-infix {
+  width: 100% !important;
+} */
 .mat-input-element {
   border-bottom: 0px !important;
+  caret-color: #8cbe27 !important;
 }
 .mat-form-field-appearance-legacy .mat-form-field-underline {
   height: 1px !important;

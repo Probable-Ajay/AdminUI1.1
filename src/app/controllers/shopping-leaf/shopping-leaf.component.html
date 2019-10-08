@@ -20,7 +20,14 @@
                             <div class="tab-pane active" id="reportInfo">
                                 <div class="row" style="margin-top: 20px">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Report Name" [(ngModel)]="shop.reportInfo.reportName"/>
+                                        <!-- <input type="text" class="form-control" placeholder="Report Name" [(ngModel)]="shop.reportInfo.reportName"/> -->
+                                        <mat-form-field>
+                                            <input
+                                            matInput
+                                            placeholder="Report Name"
+                                            [(ngModel)]="shop.reportInfo.reportName"
+                                            />
+                                        </mat-form-field>
                                     </div>
                                     <div class="col-sm-8">
                                         <p>
@@ -36,12 +43,15 @@
                                     <h4>Scheduled Report</h4>
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <h5>Repeat</h5>
-                                        <mat-select [(ngModel)]="selectedFrequency">
-                                            <mat-option *ngFor = "let frequency of shop.reportInfo.frequency" [value] = "frequency">
-                                                {{frequency}}
-                                            </mat-option>
-                                        </mat-select>                                           
+                                            <!-- <h5>Repeat</h5> -->
+                                            <mat-form-field>
+                                            <mat-label>Repeat</mat-label>
+                                                <mat-select [(ngModel)]="selectedFrequency">
+                                                    <mat-option *ngFor = "let frequency of shop.reportInfo.frequency" [value] = "frequency">
+                                                        {{frequency}}
+                                                    </mat-option>
+                                                </mat-select> 
+                                        </mat-form-field>                                          
                                         </div>
                                     </div>
                                     <div class="tab-content">
@@ -56,11 +66,14 @@
                                                         <div class="tab-pane active" id="Every">
                                                             <div class="row">
                                                                 <div class="col-sm-4">
-                                                                     <mat-select placeholder="Every Day(s)">
-                                                                        <mat-option *ngFor = "let daysOfDelivery of shop.reportInfo.daysOfDelivery" [value] = "daysOfDelivery">
-                                                                            {{daysOfDelivery}}
-                                                                        </mat-option>
-                                                                    </mat-select>  
+                                                                    <mat-form-field>
+                                                                        <mat-label>Every Day(s)</mat-label>
+                                                                        <mat-select placeholder="Every Day(s)">
+                                                                            <mat-option *ngFor = "let daysOfDelivery of shop.reportInfo.daysOfDelivery" [value] = "daysOfDelivery">
+                                                                                {{daysOfDelivery}}
+                                                                            </mat-option>
+                                                                        </mat-select> 
+                                                                        </mat-form-field> 
                                                                     <!-- <input type="text" class="form-control" placeholder="Every Day(s)"/> -->
                                                                 </div>
                                                             </div>
@@ -140,11 +153,14 @@
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <div class="dropBoxSection">
+                                                                        <mat-form-field>
+                                                                            <mat-label>On Days</mat-label>
                                                                         <mat-select placeholder="On Days">
                                                                         <mat-option *ngFor = "let daysOfDelivery of shop.reportInfo.daysOfDelivery" [value] = "daysOfDelivery">
                                                                             {{daysOfDelivery}}
                                                                         </mat-option>
                                                                     </mat-select> 
+                                                                    </mat-form-field>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -180,13 +196,15 @@
 
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <h5>Repeat Generation Time</h5>
-                                                
+                                                <!-- <h5>Repeat Generation Time</h5> -->
+                                                        <mat-form-field>
+                                                            <mat-label>Repeat Generation Time</mat-label>
                                                                     <mat-select>
                                                                         <mat-option *ngFor = "let reportTime of shop.reportInfo.repeateGenerationTime" [value] = "reportTime">
                                                                             {{reportTime}}
                                                                         </mat-option>
                                                                     </mat-select>
+                                                        </mat-form-field>
                                             </div>
                                         </div>
                                         <h4>Range of Schedule </h4>
@@ -221,19 +239,24 @@
                                 <h4>Journey &amp; Flight Information</h4>
                                 <div class="row">
                                     <div class="col-sm-4">
+                                        <mat-form-field>
+                                                            <mat-label>Journey Type</mat-label>
                                        <mat-select placeholder="Journey Type">
                                             <mat-option *ngFor = "let journeyType of shop.journeyInfo.journeyType" [value] = "journeyType">
                                                 {{journeyType}}
                                             </mat-option>
                                         </mat-select>  
+                                        </mat-form-field>
                                     </div>
                                     <div class="col-sm-4">
-
+                                        <mat-form-field>
+                                        <mat-label>Currency Type</mat-label>
                                         <mat-select placeholder="Currency Type">
                                             <mat-option *ngFor = "let currencyType of shop.journeyInfo.currencyType" [value] = "currencyType">
                                                 {{currencyType}}
                                             </mat-option>
-                                        </mat-select>                                        
+                                        </mat-select>  
+                                        </mat-form-field>                                      
                                     </div>
                                 </div>
                                 <div class="row">
@@ -243,32 +266,41 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <!-- <p>Adult</p> -->
+                                        <mat-form-field>
+                                        <mat-label>Adult</mat-label>
                                          <mat-select placeholder = "Adult" >
                                         <mat-option *ngFor = "let adultCount of shop.journeyInfo.adultPaxCount" 
                                             [value] = "adultCount">
                                             {{adultCount}}
                                         </mat-option>
-                                        </mat-select>                                       
+                                        </mat-select> 
+                                        </mat-form-field>                                      
                                         <p>12+ Years</p>
                                     </div>
                                     <div class="col-sm-4">
                                         <!-- <p>Child</p> -->
+                                        <mat-form-field>
+                                        <mat-label>Child</mat-label>
                                         <mat-select placeholder = "Child" >
                                         <mat-option *ngFor = "let childCount of shop.journeyInfo.childPaxCount" 
                                             [value] = "childCount">
                                             {{childCount}}
                                         </mat-option>
-                                        </mat-select>                                        
+                                        </mat-select> 
+                                        </mat-form-field>                                       
                                         <p>2 to 12 Years</p>
                                     </div>
                                     <div class="col-sm-4">
                                         <!-- <p>Infant</p> -->
+                                        <mat-form-field>
+                                        <mat-label>Infant</mat-label>
                                         <mat-select placeholder = "Infant" >
                                         <mat-option *ngFor = "let infantCount of shop.journeyInfo.infantPaxCount" 
                                             [value] = "infantCount">
                                             {{infantCount}}
                                         </mat-option>
                                         </mat-select>
+                                        </mat-form-field>
                                         <p>0 to 2 Years</p>
                                     </div>
                                 </div>
@@ -313,7 +345,14 @@
 
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <input type="text" [(ngModel)]="shop.journeyInfo.flightInfo.originAndDestinations" class="form-control originDestination" placeholder="Origin and Destination"/>  
+                                        <!-- <input type="text" [(ngModel)]="shop.journeyInfo.flightInfo.originAndDestinations" class="form-control originDestination" placeholder="Origin and Destination"/>  -->
+                                        <mat-form-field>
+                                            <input
+                                            matInput
+                                            placeholder="Origin and Destination"
+                                            [(ngModel)]="shop.journeyInfo.flightInfo.originAndDestinations"
+                                            />
+                                        </mat-form-field> 
                                     </div>
 
                                     <div class="col-sm-2">
@@ -375,12 +414,18 @@
                                 <h4>Apply Dates</h4>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedDateType">
+                                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedDateType" name="selectedDateType">
                                                 <mat-radio-button class = "tp-radio-button"
                                                     *ngFor = "let dateType of dates.rbApplyDateType" [value] = "dateType">
                                                     {{dateType}}
                                                 </mat-radio-button>                                                
-                                            </mat-radio-group>                                       
+                                            </mat-radio-group>   
+                                            
+                                            <!-- <mat-radio-group [(ngModel)]="radioOptions" name="radioButtons">
+                                                <mat-radio-button [value]="'TEST1'">TEST1</mat-radio-button>
+                                                <mat-radio-button [value]="'TEST2'">TEST2</mat-radio-button>
+                                            </mat-radio-group> -->
+
                                         <div class="tab-content">
                                             <div id="Consecutive" *ngIf="selectedDateType==='Continuous'" >
                                                 <h4>Outbond Date Range</h4>
@@ -441,7 +486,13 @@
 
                                                 <div class="row" style="margin-top: 40px">
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" placeholder="Return Parameter"/>
+                                                        <!-- <input type="text" class="form-control" placeholder="Return Parameter"/> -->
+                                                        <mat-form-field>
+                                                            <input
+                                                            matInput
+                                                            placeholder="Return Parameter"                                                        
+                                                            />
+                                                        </mat-form-field> 
                                                         <p>4,5,8 days of departure</p>
                                                     </div>
 
@@ -522,7 +573,13 @@
                                                 </div>
                                                 <div class="row" style="margin-top: 40px">
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" placeholder="Return Parameter"/>
+                                                        <!-- <input type="text" class="form-control" placeholder="Return Parameter"/> -->
+                                                        <mat-form-field>
+                                                            <input
+                                                            matInput
+                                                            placeholder="Return Parameter"                                                            
+                                                            />
+                                                        </mat-form-field>
                                                         <p>4,5,8 days from departure</p>
                                                     </div>
 
@@ -578,7 +635,13 @@
 
                                                 <div class="row" style="margin-top: 40px">
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" placeholder="Days Out Days"/>
+                                                        <!-- <input type="text" class="form-control" placeholder="Days Out Days"/> -->
+                                                         <mat-form-field>
+                                                            <input
+                                                            matInput
+                                                            placeholder="Days Out Days"                                                            
+                                                            />
+                                                        </mat-form-field>
                                                         <p>0-60, 82, 89, 104-110 departure days from today</p>
                                                     </div>
                                                     <div class="col-sm-4">
@@ -593,7 +656,13 @@
                                                 </div>
                                                 <div class="row" style="margin-top: 40px">
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" placeholder="Return Parameter"/>
+                                                        <!-- <input type="text" class="form-control" placeholder="Return Parameter"/> -->
+                                                        <mat-form-field>
+                                                            <input
+                                                            matInput
+                                                            placeholder="Return Parameter"                                                            
+                                                            />
+                                                        </mat-form-field>
                                                         <p>4,5,8 days of departure</p>
                                                     </div>
 
@@ -657,12 +726,15 @@
                                 <h4>Channel</h4>
                                 <div class="row">
                                     <div class="col-sm-4">
+                                         <mat-form-field>
+                                        <mat-label>Competitors</mat-label>
                                          <mat-select placeholder = "Competitors" [(ngModel)] = "selectedChannel" >
                                         <mat-option *ngFor = "let channel of shop.shoppingChannels" 
                                             [value] = "channel">
                                             {{channel}}
                                         </mat-option>
                                         </mat-select>
+                                        </mat-form-field>
 
                                         <!-- <select class="form-control">
                                             <option>Competitors</option>

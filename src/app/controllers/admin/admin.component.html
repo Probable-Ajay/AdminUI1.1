@@ -16,20 +16,35 @@
             <div class="tab-pane active" id="companyInfo">
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Company Name"
                     [(ngModel)]="user.companyInformation.companyName"
-                  />
+                  /> -->
+
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Company Name"
+                      [(ngModel)]="user.companyInformation.companyName"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Company Address"
                     [(ngModel)]="user.companyInformation.companyAddress"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Company Address"
+                      [(ngModel)]="user.companyInformation.companyAddress"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
                   <!-- <select class="form-control durationDropdown">
@@ -52,6 +67,15 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
+
+                  <!-- <mat-select placeholder="Country">
+                    <mat-option
+                      *ngFor="let country of user.companyInformation.countries"
+                      [value]="country"
+                    >
+                      {{ country }}
+                    </mat-option>
+                  </mat-select> -->
                 </div>
               </div>
               <div class="row" style="margin-top: 20px">
@@ -65,7 +89,7 @@
                   </select> -->
                   <mat-form-field>
                     <mat-label>Company Type</mat-label>
-                    <mat-select>
+                    <mat-select placeholder="Company Type">
                       <mat-option
                         *ngFor="
                           let ctype of user.companyInformation.companyType
@@ -90,7 +114,7 @@
                   </select> -->
                   <mat-form-field>
                     <mat-label>Business Type</mat-label>
-                    <mat-select>
+                    <mat-select placeholder="Business Type">
                       <mat-option
                         *ngFor="
                           let businessType of user.companyInformation
@@ -104,22 +128,37 @@
                   </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Phone"
                     [(ngModel)]="user.companyInformation.phone"
-                  />
+                  /> -->
+
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Phone"
+                      [(ngModel)]="user.companyInformation.phone"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Email ID"
                     [(ngModel)]="user.companyInformation.emailID"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Email ID"
+                      [(ngModel)]="user.companyInformation.emailID"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
             </div>
@@ -131,57 +170,99 @@
             <div class="tab-pane active" id="customerInfo">
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="First Name"
                     [(ngModel)]="user.contactInformation.firstName"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="First Name"
+                      [(ngModel)]="user.contactInformation.firstName"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Middle Name"
                     [(ngModel)]="user.contactInformation.middleName"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Middle Name"
+                      [(ngModel)]="user.contactInformation.middleName"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Last Name"
                     [(ngModel)]="user.contactInformation.lastName"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Last Name"
+                      [(ngModel)]="user.contactInformation.lastName"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
 
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Contact Number"
                     [(ngModel)]="user.contactInformation.contactNumber"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Contact Number"
+                      [(ngModel)]="user.contactInformation.contactNumber"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="Email ID"
                     [(ngModel)]="user.contactInformation.emailID"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Email ID"
+                      [(ngModel)]="user.contactInformation.emailID"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     name="user.contactInformation.designationRole"
                     type="text"
                     class="form-control"
                     placeholder="Designation/Role"
                     [(ngModel)]="user.contactInformation.designationRole"
                     ngDefaultControl
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Designation/Role"
+                      [(ngModel)]="user.contactInformation.designationRole"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px">
@@ -256,12 +337,19 @@
               </div>
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-4">
-                  <input
+                  <!-- <input
                     type="text"
                     class="form-control"
                     placeholder="First Name"
                     [(ngModel)]="user.requirementSetup.firstName"
-                  />
+                  /> -->
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="First Name"
+                      [(ngModel)]="user.requirementSetup.firstName"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-4">
                   <i class="fa fa-pencil btn submitBtn"> Edit</i>
@@ -280,7 +368,7 @@
                   </select> -->
                   <mat-form-field>
                     <mat-label>Class Of Service</mat-label>
-                    <mat-select>
+                    <mat-select placeholder="Class Of Service">
                       <mat-option
                         *ngFor="
                           let service of user.requirementSetup.classOfService
@@ -307,7 +395,7 @@
                   </select> -->
                   <mat-form-field>
                     <mat-label>Shopping Sources</mat-label>
-                    <mat-select>
+                    <mat-select placeholder="Shopping Sources">
                       <mat-option
                         *ngFor="
                           let shoppingSource of user.requirementSetup

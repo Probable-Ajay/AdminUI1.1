@@ -10,6 +10,7 @@ import { FormControl } from "@angular/forms";
 export class ShoppingLeafComponent implements OnInit {
   scheduledReportButton: boolean;
   selectedChannel: string;
+  selectedDateType: string = "Continuous";
   shop: ShopPrice = new ShopPrice();
   dates: ShoppingDates = new ShoppingDates();
 
