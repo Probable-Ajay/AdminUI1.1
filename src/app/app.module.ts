@@ -60,6 +60,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
+import { RequestDemoComponent } from './controllers/request-demo/request-demo.component';
 
 // Protected Routes for Release...
 // const appRoutes: Routes = [
@@ -81,11 +82,12 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 const appRoutes: Routes = [
   {
     path: "",
-    redirectTo: "registration",
+    redirectTo: "requestDemo",
     data: { title: "Encryption" },
     pathMatch: "full"
   },
   { path: "registration", component: UserRegistrationComponent },
+  { path: "requestDemo", component: RequestDemoComponent },
   { path: "login", component: UserLoginComponent },
   {
     path: "dashboard",
@@ -111,7 +113,8 @@ const appRoutes: Routes = [
     ShoppingLeafComponent,
     ShoppingStatsComponent,
     PriceTrendsComponent,
-    MockingGroundComponent
+    MockingGroundComponent,
+    RequestDemoComponent
   ],
   imports: [
     BrowserModule,
@@ -178,4 +181,4 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

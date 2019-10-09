@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "../../services/login.service";
-import { userParam } from "../../models/user";
+import { userRegistration } from "../../models/user-registration";
 
 @Component({
   selector: "app-user-registration",
@@ -8,22 +8,24 @@ import { userParam } from "../../models/user";
   styleUrls: ["./user-registration.component.css"]
 })
 export class UserRegistrationComponent implements OnInit {
-  userObject: userParam = new userParam();
+  registrationDetails: userRegistration = new userRegistration();
 
-  constructor(private LoginService: LoginService) {}
+  constructor(private LoginService: LoginService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  NewUserRegisteration() {
+  SignUp() {
     if (
-      !this.userObject.companyName ||
-      !this.userObject.email ||
-      !this.userObject.name ||
-      !this.userObject.contactNumber
+      !this.registrationDetails.firstName ||
+      !this.registrationDetails.lastName ||
+      !this.registrationDetails.userId ||
+      !this.registrationDetails.contactNumber ||
+      !this.registrationDetails.companyName ||
+      !this.registrationDetails.password
     ) {
       alert("Please enter proper details...");
     } else {
-      this.LoginService.newRegistration(this.userObject).subscribe(res => {
+      this.LoginService.userSignup(this.registrationDetails).subscribe(res => {
         alert("Succesfully Registered the Request..");
       });
     }
