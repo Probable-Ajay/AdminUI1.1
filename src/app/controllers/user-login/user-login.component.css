@@ -1,3 +1,6 @@
 .mat-checkbox-inner-container {
   margin-left: 10px !important;
 }
+input.mat-input-element {
+  background: 0 0 !important;
+}
