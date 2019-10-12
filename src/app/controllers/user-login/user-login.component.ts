@@ -56,7 +56,7 @@ export class UserLoginComponent implements OnInit {
 
     this.loading = true;
     this.authenticationService
-      .login(this.f.username.value, this.f.password.value)
+      .login(this.loginForm.value)
       .pipe(first())
       .subscribe(
         data => {
