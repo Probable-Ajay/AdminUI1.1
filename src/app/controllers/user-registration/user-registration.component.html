@@ -33,113 +33,137 @@
         </div>
         <div class="loginFormBox tableCellBox sellerLogin">
           <p class="text-right logo">
-            <a href="#"
+            <a routerLink="/login"
               ><img src="/assets/images/logo.png" class="img-responsive"
             /></a>
           </p>
           <h4>User Registration</h4>
-          <form action="index.html" method="post">
+          <form [formGroup]="registerForm" (ngSubmit)="SignUp()">
             <div class="loginForm mainLogin">
               <div id="login-body">
-                <div class="row">
+                <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
-                    <!-- <label>First Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="First Name"
-                    /> -->
                     <mat-form-field>
-                      <input matInput placeholder="Company Name" />
+                      <input
+                        matInput
+                        type="text"
+                        placeholder="Company Name"
+                        formControlName="companyName"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.companyName.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && f.companyName.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.companyName.errors.required">
+                          Company Name is required
+                        </div>
+                      </div>
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
-                    <!-- <label>Last Name</label>
-                    <input
-                      type="text"
-                      name="Last_Name"
-                      class="form-control"
-                      placeholder="Last Name"
-                      [(ngModel)]="registrationDetails.lastName"
-                    /> -->
                     <mat-form-field>
-                      <input matInput placeholder="Last Name" />
+                      <input
+                        type="text"
+                        matInput
+                        placeholder="Name"
+                        formControlName="name"
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                      />
+                      <div
+                        *ngIf="submitted && f.name.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.name.errors.required">
+                          Company Name is required
+                        </div>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-10">
+                    <mat-form-field>
+                      <input
+                        type="text"
+                        matInput
+                        placeholder="Contact Number"
+                        formControlName="contactNumber"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.contactNumber.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && f.contactNumber.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.contactNumber.errors.required">
+                          Contact Number is required
+                        </div>
+                      </div>
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
-                    <!-- <label>Email ID</label>
-                    <input
-                      type="text"
-                      name="EmailID"
-                      class="form-control"
-                      placeholder="EmailID"
-                      [(ngModel)]="registrationDetails.emailId"
-                    /> -->
                     <mat-form-field>
-                      <input matInput placeholder="EmailID" />
+                      <input
+                        type="email"
+                        matInput
+                        placeholder="EmailID"
+                        formControlName="email"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.email.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && f.email.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.name.errors.required">
+                          Email is required
+                        </div>
+                      </div>
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
-                    <!-- <label>Contact Number</label>
-                    <input
-                      type="text"
-                      name="Contact_Number"
-                      class="form-control"
-                      placeholder="Contact Number"
-                      [(ngModel)]="registrationDetails.contactNumber"
-                    /> -->
                     <mat-form-field>
-                      <input matInput placeholder="Contact Number" />
+                      <input
+                        type="password"
+                        matInput
+                        placeholder="Password"
+                        formControlName="password"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.password.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && f.password.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.password.errors.required">
+                          Contact Number is required
+                        </div>
+                      </div>
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
-                    <!-- <label>Company Name</label>
-                    <input
-                      type="text"
-                      name="Company_Name"
-                      class="form-control"
-                      placeholder="Company Name"
-                      [(ngModel)]="registrationDetails.companyName"
-                    /> -->
-                    <mat-form-field>
-                      <input matInput placeholder="Company Name" />
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div class="row" style="margin-top: 20px">
-                  <div class="col-sm-10">
-                    <!-- <label>Password</label>
-                    <input
-                      type="text"
-                      name="Password"
-                      class="form-control"
-                      placeholder="Password"
-                      [(ngModel)]="registrationDetails.password"
-                    /> -->
-                    <mat-form-field>
-                      <input matInput placeholder="Password" />
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div class="row" style="margin-top: 20px">
-                  <div class="col-sm-10">
-                    <!-- <button
-                      type="submit"
-                      class="btn loginBtn BtnCss"
-                      (click)="SignUp()"
-                    >
-                      Register Now
-                    </button> -->
                     <button mat-button class="btn loginBtn BtnCss">
-                      Register Now
+                      Sing up
                     </button>
                   </div>
                 </div>

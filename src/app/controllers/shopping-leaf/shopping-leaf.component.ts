@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ShopPrice, ShoppingDates } from "src/app/models/shop/shop-price";
+import { ShopPrice, ShoppingDates } from "../../_models";
 import { FormControl } from "@angular/forms";
 
 @Component({

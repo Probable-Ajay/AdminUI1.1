@@ -1,35 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from "../../services/login.service";
-import { userParam } from "../../models/user";
+import { Component, OnInit } from "@angular/core";
+import { LoginService } from "../../_services/login.service";
+import { User } from "../../_models";
 
 @Component({
-  selector: 'app-request-demo',
-  templateUrl: './request-demo.component.html',
-  styleUrls: ['./request-demo.component.css']
+  selector: "app-request-demo",
+  templateUrl: "./request-demo.component.html",
+  styleUrls: ["./request-demo.component.css"]
 })
 export class RequestDemoComponent implements OnInit {
-  userObject: userParam = new userParam();
+  userObject: User = new User();
 
-  public Locations: any[] =
-    [
-      "Delhi",
-      "Bangalore",
-      "Hyderabad",
-      "Ahmedabad",
-      "Chennai",
-      "Kolkata",
-      "Surat",
-      "Pune",
-      "Jaipur",
-      "Lucknow",
-      "Kanpur",
-      "Nagpur"
-    ]
+  public Locations: any[] = [
+    "Delhi",
+    "Bangalore",
+    "Hyderabad",
+    "Ahmedabad",
+    "Chennai",
+    "Kolkata",
+    "Surat",
+    "Pune",
+    "Jaipur",
+    "Lucknow",
+    "Kanpur",
+    "Nagpur"
+  ];
 
-  constructor(private LoginService: LoginService) { }
+  constructor(private LoginService: LoginService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   NewUserRegistration() {
     debugger;
@@ -47,5 +45,4 @@ export class RequestDemoComponent implements OnInit {
       });
     }
   }
-
 }

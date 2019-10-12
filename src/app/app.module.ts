@@ -1,21 +1,21 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HttpClientModule } from "@angular/common/http";
-import { AppRoutingModule } from "./app-routing.module";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { apiRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { AuthGuardService } from "./services/auth-guard.service";
+import { JwtInterceptor, ErrorInterceptor } from "../../src/app/_helpers";
 import { AdminComponent } from "./controllers/admin/admin.component";
-import { UserRegistrationComponent } from "./controllers/user-registration/user-registration.component";
-import { UserLoginComponent } from "./controllers/user-login/user-login.component";
-import { DashboardRoutesComponent } from "./controllers/dashboard-routes/dashboard-routes.component";
-import { ShoppingLeafComponent } from "./controllers/shopping-leaf/shopping-leaf.component";
-import { ShoppingStatsComponent } from "./controllers/shopping-stats/shopping-stats.component";
-import { PriceTrendsComponent } from "./controllers/price-trends/price-trends.component";
+import { UserRegistrationComponent } from "./controllers/user-registration";
+import { UserLoginComponent } from "./controllers/user-login";
+import { DashboardRoutesComponent } from "./controllers/dashboard-routes";
+import { ShoppingLeafComponent } from "./controllers/shopping-leaf";
+import { ShoppingStatsComponent } from "./controllers/shopping-stats";
+import { PriceTrendsComponent } from "./controllers/price-trends";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SidebarModule } from "ng-sidebar";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MockingGroundComponent } from "./controllers/mocking-ground/mocking-ground.component";
+import { MockingGroundComponent } from "./controllers/mocking-ground";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { A11yModule } from "@angular/cdk/a11y";
@@ -60,7 +60,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
-import { RequestDemoComponent } from './controllers/request-demo/request-demo.component';
+import { RequestDemoComponent } from "./controllers/request-demo";
+import { AlertComponent } from './controllers/alert/alert.component';
 
 // Protected Routes for Release...
 // const appRoutes: Routes = [
@@ -79,29 +80,29 @@ import { RequestDemoComponent } from './controllers/request-demo/request-demo.co
 // ];
 
 //Unprotected Routes for Testing...
-const appRoutes: Routes = [
-  {
-    path: "",
-    redirectTo: "requestDemo",
-    data: { title: "Encryption" },
-    pathMatch: "full"
-  },
-  { path: "registration", component: UserRegistrationComponent },
-  { path: "requestDemo", component: RequestDemoComponent },
-  { path: "login", component: UserLoginComponent },
-  {
-    path: "dashboard",
-    component: DashboardRoutesComponent,
-    children: [
-      { path: "", redirectTo: "admin", pathMatch: "full" },
-      { path: "shopPrice", component: ShoppingLeafComponent },
-      { path: "shopStats", component: ShoppingStatsComponent },
-      { path: "priceTrends", component: PriceTrendsComponent },
-      { path: "admin", component: AdminComponent },
-      { path: "mock", component: MockingGroundComponent }
-    ]
-  }
-];
+// const appRoutes: Routes = [
+//   {
+//     path: "",
+//     redirectTo: "requestDemo",
+//     data: { title: "Encryption" },
+//     pathMatch: "full"
+//   },
+//   { path: "registration", component: UserRegistrationComponent },
+//   { path: "requestDemo", component: RequestDemoComponent },
+//   { path: "login", component: UserLoginComponent },
+//   {
+//     path: "dashboard",
+//     component: DashboardRoutesComponent,
+//     children: [
+//       { path: "", redirectTo: "admin", pathMatch: "full" },
+//       { path: "shopPrice", component: ShoppingLeafComponent },
+//       { path: "shopStats", component: ShoppingStatsComponent },
+//       { path: "priceTrends", component: PriceTrendsComponent },
+//       { path: "admin", component: AdminComponent },
+//       { path: "mock", component: MockingGroundComponent }
+//     ]
+//   }
+// ];
 
 @NgModule({
   declarations: [
@@ -114,13 +115,14 @@ const appRoutes: Routes = [
     ShoppingStatsComponent,
     PriceTrendsComponent,
     MockingGroundComponent,
-    RequestDemoComponent
+    RequestDemoComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    apiRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
+    //RouterModule.forRoot(appRoutes),
     SidebarModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
@@ -178,7 +180,10 @@ const appRoutes: Routes = [
     ScrollingModule,
     AngularMultiSelectModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

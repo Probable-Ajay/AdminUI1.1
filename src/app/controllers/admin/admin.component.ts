@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { UserManagement } from "../../models/user-management";
+import { UserManagement } from "../../_models";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({

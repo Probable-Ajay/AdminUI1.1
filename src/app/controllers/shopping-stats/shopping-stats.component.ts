@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ShopStatus } from "../../models/shop/shopstatus";
+import { ShopStatus } from "../../_models";
 
 @Component({
   selector: "app-shopping-stats",
