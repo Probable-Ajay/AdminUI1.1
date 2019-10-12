@@ -2,7 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
-import { LoginService, AuthenticationService } from "../../_services";
+import {
+  LoginService,
+  AuthenticationService,
+  AlertService
+} from "../../_services";
 import { userRegistration } from "../../_models";
 import { validateBasis } from "@angular/flex-layout";
 
@@ -22,7 +26,8 @@ export class UserRegistrationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private alertService: AlertService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -59,11 +64,11 @@ export class UserRegistrationComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          //this.alertService.success("Registration successful", true);
+          this.alertService.success("Registration successful", true);
           this.router.navigate(["/login"]);
         },
         error => {
-          //this.alertService.error(error);
+          this.alertService.error(error);
           this.loading = false;
         }
       );

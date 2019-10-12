@@ -3,22 +3,13 @@ export class RegisterDemo {
   name: string;
   email: string;
   contactNo: string;
-  location: string[];
+  location: string;
 
   constructor() {
-    this.location = [
-      "Delhi",
-      "Bangalore",
-      "Hyderabad",
-      "Ahmedabad",
-      "Chennai",
-      "Kolkata",
-      "Surat",
-      "Pune",
-      "Jaipur",
-      "Lucknow",
-      "Kanpur",
-      "Nagpur"
-    ];
+    this.companyName = "";
+    this.name = "";
+    this.email = "";
+    this.contactNo = "";
+    this.location = "";
   }
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { AppSettings } from "../_configurations/AppSettings";
-import { User, userRegistration, Login } from "../_models";
+import { User, userRegistration, Login, RegisterDemo } from "../_models";
 
 @Injectable({
   providedIn: "root"
@@ -62,12 +62,19 @@ export class AuthenticationService {
   }
 
   register(user: userRegistration) {
-    debugger;
     const apiUrl = AppSettings.API_ENDPOINT + "users/create";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.http.post(apiUrl, user, { headers });
 
     //return this.httpClient.post(`/users/register`, user);
+  }
+
+  requestDemo(params: RegisterDemo) {
+    debugger;
+    const apiUrl = AppSettings.API_ENDPOINT + "demo/create";
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.post(apiUrl, params, { headers });
   }
 
   logout() {
