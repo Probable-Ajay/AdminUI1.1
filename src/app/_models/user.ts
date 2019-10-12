@@ -17,3 +17,13 @@ export class User {
     this.location = "";
   }
 }
+
+export class Login {
+  username: string;
+  password: string;
+
+  constructor() {
+    this.username = "";
+    this.password = "";
+  }
+}

@@ -38,8 +38,8 @@ export class UserRegistrationComponent implements OnInit {
       contactNumber: ["", [Validators.required, Validators.minLength(10)]],
       companyName: ["", [Validators.required, Validators.maxLength(60)]],
       password: ["", [Validators.required, Validators.minLength(8)]],
-      isActive: false,
-      isSubUser: false
+      isActive: 0,
+      isSubUser: 0
     });
   }
 

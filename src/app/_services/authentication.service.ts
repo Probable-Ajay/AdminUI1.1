@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
-
-import { User, userRegistration } from "../_models";
+import { AppSettings } from "../_configurations/AppSettings";
+import { User, userRegistration, Login } from "../_models";
 
 @Injectable({
   providedIn: "root"
@@ -22,36 +22,52 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(username: string, password: string) {
-    return this.http
-      .post<any>(`/users/authenticate`, { username, password })
-      .pipe(
-        map(user => {
-          // login successful if there's a jwt token in the response
-          if (user && user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem("currentUser", JSON.stringify(user));
-            this.currentUserSubject.next(user);
-          }
+  // login(username: string, password: string) {
+  //   return this.http
+  //     .post<any>(`/users/authenticate`, { username, password })
+  //     .pipe(
+  //       map(user => {
+  //         // login successful if there's a jwt token in the response
+  //         if (user && user.token) {
+  //           // store user details and jwt token in local storage to keep user logged in between page refreshes
+  //           localStorage.setItem("currentUser", JSON.stringify(user));
+  //           this.currentUserSubject.next(user);
+  //         }
 
-          return user;
-        })
-      );
+  //         return user;
+  //       })
+  //     );
+  // }
+
+  // register(user: userRegistration) {
+  //   return this.http.post<any>(`/users/create`, { user }).pipe(
+  //     map(user => {
+  //       // login successful if there's a jwt token in the response
+  //       if (user && user.token) {
+  //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+  //         localStorage.setItem("currentUser", JSON.stringify(user));
+  //         this.currentUserSubject.next(user);
+  //       }
+
+  //       return user;
+  //     })
+  //   );
+  // }
+
+  login(params: Login) {
+    const apiUrl = AppSettings.API_ENDPOINT + "users/authenticate";
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.post(apiUrl, params, { headers });
   }
 
   register(user: userRegistration) {
-    return this.http.post<any>(`/users/register`, { user }).pipe(
-      map(user => {
-        // login successful if there's a jwt token in the response
-        if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem("currentUser", JSON.stringify(user));
-          this.currentUserSubject.next(user);
-        }
+    debugger;
+    const apiUrl = AppSettings.API_ENDPOINT + "users/create";
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+    return this.http.post(apiUrl, user, { headers });
 
-        return user;
-      })
-    );
+    //return this.httpClient.post(`/users/register`, user);
   }
 
   logout() {
