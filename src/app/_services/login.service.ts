@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AppSettings } from "../_configurations/AppSettings";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "../_models";
+import { User, userRegistration } from "../_models";
 
 @Injectable({
   providedIn: "root"
@@ -13,7 +13,8 @@ export class LoginService {
     return this.httpClient.get<User[]>(`/users`);
   }
 
-  register(user: User) {
+  register(user: userRegistration) {
+    debugger;
     const apiUrl = AppSettings.API_ENDPOINT + "users/create";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.httpClient.post(apiUrl, user, { headers });

@@ -1,15 +1,21 @@
 export class userRegistration {
-    companyName: String;
-    name: String;
-    emailId: String;
-    contactNumber: String;
-    password: String;
-    
-    constructor() {
-        this.companyName = "";
-        this.name = "";
-        this.emailId = "";
-        this.contactNumber = "";        
-        this.password = "";        
-    }
+  firstName: String;
+  lastName: String;
+  userId: String;
+  contactNumber: String;
+  companyName: string;
+  isActive: boolean;
+  isSubUser: boolean;
+  password: String;
+
+  constructor() {
+    this.firstName = "";
+    this.lastName = "";
+    this.userId = "";
+    this.contactNumber = "";
+    this.companyName = "";
+    this.isActive = false;
+    this.isSubUser = false;
+    this.password = "";
+  }
 }

@@ -32,11 +32,14 @@ export class UserRegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      companyName: ["", [Validators.required, Validators.maxLength(60)]],
-      name: ["", [Validators.required, Validators.maxLength(60)]],
+      firstName: ["", [Validators.required, Validators.maxLength(60)]],
+      lastName: ["", [Validators.required, Validators.maxLength(60)]],
+      userId: ["", Validators.required],
       contactNumber: ["", [Validators.required, Validators.minLength(10)]],
-      email: ["", Validators.required],
-      password: ["", [Validators.required, Validators.minLength(8)]]
+      companyName: ["", [Validators.required, Validators.maxLength(60)]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
+      isActive: false,
+      isSubUser: false
     });
   }
 
@@ -51,7 +54,7 @@ export class UserRegistrationComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.loginService
+    this.authenticationService
       .register(this.registerForm.value)
       .pipe(first())
       .subscribe(
@@ -64,6 +67,19 @@ export class UserRegistrationComponent implements OnInit {
           this.loading = false;
         }
       );
+
+    // this.authenticationService
+    //   .register(this.f.username.value, this.f.password.value)
+    //   .pipe(first())
+    //   .subscribe(
+    //     data => {
+    //       this.router.navigate([this.returnUrl]);
+    //     },
+    //     error => {
+    //       this.alertService.error(error);
+    //       this.loading = false;
+    //     }
+    //   );
     // else {
     //   this.LoginService.userSignup(this.registerForm.value).subscribe(res => {
     //     alert("Succesfully Registered the Request..");
