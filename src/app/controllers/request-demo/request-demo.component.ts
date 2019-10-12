@@ -52,7 +52,8 @@ export class RequestDemoComponent implements OnInit {
       name: ["", [Validators.required, Validators.maxLength(60)]],
       email: ["", Validators.required],
       contactNo: ["", [Validators.required, Validators.minLength(10)]],
-      location: ["", Validators.required]
+      location: ["", Validators.required],
+      notes: ""
     });
   }
 

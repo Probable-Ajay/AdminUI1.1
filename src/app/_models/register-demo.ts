@@ -4,6 +4,7 @@ export class RegisterDemo {
   email: string;
   contactNo: string;
   location: string;
+  notes: string;
 
   constructor() {
     this.companyName = "";
@@ -11,5 +12,6 @@ export class RegisterDemo {
     this.email = "";
     this.contactNo = "";
     this.location = "";
+    this.notes = "";
   }
 }
