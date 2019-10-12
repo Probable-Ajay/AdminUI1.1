@@ -19,6 +19,7 @@ export class RequestDemoComponent implements OnInit {
   requestDemoForm: FormGroup;
   loading = false;
   submitted = false;
+  responseMessage: string;
   public Locations: any[] = [
     "Delhi",
     "Bangalore",
@@ -74,7 +75,9 @@ export class RequestDemoComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success("We have received your demo request", true);
+          this.responseMessage =
+            "We have received your demo request with reference no : " +
+            data[0][0]["id"];
           //this.router.navigate(["/login"]);
         },
         error => {
