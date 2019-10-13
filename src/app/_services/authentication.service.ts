@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { AppSettings } from "../_configurations/AppSettings";
+import { Router, ROUTES } from '@angular/router';
 import { User, userRegistration, Login, RegisterDemo } from "../_models";
 
 @Injectable({
@@ -11,7 +12,7 @@ import { User, userRegistration, Login, RegisterDemo } from "../_models";
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem("currentUser"))
     );
@@ -62,10 +63,11 @@ export class AuthenticationService {
       debugger;
       if (data['status'] == 'success') {
         localStorage.setItem("currentUser", data['data']['token']);
-        //   this.currentUserSubject.next(user);
+        this.router.navigate(["/dashboard/"]);
       }
       else {
         localStorage.removeItem("currentUser");
+        this.router.navigate(["/login"]);
       }
     }));
   }

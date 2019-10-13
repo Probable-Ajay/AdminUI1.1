@@ -22,9 +22,9 @@ export class DashboardRoutesComponent implements OnInit {
   ngOnInit() {
   }
 
-  logOut(): void {
-    this.router.navigate(['']);
-    localStorage.removeItem('usermanagementToken');
+  LogOut(): void {
+    this.router.navigate(["/login/"]);
+    localStorage.removeItem('currentUser');
   }
 
   toggleRightNav(): void {

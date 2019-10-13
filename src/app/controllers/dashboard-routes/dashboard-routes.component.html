@@ -1,6 +1,6 @@
 <ng-container>
     <mat-toolbar class="example-header" [formGroup]="options">
-        <div style="margin-left: 190px; width:78%;">
+        <div style="margin-left: 190px; width:84%;">
             <div style="float:left; width:50%;">
                 <button mat-button (click)="toggleRightNav()" style="float:left;">
                     <i class="fa fa-bars"></i>
@@ -10,6 +10,9 @@
                 </button>
             </div>
             <div style="float:right; width:50%;">
+                <button mat-button (click)="LogOut()" style="float:right">
+                    <i class="fa fa-power-off"></i>
+                </button>
                 <button mat-button (click)="sidenavLeft.toggle()" style="float:right">
                     <i class="fa fa-ellipsis-v"></i>
                 </button>
