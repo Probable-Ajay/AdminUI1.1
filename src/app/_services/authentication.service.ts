@@ -55,10 +55,19 @@ export class AuthenticationService {
   // }
 
   login(params: Login) {
-    const apiUrl = AppSettings.API_ENDPOINT + "users/authenticate";
+    const apiUrl = AppSettings.API_ENDPOINT + "login";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
-    return this.http.post(apiUrl, params, { headers });
+    return this.http.post(apiUrl, params, { headers }).pipe(map(data => {
+      debugger;
+      if (data['status'] == 'success') {
+        localStorage.setItem("currentUser", data['data']['token']);
+        //   this.currentUserSubject.next(user);
+      }
+      else {
+        localStorage.removeItem("currentUser");
+      }
+    }));
   }
 
   register(user: userRegistration) {
