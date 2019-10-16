@@ -6,414 +6,222 @@
   </section>
 
   <!-- Main content -->
-  <section class="content shopPrice">
-    <div class="row" style="margin-bottom: 0; overflow-y: auto;">
-      <div class="col-xs-12">
-        <div class="nav-tabs-custom">
-          <h3>New Customer</h3>
-          <div class="tab-content">
-            <h4>Company Information</h4>
-            <div class="tab-pane active" id="companyInfo">
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Company Name"
-                    [(ngModel)]="user.companyInformation.companyName"
-                  /> -->
-
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Company Name"
-                      [(ngModel)]="user.companyInformation.companyName"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Company Address"
-                    [(ngModel)]="user.companyInformation.companyAddress"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Company Address"
-                      [(ngModel)]="user.companyInformation.companyAddress"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <!-- <select class="form-control durationDropdown">
-                    <option
-                      *ngFor="let country of user.companyInformation.countries"
-                      [value]="country"
-                      >{{ country }}</option
-                    >
-                  </select> -->
-                  <mat-form-field>
-                    <mat-label>Country</mat-label>
-                    <mat-select>
-                      <mat-option
-                        *ngFor="
-                          let country of user.companyInformation.countries
-                        "
-                        [value]="country"
-                      >
-                        {{ country }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-
-                  <!-- <mat-select placeholder="Country">
-                    <mat-option
-                      *ngFor="let country of user.companyInformation.countries"
-                      [value]="country"
-                    >
-                      {{ country }}
-                    </mat-option>
-                  </mat-select> -->
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <select class="form-control durationDropdown">
-                    <option
-                      *ngFor="let ctype of user.companyInformation.companyType"
-                      [value]="ctype"
-                      >{{ ctype }}</option
-                    >
-                  </select> -->
-                  <mat-form-field>
-                    <mat-label>Company Type</mat-label>
-                    <mat-select placeholder="Company Type">
-                      <mat-option
-                        *ngFor="
-                          let ctype of user.companyInformation.companyType
-                        "
-                        [value]="ctype"
-                      >
-                        {{ ctype }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <!-- <select class="form-control durationDropdown">
-                    <option
-                      *ngFor="
-                        let businessType of user.companyInformation
-                          .natureOfBusiness
-                      "
-                      [value]="businessType"
-                      >{{ businessType }}</option
-                    >
-                  </select> -->
-                  <mat-form-field>
-                    <mat-label>Business Type</mat-label>
-                    <mat-select placeholder="Business Type">
-                      <mat-option
-                        *ngFor="
-                          let businessType of user.companyInformation
-                            .natureOfBusiness
-                        "
-                        [value]="businessType"
-                      >
-                        {{ businessType }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Phone"
-                    [(ngModel)]="user.companyInformation.phone"
-                  /> -->
-
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Phone"
-                      [(ngModel)]="user.companyInformation.phone"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Email ID"
-                    [(ngModel)]="user.companyInformation.emailID"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Email ID"
-                      [(ngModel)]="user.companyInformation.emailID"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
+  <form [formGroup]="adminForm" (ngSubmit)="onFormSubmit()">
+    <section class="content shopPrice">
+      <div class="row" style="margin-bottom: 0; overflow-y: auto;">
+        <div class="col-xs-12">
+          <div class="nav-tabs-custom">
+            <div class="row newcustomer">
+              <h3>New Customer</h3>
             </div>
 
-            <!--Company Info end -->
+            <div class="tab-content">
+              <h4>Company Information</h4>
+              <div class="tab-pane active" id="companyInfo">
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Company Name"
+                        formControlName="companyName"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Company Address"
+                        formControlName="companyAddress"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <mat-label>Country</mat-label>
+                      <mat-select>
+                        <mat-option
+                          *ngFor="let country of countries"
+                          [value]="country"
+                        >
+                          {{ country }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <mat-label>Company Type</mat-label>
+                      <mat-select placeholder="Company Type">
+                        <mat-option
+                          *ngFor="let ctype of companyType"
+                          [value]="ctype"
+                        >
+                          {{ ctype }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <mat-label>Business Type</mat-label>
+                      <mat-select placeholder="Business Type">
+                        <mat-option
+                          *ngFor="let businessType of natureOfBusiness"
+                          [value]="businessType"
+                        >
+                          {{ businessType }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Phone"
+                        formControlName="companyPhoneNumber"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Email ID"
+                        formControlName="emailId"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
 
-            <!--Contact Information -->
-            <h4>Contact Information</h4>
-            <div class="tab-pane active" id="customerInfo">
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="First Name"
-                    [(ngModel)]="user.contactInformation.firstName"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="First Name"
-                      [(ngModel)]="user.contactInformation.firstName"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Middle Name"
-                    [(ngModel)]="user.contactInformation.middleName"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Middle Name"
-                      [(ngModel)]="user.contactInformation.middleName"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Last Name"
-                    [(ngModel)]="user.contactInformation.lastName"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Last Name"
-                      [(ngModel)]="user.contactInformation.lastName"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
+              <!--Company Info end -->
 
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Contact Number"
-                    [(ngModel)]="user.contactInformation.contactNumber"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Contact Number"
-                      [(ngModel)]="user.contactInformation.contactNumber"
-                    />
-                  </mat-form-field>
+              <!--Contact Information -->
+              <h4>Contact Information</h4>
+              <div class="tab-pane active" id="customerInfo">
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="First Name"
+                        formControlName="firstName"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Middle Name"
+                        formControlName="middleName"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Last Name"
+                        formControlName="lastName"
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Email ID"
-                    [(ngModel)]="user.contactInformation.emailID"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Email ID"
-                      [(ngModel)]="user.contactInformation.emailID"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <!-- <input
-                    name="user.contactInformation.designationRole"
-                    type="text"
-                    class="form-control"
-                    placeholder="Designation/Role"
-                    [(ngModel)]="user.contactInformation.designationRole"
-                    ngDefaultControl
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="Designation/Role"
-                      [(ngModel)]="user.contactInformation.designationRole"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-8">
-                  <mat-checkbox
-                    [(ngModel)]="user.userAccess.cloneMainUser"
-                  ></mat-checkbox>
-                  <label for="cloneMainUser" style="font-weight: normal"
-                    >Clone Main User Attributes</label
-                  >
-                </div>
-              </div>
-            </div>
-            <!--Contact Information end -->
 
-            <h4><b>Access To</b></h4>
-            <div class="tab-pane active" id="userAccessInfo">
-              <div
-                class="row"
-                style="margin-top: 20px"
-                *ngFor="let func of user.userAccess.functionalities"
-              >
-                <div class="col-sm-2">
-                  <label style="font-weight: normal">{{
-                    func.functionalityName
-                  }}</label>
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Contact Number"
+                        formControlName="customerContactNumber"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Email ID"
+                        formControlName="customerEmailID"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-4">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Designation/Role"
+                        formControlName="designationRole"
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
-                <div class="col-sm-1">
-                  <mat-slide-toggle
-                    class="tp-margin"
-                    [(ngModel)]="func.isToggle"
-                  ></mat-slide-toggle>
-                </div>
-                <div class="col-sm-1">
-                  <mat-checkbox [(ngModel)]="func.readAccess"></mat-checkbox>
-                  <label style="font-weight: normal">Read</label>
-                </div>
-                <div class="col-sm-1">
-                  <mat-checkbox [(ngModel)]="func.writeAccess"></mat-checkbox>
-                  <label style="font-weight: normal">Write</label>
-                </div>
-                <div class="col-sm-2">
-                  <mat-checkbox [(ngModel)]="func.fullAccess"></mat-checkbox>
-                  <label style="font-weight: normal">Full Access</label>
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-8">
+                    <mat-checkbox
+                      formControlName="cloneMainUser"
+                    ></mat-checkbox>
+                    <label for="cloneMainUser" style="font-weight: normal"
+                      >Clone Main User Attributes</label
+                    >
+                  </div>
                 </div>
               </div>
-            </div>
-            <h4><b>Requirement Setup</b></h4>
-            <div class="tab-pane active" id="requirementSetup">
+              <!--Contact Information end -->
+
+              <h4><b>Access To</b></h4>
+              <div class="tab-pane active" id="userAccessInfo">
+                <div
+                  class="row"
+                  style="margin-top: 20px"
+                  *ngFor="let func of functionalities"
+                >
+                  <div class="col-sm-2">
+                    <mat-label style="font-weight: bold">{{
+                      func.functionalityName
+                    }}</mat-label>
+                  </div>
+                  <div class="col-sm-1">
+                    <mat-slide-toggle
+                      class="tp-margin"
+                      formControlName="isToggle"
+                    ></mat-slide-toggle>
+                  </div>
+                  <div class="col-sm-1">
+                    <mat-checkbox formControlName="readAccess"></mat-checkbox>
+                    <mat-label>Read</mat-label>
+                  </div>
+                  <div class="col-sm-1">
+                    <mat-checkbox formControlName="writeAccess"></mat-checkbox>
+                    <mat-label>Write</mat-label>
+                  </div>
+                  <div class="col-sm-2">
+                    <mat-checkbox formControlName="fullAccess"></mat-checkbox>
+                    <mat-label>Full Access</mat-label>
+                  </div>
+                </div>
+              </div>
               <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <button id="btndownloadReqTemplate" class="btn next nextBtn">
-                    <!-- <i
-                      class="fa fa-arrow-circle-o-down downloadIcon"
-                      aria-hidden="true"
-                    ></i> -->
-                    <i class="fa fa-download"></i>
-                    Download<br />Requirement template
+                <div class="col-sm-10">
+                  <button mat-button class="btn addUser BtnCss">
+                    Add User
                   </button>
-                </div>
-                <div class="col-sm-4">
-                  <button id="btnuploadReqTemplate" class="btn next nextBtn">
-                    <!-- <i
-                      class="fa fa-arrow-circle-o-up downloadIcon"
-                      aria-hidden="true"
-                    ></i> -->
-
-                    <i class="fa fa-upload"></i>
-                    Upload<br />Requirement template
-                  </button>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    placeholder="First Name"
-                    [(ngModel)]="user.requirementSetup.firstName"
-                  /> -->
-                  <mat-form-field>
-                    <input
-                      matInput
-                      placeholder="First Name"
-                      [(ngModel)]="user.requirementSetup.firstName"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-4">
-                  <i class="fa fa-pencil btn submitBtn"> Edit</i>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <select class="form-control classofServiceDropdown">
-                    <option
-                      *ngFor="
-                        let service of user.requirementSetup.classOfService
-                      "
-                      value="IN"
-                      >{{ service }}</option
-                    >
-                  </select> -->
-                  <mat-form-field>
-                    <mat-label>Class Of Service</mat-label>
-                    <mat-select placeholder="Class Of Service">
-                      <mat-option
-                        *ngFor="
-                          let service of user.requirementSetup.classOfService
-                        "
-                        [value]="service"
-                      >
-                        {{ service }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px">
-                <div class="col-sm-4">
-                  <!-- <select class="form-control shoppingSourceDropdown">
-                    <option
-                      *ngFor="
-                        let shoppingSource of user.requirementSetup
-                          .shoppingSources
-                      "
-                      value="IN"
-                      >{{ shoppingSource }}</option
-                    >
-                  </select> -->
-                  <mat-form-field>
-                    <mat-label>Shopping Sources</mat-label>
-                    <mat-select placeholder="Shopping Sources">
-                      <mat-option
-                        *ngFor="
-                          let shoppingSource of user.requirementSetup
-                            .shoppingSources
-                        "
-                        [value]="shoppingSource"
-                      >
-                        {{ shoppingSource }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </form>
   <!-- /.content -->
 </div>

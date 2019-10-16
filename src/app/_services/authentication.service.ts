@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { Router, ROUTES } from "@angular/router";
 import { AppSettings } from "../_configurations/AppSettings";
 import { User, userRegistration, Login, RegisterDemo } from "../_models";
+import { debug } from "util";
 
 @Injectable({
   providedIn: "root"
@@ -28,6 +29,7 @@ export class AuthenticationService {
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.http.post<any>(apiUrl, user, { headers }).pipe(
       map(user => {
+        debugger;
         // login successful if there's a jwt token in the response
         if (user && user["data"]["token"]) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -51,6 +53,7 @@ export class AuthenticationService {
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.http.post<any>(apiUrl, { user }, { headers }).pipe(
       map(user => {
+        debugger;
         // login successful if there's a jwt token in the response
         if (user) {
           // // store user details and jwt token in local storage to keep user logged in between page refreshes

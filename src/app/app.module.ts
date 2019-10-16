@@ -61,7 +61,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { RequestDemoComponent } from "./controllers/request-demo";
-import { AlertComponent } from './controllers/alert/alert.component';
+import { AlertComponent } from "./controllers/alert/alert.component";
 
 // Protected Routes for Release...
 // const appRoutes: Routes = [

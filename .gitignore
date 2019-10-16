@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/app/_services/authentication.service.ts.bak
+src/app/_services/authentication.service.ts.bak
+src/app/controllers/request-demo/request-demo.component.html.bak
+src/app/_services/authentication.service.ts.bak

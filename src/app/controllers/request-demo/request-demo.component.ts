@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 import { Router, ActivatedRoute } from "@angular/router";
 import {
-  LoginService,
   AuthenticationService,
-  AlertService
+  AlertService,
+  RequestDemoService
 } from "../../_services";
 import { User } from "../../_models";
 
@@ -39,6 +39,7 @@ export class RequestDemoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private requestDemoService: RequestDemoService,
     private alertService: AlertService
   ) {
     // redirect to home if already logged in
@@ -70,7 +71,7 @@ export class RequestDemoComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.authenticationService
+    this.requestDemoService
       .requestDemo(this.requestDemoForm.value)
       .pipe(first())
       .subscribe(

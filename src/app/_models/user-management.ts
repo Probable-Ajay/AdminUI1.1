@@ -1,26 +1,18 @@
 export class CompanyInformation {
   companyName: string;
   companyAddress: string;
-  countries: string[];
-  companyType: string[];
-  natureOfBusiness: string[];
+  countries: string;
+  companyType: string;
+  natureOfBusiness: string;
   phone: string;
   emailID: string;
 
   constructor() {
-    this.companyName = "Price Talk App";
-    this.companyAddress = "Noida,Uttar Pradesh";
-    this.countries = [
-      "India",
-      "Indonesia",
-      "Iran",
-      "Iraq",
-      "Israel",
-      "Japan",
-      "Jordan"
-    ];
-    this.companyType = ["Travel", "Airline", "Telecom"];
-    this.natureOfBusiness = ["Small", "Medium", "Large"];
+    this.companyName = "";
+    this.companyAddress = "";
+    this.countries = "";
+    this.companyType = "";
+    this.natureOfBusiness = "";
     this.phone = "";
     this.emailID = "";
   }
@@ -36,17 +28,18 @@ export class ContactInformation {
   designationRole: string;
 
   constructor() {
-    this.firstName = "Ajay Verma";
+    this.firstName = "";
     this.lastName = "";
     this.middleName = "";
     this.givenName = "";
     this.contactNumber = "";
     this.emailID = "";
-    this.designationRole = "SSE";
+    this.designationRole = "";
   }
 }
 
 export class Functionality {
+  funcId: number;
   functionalityName: string;
   isToggle: boolean;
   readAccess: boolean;
@@ -54,6 +47,7 @@ export class Functionality {
   fullAccess: boolean;
 
   constructor() {
+    this.funcId = 0;
     this.functionalityName = "";
     this.isToggle = false;
     this.readAccess = false;
@@ -66,48 +60,33 @@ export class UserAccess {
   cloneMainUser: boolean;
   functionalities: Functionality[];
   constructor() {
-    this.functionalities = [
-      {
-        functionalityName: "Functionality 1",
-        isToggle: true,
-        readAccess: true,
-        writeAccess: false,
-        fullAccess: false
-      },
-      {
-        functionalityName: "Functionality 2",
-        isToggle: false,
-        readAccess: false,
-        writeAccess: true,
-        fullAccess: false
-      },
-      {
-        functionalityName: "Functionality 2",
-        isToggle: false,
-        readAccess: false,
-        writeAccess: false,
-        fullAccess: true
-      },
-      {
-        functionalityName: "Functionality 3",
-        isToggle: true,
-        readAccess: true,
-        writeAccess: false,
-        fullAccess: false
-      }
-    ];
+    this.functionalities = [];
   }
 }
 
 export class RequirementSetup {
   firstName: string;
-  classOfService: string[];
-  shoppingSources: string[];
+  classOfService: ClassOfService[];
+  shoppingSources: ShoppingSources[];
   constructor() {
     this.firstName = "";
-    this.classOfService = ["Economy", "Business", "First Class"];
-    this.shoppingSources = ["IN", "US", "UAE", "UK"];
+    this.classOfService = [];
+    this.shoppingSources = [];
   }
+}
+
+export class ClassOfService {
+  csId: number;
+  csName: string;
+}
+export class ShoppingSources {
+  ssId: number;
+  ssName: string;
+}
+
+export class Country {
+  countryCode: string;
+  countryName: string;
 }
 
 export class UserManagement {
