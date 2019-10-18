@@ -6,7 +6,7 @@
   </section>
 
   <!-- Main content -->
-  <form [formGroup]="adminForm" (ngSubmit)="onFormSubmit()">
+  <form [formGroup]="adminSection" (ngSubmit)="onFormSubmit()">
     <section class="content shopPrice">
       <div class="row" style="margin-bottom: 0; overflow-y: auto;">
         <div class="col-xs-12">
@@ -17,7 +17,11 @@
 
             <div class="tab-content">
               <h4>Company Information</h4>
-              <div class="tab-pane active" id="companyInfo">
+              <div
+                class="tab-pane active"
+                id="companyInfo"
+                formGroupName="companyDetails"
+              >
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
@@ -40,7 +44,10 @@
                   <div class="col-sm-4">
                     <mat-form-field>
                       <mat-label>Country</mat-label>
-                      <mat-select>
+                      <mat-select
+                        [(value)]="selectedCountry"
+                        formControlName="country"
+                      >
                         <mat-option
                           *ngFor="let country of countries"
                           [value]="country"
@@ -55,7 +62,11 @@
                   <div class="col-sm-4">
                     <mat-form-field>
                       <mat-label>Company Type</mat-label>
-                      <mat-select placeholder="Company Type">
+                      <mat-select
+                        placeholder="Company Type"
+                        [(value)]="selectedCompanyType"
+                        formControlName="companyType"
+                      >
                         <mat-option
                           *ngFor="let ctype of companyType"
                           [value]="ctype"
@@ -68,9 +79,13 @@
                   <div class="col-sm-4">
                     <mat-form-field>
                       <mat-label>Business Type</mat-label>
-                      <mat-select placeholder="Business Type">
+                      <mat-select
+                        placeholder="Business Type"
+                        [(value)]="selectedBusinessType"
+                        formControlName="businessType"
+                      >
                         <mat-option
-                          *ngFor="let businessType of natureOfBusiness"
+                          *ngFor="let businessType of businessTypes"
                           [value]="businessType"
                         >
                           {{ businessType }}
@@ -105,7 +120,11 @@
 
               <!--Contact Information -->
               <h4>Contact Information</h4>
-              <div class="tab-pane active" id="customerInfo">
+              <div
+                class="tab-pane active"
+                id="customerInfo"
+                formGroupName="contactDetails"
+              >
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
@@ -179,33 +198,54 @@
               <!--Contact Information end -->
 
               <h4><b>Access To</b></h4>
-              <div class="tab-pane active" id="userAccessInfo">
+              <div
+                class="tab-pane active"
+                id="userAccessInfo"
+                formGroupName="accessDetails"
+              >
                 <div
                   class="row"
                   style="margin-top: 20px"
-                  *ngFor="let func of functionalities"
+                  *ngFor="let item of functionalities; let i = index"
                 >
                   <div class="col-sm-2">
                     <mat-label style="font-weight: bold">{{
-                      func.functionalityName
+                      item.name
                     }}</mat-label>
                   </div>
                   <div class="col-sm-1">
                     <mat-slide-toggle
+                      id="{{ 'toggle_' + i }}"
                       class="tp-margin"
-                      formControlName="isToggle"
+                      formControlName="{{ 'enableFeature_' + i }}"
+                      [checked]="item.selected"
                     ></mat-slide-toggle>
                   </div>
                   <div class="col-sm-1">
-                    <mat-checkbox formControlName="readAccess"></mat-checkbox>
+                    <mat-checkbox
+                      id="{{ 'read_' + i }}"
+                      [checked]="item.readAccess"
+                      formControlName="{{ 'readAccess_' + i }}"
+                      (change)="onChange($event, i, item)"
+                    ></mat-checkbox>
                     <mat-label>Read</mat-label>
                   </div>
                   <div class="col-sm-1">
-                    <mat-checkbox formControlName="writeAccess"></mat-checkbox>
+                    <mat-checkbox
+                      id="{{ 'write_' + i }}"
+                      [checked]="item.writeAccess"
+                      formControlName="{{ 'writeAccess_' + i }}"
+                      (change)="onChange($event, i, item)"
+                    ></mat-checkbox>
                     <mat-label>Write</mat-label>
                   </div>
                   <div class="col-sm-2">
-                    <mat-checkbox formControlName="fullAccess"></mat-checkbox>
+                    <mat-checkbox
+                      id="{{ 'full_' + i }}"
+                      [checked]="item.fullAccess"
+                      formControlName="{{ 'fullAccess_' + i }}"
+                      (change)="onChange($event, i, item)"
+                    ></mat-checkbox>
                     <mat-label>Full Access</mat-label>
                   </div>
                 </div>

@@ -1,18 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   UserManagement,
   CompanyInformation,
   ContactInformation,
   UserAccess,
-  RequirementSetup,
-  Functionality,
-  ClassOfService
+  Functionality
 } from "../../_models";
 import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormControl
+  FormControl,
+  FormArray
 } from "@angular/forms";
 import { first } from "rxjs/operators";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -23,6 +22,12 @@ import {
   AdminService
 } from "../../_services";
 import { User } from "../../_models";
+import {
+  MatSlideToggleChange,
+  MatSlideToggle
+} from "@angular/material/slide-toggle";
+import { MatCheckbox, MatCheckboxChange } from "@angular/material/checkbox";
+import { debug } from "util";
 
 @Component({
   selector: "app-admin",
@@ -32,38 +37,15 @@ import { User } from "../../_models";
 export class AdminComponent implements OnInit {
   user: UserManagement = new UserManagement();
   adminForm: FormGroup;
-  companyInfo: CompanyInformation = new CompanyInformation();
-  contactInfo: ContactInformation = new ContactInformation();
-  userInfo: UserAccess = new UserAccess();
-  requirementSetup: RequirementSetup = new RequirementSetup();
+  // companyInfo: CompanyInformation = new CompanyInformation();
+  // contactInfo: ContactInformation = new ContactInformation();
+  // userInfo: UserAccess = new UserAccess();
 
   loading = false;
   isValidFormSubmitted = false;
-
-  // adminForm = new FormGroup({
-  //   companyName: new FormControl("", Validators.required),
-  //   companyAddress: new FormControl("", Validators.required),
-  //   country: new FormControl(false),
-  //   companyType: new FormControl("", Validators.required),
-  //   businessType: new FormControl("", Validators.required),
-  //   companyPhoneNumber: new FormControl("", Validators.required),
-  //   emailId: new FormControl("", Validators.required),
-  //   firstName: new FormControl("", Validators.required),
-  //   middleName: new FormControl("", Validators.required),
-  //   lastName: new FormControl("", Validators.required),
-  //   customerContactNumber: new FormControl("", Validators.required),
-  //   customerEmailID: new FormControl("", Validators.required),
-  //   designationRole: new FormControl("", Validators.required),
-  //   cloneMainUser: new FormControl(false),
-  //   functionalityName: new FormControl("", Validators.required),
-  //   readAccess: new FormControl(false),
-  //   writeAccess: new FormControl(false),
-  //   fullAccess: new FormControl(false),
-  //   requirementFirstName: new FormControl("", Validators.required),
-  //   classOfServices: new FormControl("", Validators.required),
-  //   shoppingSources: new FormControl("", Validators.required)
-  // });
-
+  selectedCountry: string;
+  selectedBusinessType: string;
+  selectedCompanyType: string;
   public countries: any[] = [
     "India",
     "Indonesia",
@@ -74,7 +56,7 @@ export class AdminComponent implements OnInit {
     "Jordan"
   ];
   public companyType: any[] = ["Airline", "OTA", "TA", "META"];
-  public natureOfBusiness: any[] = [
+  public businessTypes: any[] = [
     "Airlines",
     "Online",
     "Offline",
@@ -82,29 +64,33 @@ export class AdminComponent implements OnInit {
   ];
   public functionalities: any[] = [
     {
-      functionalityName: "Shop Price",
-      isToggle: true,
-      readAccess: true,
+      funcId: "SP",
+      name: "Shop Price",
+      selected: false,
+      readAccess: false,
       writeAccess: false,
       fullAccess: false
     },
     {
-      functionalityName: "Price Trend",
-      isToggle: false,
+      funcId: "PT",
+      name: "Price Trend",
+      selected: false,
       readAccess: false,
-      writeAccess: true,
+      writeAccess: false,
       fullAccess: false
     },
     {
-      functionalityName: "Shop Status",
-      isToggle: false,
+      funcId: "SS",
+      name: "Shop Status",
+      selected: false,
       readAccess: false,
-      writeAccess: true,
+      writeAccess: false,
       fullAccess: false
     }
   ];
+
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
     private requestDemoService: RequestDemoService,
@@ -131,35 +117,42 @@ export class AdminComponent implements OnInit {
     return this.adminForm.controls;
   }
 
+  adminSection = this.fb.group({
+    companyDetails: this.fb.group({
+      companyName: [""],
+      companyAddress: [""],
+      country: [""],
+      companyType: [""],
+      businessType: [""],
+      companyPhoneNumber: [""],
+      emailId: [""]
+    }),
+    contactDetails: this.fb.group({
+      firstName: [""],
+      middleName: [""],
+      lastName: [""],
+      customerContactNumber: [""],
+      customerEmailID: [""],
+      designationRole: [""],
+      cloneMainUser: [""]
+    }),
+    accessDetails: this.fb.group({
+      enableFeature_0: new FormControl(false),
+      readAccess_0: new FormControl(false),
+      writeAccess_0: new FormControl(false),
+      fullAccess_0: new FormControl(false),
+      enableFeature_1: new FormControl(false),
+      readAccess_1: new FormControl(false),
+      writeAccess_1: new FormControl(false),
+      fullAccess_1: new FormControl(false),
+      enableFeature_2: new FormControl(false),
+      readAccess_2: new FormControl(false),
+      writeAccess_2: new FormControl(false),
+      fullAccess_2: new FormControl(false)
+    })
+  });
+
   ngOnInit(): void {
-    this.adminForm = this.formBuilder.group({
-      companyName: ["", Validators.required],
-      companyAddress: ["", Validators.required],
-      country: new FormControl(false),
-      companyType: new FormControl("", Validators.required),
-      businessType: new FormControl("", Validators.required),
-      companyPhoneNumber: new FormControl("", Validators.required),
-      emailId: new FormControl("", Validators.required),
-      firstName: new FormControl("", Validators.required),
-      middleName: new FormControl("", Validators.required),
-      lastName: new FormControl("", Validators.required),
-      customerContactNumber: new FormControl("", Validators.required),
-      customerEmailID: new FormControl("", Validators.required),
-      designationRole: new FormControl("", Validators.required),
-      cloneMainUser: new FormControl(false),
-      functionalityName: new FormControl("", Validators.required),
-      isToggle: new FormControl(false),
-      readAccess: new FormControl(false),
-      writeAccess: new FormControl(false),
-      fullAccess: new FormControl(false),
-      rsfirstName: new FormControl("", Validators.required),
-      selectedShoppingSources: new FormControl("", Validators.required),
-      selectedClassOfServices: new FormControl("", Validators.required)
-    });
-
-    //this.countries = this.adminService.getCountries();
-    //this.functionalities = this.adminService.getFunctionalities();
-
     this.ddlClassOfServices = [
       { id: 1, itemName: "First" },
       { id: 2, itemName: "Business" },
@@ -190,54 +183,129 @@ export class AdminComponent implements OnInit {
   }
 
   onFormSubmit() {
-    this.isValidFormSubmitted = false;
-    if (this.adminForm.invalid) {
-      return;
-    }
-    this.isValidFormSubmitted = true;
-    console.log(this.adminForm.valid);
+    console.log(this.adminSection.value);
+
+    // this.isValidFormSubmitted = false;
+    // if (this.adminSection.invalid) {
+    //   return;
+    // }
+    // this.isValidFormSubmitted = true;
 
     //company Information
-    this.companyInfo.companyName = this.adminForm.get("companyName").value;
-    this.companyInfo.companyAddress = this.adminForm.get(
-      "companyAddress"
-    ).value;
-    this.companyInfo.countries = this.adminForm.get("country").value;
-    this.companyInfo.companyType = this.adminForm.get("companyType").value;
-    this.companyInfo.natureOfBusiness = this.adminForm.get(
-      "businessType"
-    ).value;
-    this.companyInfo.phone = this.adminForm.get("companyContactNumber").value;
-    this.companyInfo.emailID = this.adminForm.get("emailId").value;
+
+    this.user.companyInfo.companyName = this.adminSection.value.companyDetails.companyName;
+    this.user.companyInfo.companyAddress = this.adminSection.value.companyDetails.companyAddress;
+    this.user.companyInfo.countries = this.adminSection.value.companyDetails.country;
+    this.user.companyInfo.companyType = this.adminSection.value.companyDetails.companyType;
+    this.user.companyInfo.businessType = this.adminSection.value.companyDetails.businessType;
+    this.user.companyInfo.phone = this.adminSection.value.companyDetails.companyContactNumber;
+    this.user.companyInfo.emailID = this.adminSection.value.companyDetails.emailId;
 
     // contact Information
 
-    this.contactInfo.firstName = this.adminForm.get("firstName").value;
-    this.contactInfo.middleName = this.adminForm.get("firstName").value;
-    this.contactInfo.lastName = this.adminForm.get("firstName").value;
-    this.contactInfo.contactNumber = this.adminForm.get(
-      "customerContactNumber"
-    ).value;
-    this.contactInfo.emailID = this.adminForm.get("customerEmailID").value;
-    this.contactInfo.designationRole = this.adminForm.get(
-      "designationRole"
-    ).value;
+    this.user.contactInfo.firstName = this.adminSection.value.contactDetails.firstName;
+    this.user.contactInfo.middleName = this.adminSection.value.contactDetails.middleName;
+    this.user.contactInfo.lastName = this.adminSection.value.contactDetails.lastName;
+    this.user.contactInfo.contactNumber = this.adminSection.value.contactDetails.customerContactNumber;
+    this.user.contactInfo.emailID = this.adminSection.value.contactDetails.customerEmailID;
+    this.user.contactInfo.designationRole = this.adminSection.value.contactDetails.designationRole;
 
-    this.userInfo.cloneMainUser = this.adminForm.get("cloneMainUser").value;
+    this.user.userAccess.cloneMainUser = this.adminSection.value.contactDetails.cloneMainUser;
 
-    // for (let i = 0; i < user.technologies.length; i++) {
-    //   console.log("Technology Id: " + user.technologies[i].techId);
-    //   console.log("Technology Name: " + user.technologies[i].techName);
-    // }
+    let fun0: Functionality = new Functionality();
+    fun0.readAccess = this.adminSection.value.accessDetails.readAccess_0;
+    fun0.writeAccess = this.adminSection.value.accessDetails.writeAccess_0;
+    fun0.fullAccess = this.adminSection.value.accessDetails.fullAccess_0;
+    fun0.isToggle = this.adminSection.value.accessDetails.enableFeature_0;
+    this.user.userAccess.functionalities[0] = fun0;
 
-    //this.userInfo.functionalities =
+    let fun1: Functionality = new Functionality();
+    fun1.readAccess = this.adminSection.value.accessDetails.readAccess_1;
+    fun1.writeAccess = this.adminSection.value.accessDetails.writeAccess_1;
+    fun1.fullAccess = this.adminSection.value.accessDetails.fullAccess_1;
+    fun1.isToggle = this.adminSection.value.accessDetails.enableFeature_1;
+    this.user.userAccess.functionalities[1] = fun1;
 
-    this.adminService.createUser(this.user);
+    let fun2: Functionality = new Functionality();
+    fun2.readAccess = this.adminSection.value.accessDetails.readAccess_2;
+    fun2.writeAccess = this.adminSection.value.accessDetails.writeAccess_2;
+    fun2.fullAccess = this.adminSection.value.accessDetails.fullAccess_2;
+    fun2.isToggle = this.adminSection.value.accessDetails.enableFeature_2;
+    this.user.userAccess.functionalities[2] = fun2;
+
+    console.log(this.user);
+    //this.adminService.createUser(this.user);
+
     this.reset();
   }
+
+  isToggle = new FormControl();
+
+  selectedFunctionalities: any = [];
+
+  onChange(event, index, item) {
+    if (event.checked) {
+      if (event.source.id.indexOf("read") > -1) {
+        item.readAccess = event.checked;
+      }
+      if (event.source.id.indexOf("write") > -1) {
+        item.writeAccess = event.checked;
+      }
+      if (event.source.id.indexOf("full") > -1) {
+        item.fullAccess = event.checked;
+        if (item.fullAccess) {
+          item.readAccess = event.checked;
+          item.writeAccess = event.checked;
+        }
+      }
+      // if (event.source.id.indexOf("toggle") > -1) {
+      //   item.fullAccess = event.checked;
+      //   item.readAccess = event.checked;
+      //   item.writeAccess = event.checked;
+      // }
+      if (item.readAccess && item.writeAccess) {
+        item.fullAccess = event.checked;
+      }
+      this.selectedFunctionalities.push(item);
+    } else {
+      if (event.source.id.indexOf("read") > -1) {
+        item.readAccess = event.checked;
+      }
+      if (event.source.id.indexOf("write") > -1) {
+        item.writeAccess = event.checked;
+      }
+      if (event.source.id.indexOf("full") > -1) {
+        item.fullAccess = event.checked;
+        if (!item.fullAccess) {
+          item.readAccess = event.checked;
+          item.writeAccess = event.checked;
+        }
+      }
+      // if (event.source.id.indexOf("toggle") > -1) {
+      //   item.fullAccess = event.checked;
+      //   item.readAccess = event.checked;
+      //   item.writeAccess = event.checked;
+      // }
+      if (!item.readAccess || !item.writeAccess) {
+        item.fullAccess = event.checked;
+      }
+
+      let index = this.selectedFunctionalities.indexOf(item);
+      if (index > -1) {
+        this.selectedFunctionalities.splice(index, 1);
+      }
+    }
+    console.log(JSON.stringify(this.selectedFunctionalities));
+  }
   reset() {
-    this.adminForm.reset({
-      cloneMainUser: false
-    });
+    this.adminSection.reset();
+    this;
+  }
+  onMatChange(ob: MatSlideToggleChange) {
+    debugger;
+    console.log(ob.checked);
+    let matSlideToggle: MatSlideToggle = ob.source;
+    console.log(matSlideToggle.color);
+    console.log(matSlideToggle.required);
   }
 }

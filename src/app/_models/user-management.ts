@@ -3,7 +3,7 @@ export class CompanyInformation {
   companyAddress: string;
   countries: string;
   companyType: string;
-  natureOfBusiness: string;
+  businessType: string;
   phone: string;
   emailID: string;
 
@@ -12,7 +12,7 @@ export class CompanyInformation {
     this.companyAddress = "";
     this.countries = "";
     this.companyType = "";
-    this.natureOfBusiness = "";
+    this.businessType = "";
     this.phone = "";
     this.emailID = "";
   }
@@ -39,16 +39,16 @@ export class ContactInformation {
 }
 
 export class Functionality {
-  funcId: number;
-  functionalityName: string;
+  funcId: string;
+  name: string;
   isToggle: boolean;
   readAccess: boolean;
   writeAccess: boolean;
   fullAccess: boolean;
 
   constructor() {
-    this.funcId = 0;
-    this.functionalityName = "";
+    this.funcId = "";
+    this.name = "";
     this.isToggle = false;
     this.readAccess = false;
     this.writeAccess = false;
@@ -64,41 +64,27 @@ export class UserAccess {
   }
 }
 
-export class RequirementSetup {
-  firstName: string;
-  classOfService: ClassOfService[];
-  shoppingSources: ShoppingSources[];
-  constructor() {
-    this.firstName = "";
-    this.classOfService = [];
-    this.shoppingSources = [];
-  }
-}
-
-export class ClassOfService {
-  csId: number;
-  csName: string;
-}
-export class ShoppingSources {
-  ssId: number;
-  ssName: string;
-}
-
-export class Country {
-  countryCode: string;
-  countryName: string;
-}
+// export class RequirementSetup {
+//   firstName: string;
+//   classOfService: ClassOfService[];
+//   shoppingSources: ShoppingSources[];
+//   constructor() {
+//     this.firstName = "";
+//     this.classOfService = [];
+//     this.shoppingSources = [];
+//   }
+// }
 
 export class UserManagement {
-  companyInformation: CompanyInformation;
-  contactInformation: ContactInformation;
+  companyInfo: CompanyInformation;
+  contactInfo: ContactInformation;
   userAccess: UserAccess;
-  requirementSetup: RequirementSetup;
+  // requirementSetup: RequirementSetup;
 
   constructor() {
-    this.companyInformation = new CompanyInformation();
-    this.contactInformation = new ContactInformation();
+    this.companyInfo = new CompanyInformation();
+    this.contactInfo = new ContactInformation();
     this.userAccess = new UserAccess();
-    this.requirementSetup = new RequirementSetup();
+    //this.requirementSetup = new RequirementSetup();
   }
 }
