@@ -4,7 +4,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { apiRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { JwtInterceptor, ErrorInterceptor } from "../../src/app/_helpers";
 import { AdminComponent } from "./controllers/admin/admin.component";
 import { UserRegistrationComponent } from "./controllers/user-registration";
 import { UserLoginComponent } from "./controllers/user-login";
