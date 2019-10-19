@@ -119,21 +119,21 @@ export class AdminComponent implements OnInit {
 
   adminSection = this.fb.group({
     companyDetails: this.fb.group({
-      companyName: [""],
-      companyAddress: [""],
-      country: [""],
-      companyType: [""],
-      businessType: [""],
-      companyPhoneNumber: [""],
-      emailId: [""]
+      companyName: ["", Validators.required],
+      companyAddress: ["", Validators.required],
+      country: ["", Validators.required],
+      companyType: ["", Validators.required],
+      businessType: ["", Validators.required],
+      companyPhoneNumber: ["", Validators.required],
+      emailId: ["", Validators.email]
     }),
     contactDetails: this.fb.group({
-      firstName: [""],
-      middleName: [""],
-      lastName: [""],
-      customerContactNumber: [""],
-      customerEmailID: [""],
-      designationRole: [""],
+      firstName: ["", Validators.required],
+      middleName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      customerContactNumber: ["", Validators.required],
+      customerEmailID: ["", Validators.email],
+      designationRole: ["", Validators.required],
       cloneMainUser: [""]
     }),
     accessDetails: this.fb.group({
@@ -281,11 +281,11 @@ export class AdminComponent implements OnInit {
           item.writeAccess = event.checked;
         }
       }
-      // if (event.source.id.indexOf("toggle") > -1) {
-      //   item.fullAccess = event.checked;
-      //   item.readAccess = event.checked;
-      //   item.writeAccess = event.checked;
-      // }
+      if (event.source.id.indexOf("toggle_0") > -1) {
+        item.fullAccess_0 = event.checked;
+        item.readAccess_0 = event.checked;
+        item.writeAccess_0 = event.checked;
+      }
       if (!item.readAccess || !item.writeAccess) {
         item.fullAccess = event.checked;
       }

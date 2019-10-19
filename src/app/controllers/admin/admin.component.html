@@ -218,7 +218,7 @@
                       id="{{ 'toggle_' + i }}"
                       class="tp-margin"
                       formControlName="{{ 'enableFeature_' + i }}"
-                      [checked]="item.selected"
+                      [(ngModel)]="item.selected"
                     ></mat-slide-toggle>
                   </div>
                   <div class="col-sm-1">
@@ -227,6 +227,7 @@
                       [checked]="item.readAccess"
                       formControlName="{{ 'readAccess_' + i }}"
                       (change)="onChange($event, i, item)"
+                      [disabled]="!item.selected"
                     ></mat-checkbox>
                     <mat-label>Read</mat-label>
                   </div>
@@ -236,6 +237,7 @@
                       [checked]="item.writeAccess"
                       formControlName="{{ 'writeAccess_' + i }}"
                       (change)="onChange($event, i, item)"
+                      [disabled]="!item.selected"
                     ></mat-checkbox>
                     <mat-label>Write</mat-label>
                   </div>
@@ -245,6 +247,7 @@
                       [checked]="item.fullAccess"
                       formControlName="{{ 'fullAccess_' + i }}"
                       (change)="onChange($event, i, item)"
+                      [disabled]="!item.selected"
                     ></mat-checkbox>
                     <mat-label>Full Access</mat-label>
                   </div>
