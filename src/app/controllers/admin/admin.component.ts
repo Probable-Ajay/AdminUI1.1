@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   UserManagement,
-  CompanyInformation,
-  ContactInformation,
-  UserAccess,
   Functionality
 } from "../../_models";
 import {
@@ -14,19 +11,17 @@ import {
   FormArray
 } from "@angular/forms";
 import { first } from "rxjs/operators";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import {
   RequestDemoService,
   AuthenticationService,
   AlertService,
   AdminService
 } from "../../_services";
-import { User } from "../../_models";
 import {
   MatSlideToggleChange,
   MatSlideToggle
 } from "@angular/material/slide-toggle";
-import { MatCheckbox, MatCheckboxChange } from "@angular/material/checkbox";
 import { debug } from "util";
 
 @Component({
@@ -37,10 +32,6 @@ import { debug } from "util";
 export class AdminComponent implements OnInit {
   user: UserManagement = new UserManagement();
   adminForm: FormGroup;
-  // companyInfo: CompanyInformation = new CompanyInformation();
-  // contactInfo: ContactInformation = new ContactInformation();
-  // userInfo: UserAccess = new UserAccess();
-
   loading = false;
   isValidFormSubmitted = false;
   selectedCountry: string;
@@ -92,11 +83,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService,
-    private requestDemoService: RequestDemoService,
-    private alertService: AlertService,
-    private adminService: AdminService
-  ) {
+    private authenticationService: AuthenticationService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(["/dashboard/"]);

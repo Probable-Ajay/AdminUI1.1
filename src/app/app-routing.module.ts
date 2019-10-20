@@ -9,6 +9,8 @@ import { ShoppingStatsComponent } from "./controllers/shopping-stats";
 import { PriceTrendsComponent } from "./controllers/price-trends";
 import { MockingGroundComponent } from "./controllers/mocking-ground";
 import { RequestDemoComponent } from "./controllers/request-demo";
+import { SubUserComponent } from './controllers/admin/sub-user/sub-user.component'
+import { CreateSubUserComponent } from './controllers/admin/create-sub-user/create-sub-user.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,8 @@ const routes: Routes = [
       { path: "shopStats", component: ShoppingStatsComponent },
       { path: "priceTrends", component: PriceTrendsComponent },
       { path: "admin", component: AdminComponent },
+      { path: "manageusers", component: SubUserComponent },
+      { path: "createsubuser", component: CreateSubUserComponent },
       { path: "mock", component: MockingGroundComponent }
     ]
   }

@@ -61,6 +61,8 @@ import { MatTreeModule } from "@angular/material/tree";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { RequestDemoComponent } from "./controllers/request-demo";
 import { AlertComponent } from "./controllers/alert/alert.component";
+import { SubUserComponent } from './controllers/admin/sub-user/sub-user.component';
+import { CreateSubUserComponent } from './controllers/admin/create-sub-user/create-sub-user.component';
 
 // Protected Routes for Release...
 // const appRoutes: Routes = [
@@ -115,7 +117,9 @@ import { AlertComponent } from "./controllers/alert/alert.component";
     PriceTrendsComponent,
     MockingGroundComponent,
     RequestDemoComponent,
-    AlertComponent
+    AlertComponent,
+    SubUserComponent,
+    CreateSubUserComponent
   ],
   imports: [
     BrowserModule,
@@ -180,9 +184,7 @@ import { AlertComponent } from "./controllers/alert/alert.component";
     AngularMultiSelectModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

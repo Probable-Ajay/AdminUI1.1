@@ -1,0 +1,132 @@
+<div>
+    <section class="content-header">
+        <h1> <i class="fa fa-users" aria-hidden="true"></i> Create Sub User</h1>
+    </section>
+
+    <form>
+        <section class="content shopPrice">
+            <div class="row" style="margin-bottom: 0; overflow-y: auto;">
+                <div class="col-xs-12">
+                    <div class="nav-tabs-custom">
+                        <!-- <div class="row newcustomer">
+                            <h3>New Customer</h3>
+                        </div> -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="createSubUser">
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-sm-4">
+                                        <mat-form-field>
+                                            <input matInput placeholder="First Name" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <mat-form-field>
+                                            <input matInput placeholder="Middle Address" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <mat-form-field>
+                                            <input matInput placeholder="Last Address" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-sm-4">
+                                        <mat-form-field>
+                                            <input matInput placeholder="Login Email" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <mat-form-field>
+                                            <input type="password" matInput placeholder="Password" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <mat-form-field>
+                                            <input type="password" matInput placeholder="Confirm Password" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-sm-4">
+                                        <mat-form-field>
+                                            <mat-label>Uer Role</mat-label>
+                                            <mat-select [(value)]="selectedCountry">
+                                                <mat-option *ngFor="let role of userRoles" [value]="role">
+                                                    {{ role }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- <h4><b>Functionality Access</b></h4> -->
+                            <div class="tab-pane active" id="userAccessInfo">
+                                <div class="row" style="margin-top: 20px">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Functionality Access</th>
+                                                <th>Read</th>
+                                                <th>Write</th>
+                                                <th>Full</th>
+                                                <th>Report View</th>
+                                                <th>Authorized OND</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of functionalities; let i = index">
+                                                <td>
+                                                    <mat-label style="font-weight: bold">{{item.name}}</mat-label>
+                                                </td>
+                                                <td>
+                                                    <mat-checkbox id="{{ 'read_' + i }}" [checked]="item.readAccess">
+                                                    </mat-checkbox>
+                                                </td>
+                                                <td>
+                                                    <mat-checkbox id="{{ 'write_' + i }}" [checked]="item.writeAccess">
+                                                    </mat-checkbox>
+                                                </td>
+                                                <td>
+                                                    <mat-checkbox id="{{ 'full_' + i }}" [checked]="item.fullAccess">
+                                                    </mat-checkbox>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>
+                                                    <!-- <textarea class="form-control" rows="1" id="ONDs"></textarea> -->
+                                                    <mat-form-field>
+                                                        <input matInput placeholder="ONDs" />
+                                                    </mat-form-field>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-sm-2">
+                                        <button mat-button class="btn addUser BtnCss">
+                                            Save
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button mat-button class="btn addUser BtnCss">
+                                            Create User
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button mat-button class="btn addUser BtnCss">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>

@@ -50,9 +50,9 @@ export class RequestDemoComponent implements OnInit {
 
   ngOnInit() {
     this.requestDemoForm = this.formBuilder.group({
-      companyName: [""],
+      companyName: ["", Validators.required],
       name: ["", [Validators.required, Validators.maxLength(60)]],
-      email: ["", Validators.required],
+      email: ["", Validators.email],
       contactNo: ["", [Validators.required, Validators.minLength(10)]],
       location: ["", Validators.required],
       notes: ""

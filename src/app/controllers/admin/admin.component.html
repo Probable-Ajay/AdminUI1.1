@@ -2,7 +2,7 @@
 <div>
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>PriceTalk Customer Management</h1>
+    <h1> <i class="fa fa-user" aria-hidden="true"></i> PriceTalk Customer Management</h1>
   </section>
 
   <!-- Main content -->
@@ -17,41 +17,23 @@
 
             <div class="tab-content">
               <h4>Company Information</h4>
-              <div
-                class="tab-pane active"
-                id="companyInfo"
-                formGroupName="companyDetails"
-              >
+              <div class="tab-pane active" id="companyInfo" formGroupName="companyDetails">
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="Company Name"
-                        formControlName="companyName"
-                      />
+                      <input matInput placeholder="Company Name" formControlName="companyName" />
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="Company Address"
-                        formControlName="companyAddress"
-                      />
+                      <input matInput placeholder="Company Address" formControlName="companyAddress" />
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
                       <mat-label>Country</mat-label>
-                      <mat-select
-                        [(value)]="selectedCountry"
-                        formControlName="country"
-                      >
-                        <mat-option
-                          *ngFor="let country of countries"
-                          [value]="country"
-                        >
+                      <mat-select [(value)]="selectedCountry" formControlName="country">
+                        <mat-option *ngFor="let country of countries" [value]="country">
                           {{ country }}
                         </mat-option>
                       </mat-select>
@@ -62,15 +44,9 @@
                   <div class="col-sm-4">
                     <mat-form-field>
                       <mat-label>Company Type</mat-label>
-                      <mat-select
-                        placeholder="Company Type"
-                        [(value)]="selectedCompanyType"
-                        formControlName="companyType"
-                      >
-                        <mat-option
-                          *ngFor="let ctype of companyType"
-                          [value]="ctype"
-                        >
+                      <mat-select placeholder="Company Type" [(value)]="selectedCompanyType"
+                        formControlName="companyType">
+                        <mat-option *ngFor="let ctype of companyType" [value]="ctype">
                           {{ ctype }}
                         </mat-option>
                       </mat-select>
@@ -79,15 +55,9 @@
                   <div class="col-sm-4">
                     <mat-form-field>
                       <mat-label>Business Type</mat-label>
-                      <mat-select
-                        placeholder="Business Type"
-                        [(value)]="selectedBusinessType"
-                        formControlName="businessType"
-                      >
-                        <mat-option
-                          *ngFor="let businessType of businessTypes"
-                          [value]="businessType"
-                        >
+                      <mat-select placeholder="Business Type" [(value)]="selectedBusinessType"
+                        formControlName="businessType">
+                        <mat-option *ngFor="let businessType of businessTypes" [value]="businessType">
                           {{ businessType }}
                         </mat-option>
                       </mat-select>
@@ -95,23 +65,14 @@
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="Phone"
-                        formControlName="companyPhoneNumber"
-                      />
+                      <input matInput placeholder="Phone" formControlName="companyPhoneNumber" />
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        type="email"
-                        matInput
-                        placeholder="Email ID"
-                        formControlName="emailId"
-                      />
+                      <input type="email" matInput placeholder="Email ID" formControlName="emailId" />
                     </mat-form-field>
                   </div>
                 </div>
@@ -121,37 +82,21 @@
 
               <!--Contact Information -->
               <h4>Contact Information</h4>
-              <div
-                class="tab-pane active"
-                id="customerInfo"
-                formGroupName="contactDetails"
-              >
+              <div class="tab-pane active" id="customerInfo" formGroupName="contactDetails">
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="First Name"
-                        formControlName="firstName"
-                      />
+                      <input matInput placeholder="First Name" formControlName="firstName" />
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="Middle Name"
-                        formControlName="middleName"
-                      />
+                      <input matInput placeholder="Middle Name" formControlName="middleName" />
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="Last Name"
-                        formControlName="lastName"
-                      />
+                      <input matInput placeholder="Last Name" formControlName="lastName" />
                     </mat-form-field>
                   </div>
                 </div>
@@ -159,98 +104,57 @@
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="Contact Number"
-                        formControlName="customerContactNumber"
-                      />
+                      <input matInput placeholder="Contact Number" formControlName="customerContactNumber" />
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        type="email"
-                        matInput
-                        placeholder="Email ID"
-                        formControlName="customerEmailID"
-                      />
+                      <input type="email" matInput placeholder="Email ID" formControlName="customerEmailID" />
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input
-                        matInput
-                        placeholder="Designation/Role"
-                        formControlName="designationRole"
-                      />
+                      <input matInput placeholder="Designation/Role" formControlName="designationRole" />
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-8">
-                    <mat-checkbox
-                      formControlName="cloneMainUser"
-                    ></mat-checkbox>
-                    <label for="cloneMainUser" style="font-weight: normal"
-                      >Clone Main User Attributes</label
-                    >
+                    <mat-checkbox formControlName="cloneMainUser"></mat-checkbox>
+                    <label for="cloneMainUser" style="font-weight: normal">Clone Main User Attributes</label>
                   </div>
                 </div>
               </div>
               <!--Contact Information end -->
 
               <h4><b>Access To</b></h4>
-              <div
-                class="tab-pane active"
-                id="userAccessInfo"
-                formGroupName="accessDetails"
-              >
-                <div
-                  class="row"
-                  style="margin-top: 20px"
-                  *ngFor="let item of functionalities; let i = index"
-                >
+              <div class="tab-pane active" id="userAccessInfo" formGroupName="accessDetails">
+                <div class="row" style="margin-top: 20px" *ngFor="let item of functionalities; let i = index">
                   <div class="col-sm-2">
                     <mat-label style="font-weight: bold">{{
                       item.name
                     }}</mat-label>
                   </div>
                   <div class="col-sm-1">
-                    <mat-slide-toggle
-                      id="{{ 'toggle_' + i }}"
-                      class="tp-margin"
-                      formControlName="{{ 'enableFeature_' + i }}"
-                      [(ngModel)]="item.selected"
-                    ></mat-slide-toggle>
+                    <mat-slide-toggle id="{{ 'toggle_' + i }}" class="tp-margin"
+                      formControlName="{{ 'enableFeature_' + i }}" [(ngModel)]="item.selected"></mat-slide-toggle>
                   </div>
                   <div class="col-sm-1">
-                    <mat-checkbox
-                      id="{{ 'read_' + i }}"
-                      [checked]="item.readAccess"
-                      formControlName="{{ 'readAccess_' + i }}"
-                      (change)="onChange($event, i, item)"
-                      [disabled]="!item.selected"
-                    ></mat-checkbox>
+                    <mat-checkbox id="{{ 'read_' + i }}" [checked]="item.readAccess"
+                      formControlName="{{ 'readAccess_' + i }}" (change)="onChange($event, i, item)"
+                      [disabled]="!item.selected"></mat-checkbox>
                     <mat-label>Read</mat-label>
                   </div>
                   <div class="col-sm-1">
-                    <mat-checkbox
-                      id="{{ 'write_' + i }}"
-                      [checked]="item.writeAccess"
-                      formControlName="{{ 'writeAccess_' + i }}"
-                      (change)="onChange($event, i, item)"
-                      [disabled]="!item.selected"
-                    ></mat-checkbox>
+                    <mat-checkbox id="{{ 'write_' + i }}" [checked]="item.writeAccess"
+                      formControlName="{{ 'writeAccess_' + i }}" (change)="onChange($event, i, item)"
+                      [disabled]="!item.selected"></mat-checkbox>
                     <mat-label>Write</mat-label>
                   </div>
                   <div class="col-sm-2">
-                    <mat-checkbox
-                      id="{{ 'full_' + i }}"
-                      [checked]="item.fullAccess"
-                      formControlName="{{ 'fullAccess_' + i }}"
-                      (change)="onChange($event, i, item)"
-                      [disabled]="!item.selected"
-                    ></mat-checkbox>
+                    <mat-checkbox id="{{ 'full_' + i }}" [checked]="item.fullAccess"
+                      formControlName="{{ 'fullAccess_' + i }}" (change)="onChange($event, i, item)"
+                      [disabled]="!item.selected"></mat-checkbox>
                     <mat-label>Full Access</mat-label>
                   </div>
                 </div>
