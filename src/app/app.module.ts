@@ -63,7 +63,7 @@ import { RequestDemoComponent } from "./controllers/request-demo";
 import { AlertComponent } from "./controllers/alert/alert.component";
 import { SubUserComponent } from './controllers/admin/sub-user/sub-user.component';
 import { CreateSubUserComponent } from './controllers/admin/create-sub-user/create-sub-user.component';
-
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 // Protected Routes for Release...
 // const appRoutes: Routes = [
 //   { path: '', redirectTo: 'UserRegistrationComponent', data: { title: 'Encryption' }, pathMatch: 'full' },
@@ -181,7 +181,8 @@ import { CreateSubUserComponent } from './controllers/admin/create-sub-user/crea
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    AngularMultiSelectModule
+    AngularMultiSelectModule,
+    Ng4LoadingSpinnerModule
   ],
   providers: [
   ],

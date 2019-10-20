@@ -20,7 +20,7 @@ export class CreateSubUserComponent implements OnInit {
       selected: false,
       readAccess: false,
       writeAccess: false,
-      fullAccess: false
+      // fullAccess: false
     },
     {
       funcId: "PT",
@@ -28,7 +28,7 @@ export class CreateSubUserComponent implements OnInit {
       selected: false,
       readAccess: false,
       writeAccess: false,
-      fullAccess: false
+      // fullAccess: false
     },
     {
       funcId: "SS",
@@ -36,7 +36,7 @@ export class CreateSubUserComponent implements OnInit {
       selected: false,
       readAccess: false,
       writeAccess: false,
-      fullAccess: false
+      // fullAccess: false
     }
   ];
 

@@ -8,6 +8,7 @@ import {
   RequestDemoService
 } from "../../_services";
 import { User } from "../../_models";
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: "app-request-demo",
@@ -40,7 +41,8 @@ export class RequestDemoComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private requestDemoService: RequestDemoService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private spinnerService: Ng4LoadingSpinnerService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -64,27 +66,37 @@ export class RequestDemoComponent implements OnInit {
   }
 
   RequestDemo() {
-    debugger;
+
     this.submitted = true;
     // stop here if form is invalid
     if (this.requestDemoForm.invalid) {
       return;
     }
     this.loading = true;
+    this.spinnerService.show();
+
+
     this.requestDemoService
       .requestDemo(this.requestDemoForm.value)
       .pipe(first())
       .subscribe(
         data => {
+          //setTimeout(() => this.spinnerService.hide(), 300000)
+          this.spinnerService.hide();
           this.responseMessage =
             "We have received your demo request with reference no : " +
             data[0][0]["id"];
           //this.router.navigate(["/login"]);
+          this.reset();
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
         }
       );
+  }
+  reset() {
+    this.requestDemoForm.reset();
+    this;
   }
 }

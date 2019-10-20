@@ -23,7 +23,7 @@ import {
   MatSlideToggle
 } from "@angular/material/slide-toggle";
 import { debug } from "util";
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Component({
   selector: "app-admin",
   templateUrl: "./admin.component.html",
@@ -83,7 +83,9 @@ export class AdminComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private spinnerService: Ng4LoadingSpinnerService,
+    private adminService: AdminService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(["/dashboard/"]);
@@ -111,31 +113,31 @@ export class AdminComponent implements OnInit {
       country: ["", Validators.required],
       companyType: ["", Validators.required],
       businessType: ["", Validators.required],
-      companyPhoneNumber: ["", Validators.required],
+      companyContactNumber: ["", Validators.required],
       emailId: ["", Validators.email]
     }),
     contactDetails: this.fb.group({
       firstName: ["", Validators.required],
-      middleName: ["", Validators.required],
+      middleName: [""],
       lastName: ["", Validators.required],
       customerContactNumber: ["", Validators.required],
       customerEmailID: ["", Validators.email],
       designationRole: ["", Validators.required],
-      cloneMainUser: [""]
+      // cloneMainUser: [""]
     }),
     accessDetails: this.fb.group({
       enableFeature_0: new FormControl(false),
       readAccess_0: new FormControl(false),
       writeAccess_0: new FormControl(false),
-      fullAccess_0: new FormControl(false),
+      // fullAccess_0: new FormControl(false),
       enableFeature_1: new FormControl(false),
       readAccess_1: new FormControl(false),
       writeAccess_1: new FormControl(false),
-      fullAccess_1: new FormControl(false),
+      // fullAccess_1: new FormControl(false),
       enableFeature_2: new FormControl(false),
       readAccess_2: new FormControl(false),
       writeAccess_2: new FormControl(false),
-      fullAccess_2: new FormControl(false)
+      // fullAccess_2: new FormControl(false)
     })
   });
 
@@ -171,12 +173,15 @@ export class AdminComponent implements OnInit {
 
   onFormSubmit() {
     console.log(this.adminSection.value);
+    debugger;
 
-    // this.isValidFormSubmitted = false;
-    // if (this.adminSection.invalid) {
-    //   return;
-    // }
-    // this.isValidFormSubmitted = true;
+    this.isValidFormSubmitted = false;
+    if (this.adminSection.invalid) {
+      return;
+    }
+    this.isValidFormSubmitted = true;
+
+    this.spinnerService.show();
 
     //company Information
 
@@ -185,7 +190,7 @@ export class AdminComponent implements OnInit {
     this.user.companyInfo.countries = this.adminSection.value.companyDetails.country;
     this.user.companyInfo.companyType = this.adminSection.value.companyDetails.companyType;
     this.user.companyInfo.businessType = this.adminSection.value.companyDetails.businessType;
-    this.user.companyInfo.phone = this.adminSection.value.companyDetails.companyContactNumber;
+    this.user.companyInfo.companyContact = this.adminSection.value.companyDetails.companyContactNumber;
     this.user.companyInfo.emailID = this.adminSection.value.companyDetails.emailId;
 
     // contact Information
@@ -197,33 +202,46 @@ export class AdminComponent implements OnInit {
     this.user.contactInfo.emailID = this.adminSection.value.contactDetails.customerEmailID;
     this.user.contactInfo.designationRole = this.adminSection.value.contactDetails.designationRole;
 
-    this.user.userAccess.cloneMainUser = this.adminSection.value.contactDetails.cloneMainUser;
+    // this.user.userAccess.cloneMainUser = this.adminSection.value.contactDetails.cloneMainUser;
 
+    this.user.userAccess.isSubUser = true;
     let fun0: Functionality = new Functionality();
     fun0.readAccess = this.adminSection.value.accessDetails.readAccess_0;
     fun0.writeAccess = this.adminSection.value.accessDetails.writeAccess_0;
-    fun0.fullAccess = this.adminSection.value.accessDetails.fullAccess_0;
+    // fun0.fullAccess = this.adminSection.value.accessDetails.fullAccess_0;
     fun0.isToggle = this.adminSection.value.accessDetails.enableFeature_0;
     this.user.userAccess.functionalities[0] = fun0;
 
     let fun1: Functionality = new Functionality();
     fun1.readAccess = this.adminSection.value.accessDetails.readAccess_1;
     fun1.writeAccess = this.adminSection.value.accessDetails.writeAccess_1;
-    fun1.fullAccess = this.adminSection.value.accessDetails.fullAccess_1;
+    // fun1.fullAccess = this.adminSection.value.accessDetails.fullAccess_1;
     fun1.isToggle = this.adminSection.value.accessDetails.enableFeature_1;
     this.user.userAccess.functionalities[1] = fun1;
 
     let fun2: Functionality = new Functionality();
     fun2.readAccess = this.adminSection.value.accessDetails.readAccess_2;
     fun2.writeAccess = this.adminSection.value.accessDetails.writeAccess_2;
-    fun2.fullAccess = this.adminSection.value.accessDetails.fullAccess_2;
+    // fun2.fullAccess = this.adminSection.value.accessDetails.fullAccess_2;
     fun2.isToggle = this.adminSection.value.accessDetails.enableFeature_2;
     this.user.userAccess.functionalities[2] = fun2;
 
     console.log(this.user);
     //this.adminService.createUser(this.user);
 
-    this.reset();
+
+    this.adminService
+      .createUser(this.user)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.spinnerService.hide();
+          this.reset();
+        },
+        error => {
+          this.spinnerService.hide();
+        }
+      );
   }
 
   isToggle = new FormControl();

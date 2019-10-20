@@ -4,7 +4,7 @@ export class CompanyInformation {
   countries: string;
   companyType: string;
   businessType: string;
-  phone: string;
+  companyContact: string;
   emailID: string;
 
   constructor() {
@@ -13,7 +13,7 @@ export class CompanyInformation {
     this.countries = "";
     this.companyType = "";
     this.businessType = "";
-    this.phone = "";
+    this.companyContact = "";
     this.emailID = "";
   }
 }
@@ -44,7 +44,7 @@ export class Functionality {
   isToggle: boolean;
   readAccess: boolean;
   writeAccess: boolean;
-  fullAccess: boolean;
+  // fullAccess: boolean;
 
   constructor() {
     this.funcId = "";
@@ -52,12 +52,12 @@ export class Functionality {
     this.isToggle = false;
     this.readAccess = false;
     this.writeAccess = false;
-    this.fullAccess = false;
+    // this.fullAccess = false;
   }
 }
 
 export class UserAccess {
-  cloneMainUser: boolean;
+  // cloneMainUser: boolean;
   functionalities: Functionality[];
   constructor() {
     this.functionalities = [];

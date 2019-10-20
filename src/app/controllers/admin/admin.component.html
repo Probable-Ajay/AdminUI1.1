@@ -65,7 +65,7 @@
                   </div>
                   <div class="col-sm-4">
                     <mat-form-field>
-                      <input matInput placeholder="Phone" formControlName="companyPhoneNumber" />
+                      <input matInput placeholder="Phone" formControlName="companyContactNumber" />
                     </mat-form-field>
                   </div>
                 </div>
@@ -118,12 +118,12 @@
                     </mat-form-field>
                   </div>
                 </div>
-                <div class="row" style="margin-top: 20px">
+                <!-- <div class="row" style="margin-top: 20px">
                   <div class="col-sm-8">
                     <mat-checkbox formControlName="cloneMainUser"></mat-checkbox>
                     <label for="cloneMainUser" style="font-weight: normal">Clone Main User Attributes</label>
                   </div>
-                </div>
+                </div> -->
               </div>
               <!--Contact Information end -->
 
@@ -151,12 +151,12 @@
                       [disabled]="!item.selected"></mat-checkbox>
                     <mat-label>Write</mat-label>
                   </div>
-                  <div class="col-sm-2">
+                  <!-- <div class="col-sm-2" >
                     <mat-checkbox id="{{ 'full_' + i }}" [checked]="item.fullAccess"
                       formControlName="{{ 'fullAccess_' + i }}" (change)="onChange($event, i, item)"
                       [disabled]="!item.selected"></mat-checkbox>
                     <mat-label>Full Access</mat-label>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="row" style="margin-top: 20px">
