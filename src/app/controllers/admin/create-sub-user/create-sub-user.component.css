@@ -1,7 +1,14 @@
 .addUser {
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   background: #82b726;
   /* padding: 8px 45px; */
   border-radius: 0;
+}
+.mat-table{
+  width: 70% !important;
+}
+.mat-header-cell {
+    color: black !important;
+    font-size: 16px !important;
 }

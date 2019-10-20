@@ -63,45 +63,42 @@
                             </div>
                             <!-- <h4><b>Functionality Access</b></h4> -->
                             <div class="tab-pane active" id="userAccessInfo">
-                                <div class="row" style="margin-top: 20px">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Functionality Access</th>
-                                                <th>Read</th>
-                                                <th>Write</th>
-                                                <!-- <th>Full</th> -->
-                                                <th>Report View</th>
-                                                <th>Authorized OND</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let item of functionalities; let i = index">
-                                                <td>
-                                                    <mat-label style="font-weight: bold">{{item.name}}</mat-label>
-                                                </td>
-                                                <td>
-                                                    <mat-checkbox id="{{ 'read_' + i }}" [checked]="item.readAccess">
-                                                    </mat-checkbox>
-                                                </td>
-                                                <td>
-                                                    <mat-checkbox id="{{ 'write_' + i }}" [checked]="item.writeAccess">
-                                                    </mat-checkbox>
-                                                </td>
-                                                <!-- <td>
-                                                    <mat-checkbox id="{{ 'full_' + i }}" [checked]="item.fullAccess">
-                                                    </mat-checkbox>
-                                                </td> -->
-                                                <td>NA</td>
-                                                <td>
-                                                    <!-- <textarea class="form-control" rows="1" id="ONDs"></textarea> -->
-                                                    <mat-form-field>
-                                                        <input matInput placeholder="ONDs" />
-                                                    </mat-form-field>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                <div class="row" style="margin-top: 20px;">
+                                    <!-- <div class="col-sm-12"> -->
+                                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                        <ng-container matColumnDef="name">
+                                            <th mat-header-cell *matHeaderCellDef>Functionality Access</th>
+                                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="readAccess">
+                                            <th mat-header-cell *matHeaderCellDef> Read </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <mat-checkbox id="{{ 'read_' + i }}" [checked]="element.readAccess">
+                                                </mat-checkbox>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="writeAccess">
+                                            <th mat-header-cell *matHeaderCellDef> Write </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <mat-checkbox id="{{ 'write_' + i }}" [checked]="element.writeAccess">
+                                                </mat-checkbox>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="reportView">
+                                            <th mat-header-cell *matHeaderCellDef> Report View </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.reportView}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="authorizedONDs">
+                                            <th mat-header-cell *matHeaderCellDef> Authorized ONDs</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <input matInput placeholder="ONDs" />
+                                            </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                                     </table>
+                                    <!-- </div> -->
                                 </div>
                                 <div class="row" style="margin-top: 20px">
                                     <div class="col-sm-2">
