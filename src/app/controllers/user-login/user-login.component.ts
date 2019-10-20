@@ -37,7 +37,8 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ["", Validators.required],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
+      rememberMe: [""]
     });
 
     // get return url from route parameters or default to '/'
@@ -50,8 +51,6 @@ export class UserLoginComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
@@ -64,11 +63,10 @@ export class UserLoginComponent implements OnInit {
       .subscribe(
         data => {
           this.spinnerService.hide();
-          //this.router.navigate(["/dashboard/"]);
         },
         error => {
           this.alertService.error(error);
-          this.loading = false;
+          this.spinnerService.hide();
         }
       );
   }

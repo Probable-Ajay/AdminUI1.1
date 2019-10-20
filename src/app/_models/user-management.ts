@@ -58,8 +58,10 @@ export class Functionality {
 
 export class UserAccess {
   // cloneMainUser: boolean;
+  isSubUser: boolean;
   functionalities: Functionality[];
   constructor() {
+    this.isSubUser = false;
     this.functionalities = [];
   }
 }
