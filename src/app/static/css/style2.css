@@ -87,6 +87,10 @@ table thead tr th {
   padding-top: 30px !important;
 }
 
+.sidebar-menu li.header  {
+  padding: 30px 12px 10px 12px !important;
+}
+
 .navbar-custom-menu li a {
   color: #999999;
   font-weight: 600;

@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class DashboardRoutesComponent implements OnInit {
   options: FormGroup;
-  showIconsOnly: boolean = true;
+  showIconsOnly: boolean = false;
 
   constructor(private router: Router, fb: FormBuilder) {
     this.options = fb.group({

@@ -1,10 +1,9 @@
-.example-container {
+/* .example-container {
   position: absolute;
-  top: 60px;
   bottom: 0px;
   left: 0;
   right: 0;
-}
+} */
 
 .paddingRight{
   padding-right: 10px;
@@ -26,6 +25,7 @@
   background: #222d32;
   width: 300px;
   color: #b8c7ce;
+  top: 60px;
 }
 
 .example-header {
