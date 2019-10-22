@@ -1,8 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import {
-  UserManagement,
-  Functionality
-} from "../../_models";
+import { UserManagement, Functionality } from "../../_models";
 import {
   FormBuilder,
   FormGroup,
@@ -23,7 +20,7 @@ import {
   MatSlideToggle
 } from "@angular/material/slide-toggle";
 import { debug } from "util";
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 @Component({
   selector: "app-admin",
   templateUrl: "./admin.component.html",
@@ -85,7 +82,8 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private spinnerService: Ng4LoadingSpinnerService,
-    private adminService: AdminService) {
+    private adminService: AdminService
+  ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(["/dashboard/"]);
@@ -122,7 +120,7 @@ export class AdminComponent implements OnInit {
       lastName: ["", Validators.required],
       customerContactNumber: ["", Validators.required],
       customerEmailID: ["", Validators.email],
-      designationRole: ["", Validators.required],
+      designationRole: ["", Validators.required]
       // cloneMainUser: [""]
     }),
     accessDetails: this.fb.group({
@@ -136,7 +134,7 @@ export class AdminComponent implements OnInit {
       // fullAccess_1: new FormControl(false),
       enableFeature_2: new FormControl(false),
       readAccess_2: new FormControl(false),
-      writeAccess_2: new FormControl(false),
+      writeAccess_2: new FormControl(false)
       // fullAccess_2: new FormControl(false)
     })
   });
@@ -229,7 +227,6 @@ export class AdminComponent implements OnInit {
     console.log(this.user);
     //this.adminService.createUser(this.user);
 
-
     this.adminService
       .createUser(this.user)
       .pipe(first())
@@ -240,6 +237,7 @@ export class AdminComponent implements OnInit {
         },
         error => {
           this.spinnerService.hide();
+          this.reset();
         }
       );
   }
