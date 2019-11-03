@@ -170,8 +170,7 @@ export class AdminComponent implements OnInit {
   }
 
   onFormSubmit() {
-    console.log(this.adminSection.value);
-    debugger;
+    console.log(this.adminSection.value);   
 
     this.isValidFormSubmitted = false;
     if (this.adminSection.invalid) {
@@ -304,8 +303,7 @@ export class AdminComponent implements OnInit {
     this.adminSection.reset();
     this;
   }
-  onMatChange(ob: MatSlideToggleChange) {
-    debugger;
+  onMatChange(ob: MatSlideToggleChange) {   
     console.log(ob.checked);
     let matSlideToggle: MatSlideToggle = ob.source;
     console.log(matSlideToggle.color);

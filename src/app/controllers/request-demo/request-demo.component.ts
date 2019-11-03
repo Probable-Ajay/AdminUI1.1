@@ -84,7 +84,8 @@ export class RequestDemoComponent implements OnInit {
           this.spinnerService.hide();
           this.responseMessage =
             "We have received your demo request with reference no : " +
-            data[0][0]["id"];
+            data[0][0]["id"] +
+            " and our will get back to you shortly.";
           this.response = true;
           //this.router.navigate(["/login"]);
           this.reset();

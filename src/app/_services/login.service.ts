@@ -14,7 +14,6 @@ export class LoginService {
   }
 
   register(user: userRegistration) {
-    debugger;
     const apiUrl = AppSettings.API_ENDPOINT + "users/create";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.httpClient.post(apiUrl, user, { headers });

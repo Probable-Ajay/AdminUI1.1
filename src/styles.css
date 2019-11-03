@@ -153,23 +153,34 @@ element.style {
   background-color: #8cbe27 !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-
-.sticky-toolbar
-{
-  position: fixed; 
-  width: 100%; 
-  top: 0; 
-  height: 60px; 
-  background: #ffffff; 
-  border-bottom: .32px solid lightgrey;
+.sticky-toolbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 0.32px solid lightgrey;
   z-index: 999;
   margin-bottom: 60px;
 }
 
-.push
-{
+.push {
   margin-bottom: 60px;
+}
+
+.addUser {
+  color: #fff;
+  font-size: 14px;
+  background: #82b726;
+  /* padding: 8px 45px; */
+  border-radius: 4px !important;
 }

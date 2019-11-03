@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { AppSettings } from "../_configurations/AppSettings";
 import { UserManagement, Functionality } from "../_models";
+import { UserInformation, AccessDetails } from "../_models/sub-user";
 
 @Injectable({
   providedIn: "root"

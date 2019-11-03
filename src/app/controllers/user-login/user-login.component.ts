@@ -2,9 +2,15 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
-import { AlertService, AuthenticationService } from "../../_services";
+import {
+  AlertService,
+  AuthenticationService,
+  TokenService
+} from "../../_services";
 import { User } from "../../_models";
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
+
+import { AlertsService } from "angular-alert-module";
 
 @Component({
   selector: "app-user-login",
@@ -24,19 +30,22 @@ export class UserLoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService,
-    private spinnerService: Ng4LoadingSpinnerService
+    private authService: AuthenticationService,
+    private tokenService: TokenService,
+    private spinnerService: Ng4LoadingSpinnerService,
+    private alertService: AlertService
   ) {
     // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
+    if (this.tokenService.getToken()) {
+      debugger;
       this.router.navigate(["/dashboard/admin"]);
     }
+    //this.authService.populate();
   }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ["", Validators.required],
+      username: ["", Validators.email],
       password: ["", Validators.required]
       //,rememberMe: [""]
     });
@@ -51,23 +60,26 @@ export class UserLoginComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+    // reset alerts on submit
+    this.alertService.clear();
     if (this.loginForm.invalid) {
       return;
     }
 
     this.spinnerService.show();
 
-    this.authenticationService
+    this.authService
       .login(this.loginForm.value)
       .pipe(first())
-      .subscribe(
-        data => {
+      .subscribe(data => {
+        if (data.status == "success") {
           this.spinnerService.hide();
-        },
-        error => {
-          this.alertService.error(error);
+          this.router.navigateByUrl("/dashboard/admin");
+        } else {
+          //this.alertService.error(data.message);
+          this.alertService.error(data.message, true);
           this.spinnerService.hide();
         }
-      );
+      });
   }
 }

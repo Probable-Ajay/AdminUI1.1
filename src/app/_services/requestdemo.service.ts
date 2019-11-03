@@ -21,7 +21,6 @@ export class RequestDemoService {
   //   return this.currentUserSubject.value;
   // }
   requestDemo(params: RegisterDemo) {
-    debugger;
     const apiUrl = AppSettings.API_ENDPOINT + "demo/create";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 

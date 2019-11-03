@@ -1,12 +1,17 @@
-<h1>
-  File Upload
-</h1>
-<input type="file" (change)="onFileSelected($event)" />
-<button type="button" (click)="onUpload()">Upload</button>
+<form [formGroup]="myForm">
+  <div formArrayName="phones">
+    <div
+      *ngFor="let phone of phoneForms.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <input formControlName="area" />
+      <input formControlName="prefix" />
+      <input formControlName="line" />
 
-<form>
-  <mat-radio-group [(ngModel)]="radioOptions" name="radioButtons">
-    <mat-radio-button [value]="'TEST1'">TEST1</mat-radio-button>
-    <mat-radio-button [value]="'TEST2'">TEST2</mat-radio-button>
-  </mat-radio-group>
+      <button (click)="deletePhone(i)">Delete</button>
+    </div>
+  </div>
+
+  <button (click)="addPhone()">Add Phone Number</button>
+  <button type="submit" (click)="onsubmit()">Submit</button>
 </form>

@@ -6,40 +6,20 @@ import {
   RouterStateSnapshot
 } from "@angular/router";
 import { AuthenticationService } from "../_services";
+import { take } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
-export class AuthGuardService implements CanActivate {
+export class AuthGuard implements CanActivate {
   isAuthenticated: boolean;
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authService: AuthenticationService
   ) {}
 
-  // canActivate(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot
-  // ): boolean {
-  //   if (localStorage.getItem("usermanagementToken")) {
-  //     this.isAuthenticated = true;
-  //   } else {
-  //     this.router.navigate(["/login"]);
-  //   }
-  //   return this.isAuthenticated;
-  // }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = this.authenticationService.currentUserValue;
-    if (currentUser) {
-      // authorised so return true
-      this.router.navigate(["/dashboard/admin"], {
-        queryParams: { returnUrl: state.url }
-      });
-      return true;
-    }
-
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(["/login"], { queryParams: { returnUrl: state.url } });
-    return false;
+    debugger;
+    return this.authService.isAuthenticated.pipe(take(1));
   }
 }

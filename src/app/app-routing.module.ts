@@ -9,8 +9,9 @@ import { ShoppingStatsComponent } from "./controllers/shopping-stats";
 import { PriceTrendsComponent } from "./controllers/price-trends";
 import { MockingGroundComponent } from "./controllers/mocking-ground";
 import { RequestDemoComponent } from "./controllers/request-demo";
-import { SubUserComponent } from './controllers/admin/sub-user/sub-user.component'
-import { CreateSubUserComponent } from './controllers/admin/create-sub-user/create-sub-user.component';
+import { SubUserComponent } from "./controllers/admin/sub-user/sub-user.component";
+import { CreateSubUserComponent } from "./controllers/admin/create-sub-user/create-sub-user.component";
+import { AuthGuard } from "./_helpers";
 
 const routes: Routes = [
   {
@@ -19,7 +20,10 @@ const routes: Routes = [
     data: { title: "Encryption" },
     pathMatch: "full"
   },
-  { path: "registration", component: UserRegistrationComponent },
+  {
+    path: "registration",
+    component: UserRegistrationComponent
+  },
   { path: "requestDemo", component: RequestDemoComponent },
   { path: "login", component: UserLoginComponent },
   {
