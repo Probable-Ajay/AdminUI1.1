@@ -1,39 +1,32 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import {
-  FormBuilder,
-  Validators,
-  FormArray,
-  FormControl,
-  FormGroup
-} from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, Route } from "@angular/router";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import {
   User,
-  UserInformation,
-  OriginDestinations
-} from "src/app/_models/sub-user";
-import { AccessDetails } from "src/app/_models/sub-user";
-import { AdminService } from "src/app/_services";
+  OriginDestinations,
+  AccessDetails
+} from "src/app/_models/user-management";
+
+import { AdminService, AuthenticationService } from "src/app/_services";
 import { first } from "rxjs/operators";
 import { DataSource, SelectionModel } from "@angular/cdk/collections";
 import { Observable } from "rxjs";
 import { UserService } from "src/app/_services/user.service";
-import { Functionality } from "src/app/_models";
-import { debug } from "util";
 
 export interface FunctionalityDetails {
   funcId: string;
   name: string;
-  readAccess: false;
-  writeAccess: false;
+  isSubscribed: boolean;
+  readAccess: boolean;
+  writeAccess: boolean;
   reportView: string[];
 }
 const ACCESS_DATA: FunctionalityDetails[] = [
   {
     funcId: "SP",
     name: "Shop Price",
+    isSubscribed: false,
     readAccess: false,
     writeAccess: false,
     reportView: ["Own View", "No View"]
@@ -41,6 +34,7 @@ const ACCESS_DATA: FunctionalityDetails[] = [
   {
     funcId: "PT",
     name: "Price Trend",
+    isSubscribed: false,
     readAccess: false,
     writeAccess: false,
     reportView: ["Own View", "No View"]
@@ -48,6 +42,7 @@ const ACCESS_DATA: FunctionalityDetails[] = [
   {
     funcId: "SS",
     name: "Shop Status",
+    isSubscribed: false,
     readAccess: false,
     writeAccess: false,
     reportView: ["Own View", "No View"]
@@ -141,22 +136,24 @@ export class CreateSubUserComponent implements OnInit {
 
   constructor(
     private spinnerService: Ng4LoadingSpinnerService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     for (let i = 0; i < ACCESS_DATA.length; i++) {
       let access = new AccessDetails();
-      this.user.accessInfo[i] = access;
+      this.user.userAccess.accessInfo[i] = access;
     }
-    this.user.accessInfo[0].funcId = "SP";
-    this.user.accessInfo[0].name = "Shop Price";
+    this.user.userAccess.accessInfo[0].funcId = "SP";
+    this.user.userAccess.accessInfo[0].name = "Shop Price";
 
-    this.user.accessInfo[1].funcId = "PT";
-    this.user.accessInfo[1].name = "Price Trend";
+    this.user.userAccess.accessInfo[1].funcId = "PT";
+    this.user.userAccess.accessInfo[1].name = "Price Trend";
 
-    this.user.accessInfo[2].funcId = "SS";
-    this.user.accessInfo[2].name = "Shop Status";
+    this.user.userAccess.accessInfo[2].funcId = "SS";
+    this.user.userAccess.accessInfo[2].name = "Shop Status";
 
     for (let index = 0; index < OND_DATA.length; index++) {
       let ond = new OriginDestinations();
@@ -189,13 +186,14 @@ export class CreateSubUserComponent implements OnInit {
   onSubmit() {
     this.user.userInfo.parentEmailID = "anuj.varshney@outlook.com";
     this.user.originAndDestinations = this.selectedONDs;
+    debugger;
     console.log(JSON.stringify(this.user));
 
     this.isValidFormSubmitted = false;
 
     this.isValidFormSubmitted = true;
 
-    this.spinnerService.show();
+    //this.spinnerService.show();
 
     this.userService
       .createSubUser(this.user)
@@ -205,10 +203,12 @@ export class CreateSubUserComponent implements OnInit {
           this.spinnerService.hide();
           // reset logic
           //this.user = null;
+          this.router.navigate["/dashboard/manageusers"];
         },
         error => {
           this.spinnerService.hide();
           // reset logic
+          this.reset();
         }
       );
   }

@@ -53,8 +53,8 @@
                       <input
                         matInput
                         placeholder="Login Email"
-                        name="loginEmail"
-                        [(ngModel)]="user.userInfo.loginEmail"
+                        name="loginName"
+                        [(ngModel)]="user.userInfo.loginName"
                         required
                       />
                     </mat-form-field>
@@ -63,8 +63,8 @@
                     <mat-form-field>
                       <mat-label>Uer Role</mat-label>
                       <mat-select
-                        name="userRole"
-                        [(ngModel)]="user.userInfo.userRole"
+                        name="designationRole"
+                        [(ngModel)]="user.userInfo.designationRole"
                         required
                       >
                         <mat-option
@@ -102,7 +102,9 @@
                         <mat-cell *matCellDef="let element; let index = index">
                           <mat-checkbox
                             [checked]="element.readAccess"
-                            [(ngModel)]="user.accessInfo[index].readAccess"
+                            [(ngModel)]="
+                              user.userAccess.accessInfo[index].readAccess
+                            "
                             name="{{ 'readAccess_' + index }}"
                           >
                           </mat-checkbox>
@@ -115,7 +117,9 @@
                         <mat-cell *matCellDef="let element; let index = index">
                           <mat-checkbox
                             [checked]="element.writeAccess"
-                            [(ngModel)]="user.accessInfo[index].writeAccess"
+                            [(ngModel)]="
+                              user.userAccess.accessInfo[index].writeAccess
+                            "
                             name="{{ 'writeAccess_' + index }}"
                           >
                           </mat-checkbox>
@@ -128,7 +132,9 @@
                         <mat-cell *matCellDef="let element; let index = index">
                           <mat-form-field>
                             <mat-select
-                              [(ngModel)]="user.accessInfo[index].reportView"
+                              [(ngModel)]="
+                                user.userAccess.accessInfo[index].reportView
+                              "
                               name="{{ 'reportView_' + index }}"
                               required
                             >

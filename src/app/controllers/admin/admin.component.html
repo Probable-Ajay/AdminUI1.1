@@ -9,7 +9,7 @@
   </section>
 
   <!-- Main content -->
-  <form [formGroup]="adminSection">
+  <form #myForm="ngForm">
     <section class="content shopPrice">
       <div class="row" style="margin-bottom: 0; overflow-y: auto;">
         <div class="col-xs-12">
@@ -20,18 +20,16 @@
 
             <div class="tab-content">
               <h4>Company Information</h4>
-              <div
-                class="tab-pane active"
-                id="companyInfo"
-                formGroupName="companyDetails"
-              >
+              <div class="tab-pane active" id="companyInfo">
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
                       <input
                         matInput
                         placeholder="Company Name"
-                        formControlName="companyName"
+                        [(ngModel)]="user.companyInfo.companyName"
+                        name="companyName"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -40,7 +38,9 @@
                       <input
                         matInput
                         placeholder="Company Address"
-                        formControlName="companyAddress"
+                        [(ngModel)]="user.companyInfo.companyAddress"
+                        name="companyAddress"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -48,8 +48,9 @@
                     <mat-form-field>
                       <mat-label>Country</mat-label>
                       <mat-select
-                        [(value)]="selectedCountry"
-                        formControlName="country"
+                        name="country"
+                        [(ngModel)]="user.companyInfo.countries"
+                        required
                       >
                         <mat-option
                           *ngFor="let country of countries"
@@ -67,8 +68,9 @@
                       <mat-label>Company Type</mat-label>
                       <mat-select
                         placeholder="Company Type"
-                        [(value)]="selectedCompanyType"
-                        formControlName="companyType"
+                        name="companyType"
+                        [(ngModel)]="user.companyInfo.companyType"
+                        required
                       >
                         <mat-option
                           *ngFor="let ctype of companyType"
@@ -84,8 +86,9 @@
                       <mat-label>Business Type</mat-label>
                       <mat-select
                         placeholder="Business Type"
-                        [(value)]="selectedBusinessType"
-                        formControlName="businessType"
+                        name="businessType"
+                        [(ngModel)]="user.companyInfo.businessType"
+                        required
                       >
                         <mat-option
                           *ngFor="let businessType of businessTypes"
@@ -101,7 +104,9 @@
                       <input
                         matInput
                         placeholder="Phone"
-                        formControlName="companyContactNumber"
+                        name="companyContact"
+                        [(ngModel)]="user.companyInfo.companyContact"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -113,7 +118,9 @@
                         type="email"
                         matInput
                         placeholder="Email ID"
-                        formControlName="emailId"
+                        name="emailID"
+                        [(ngModel)]="user.companyInfo.emailID"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -124,18 +131,16 @@
 
               <!--Contact Information -->
               <h4>Contact Information</h4>
-              <div
-                class="tab-pane active"
-                id="customerInfo"
-                formGroupName="contactDetails"
-              >
+              <div class="tab-pane active" id="customerInfo">
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
                     <mat-form-field>
                       <input
                         matInput
                         placeholder="First Name"
-                        formControlName="firstName"
+                        name="firstName"
+                        [(ngModel)]="user.userInfo.firstName"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -144,7 +149,8 @@
                       <input
                         matInput
                         placeholder="Middle Name"
-                        formControlName="middleName"
+                        name="middleName"
+                        [(ngModel)]="user.userInfo.middleName"
                       />
                     </mat-form-field>
                   </div>
@@ -153,7 +159,9 @@
                       <input
                         matInput
                         placeholder="Last Name"
-                        formControlName="lastName"
+                        name="lastName"
+                        [(ngModel)]="user.userInfo.lastName"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -165,7 +173,9 @@
                       <input
                         matInput
                         placeholder="Contact Number"
-                        formControlName="customerContactNumber"
+                        name="contactNumber"
+                        [(ngModel)]="user.userInfo.contactNumber"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -175,7 +185,9 @@
                         type="email"
                         matInput
                         placeholder="Email ID"
-                        formControlName="customerEmailID"
+                        name="loginName"
+                        [(ngModel)]="user.userInfo.loginName"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -184,7 +196,9 @@
                       <input
                         matInput
                         placeholder="Designation/Role"
-                        formControlName="designationRole"
+                        name="designationRole"
+                        [(ngModel)]="user.userInfo.designationRole"
+                        required
                       />
                     </mat-form-field>
                   </div>
@@ -199,57 +213,149 @@
               <!--Contact Information end -->
 
               <h4><b>Access To</b></h4>
-              <div
-                class="tab-pane active"
-                id="userAccessInfo"
-                formGroupName="accessDetails"
-              >
-                <div
-                  class="row"
-                  style="margin-top: 20px"
-                  *ngFor="let item of functionalities; let i = index"
-                >
-                  <div class="col-sm-2">
-                    <mat-label style="font-weight: bold">{{
-                      item.name
-                    }}</mat-label>
-                  </div>
-                  <div class="col-sm-1">
-                    <mat-slide-toggle
-                      id="{{ 'toggle_' + i }}"
-                      class="tp-margin"
-                      formControlName="{{ 'enableFeature_' + i }}"
-                      [(ngModel)]="item.selected"
-                    ></mat-slide-toggle>
-                  </div>
-                  <div class="col-sm-1">
-                    <mat-checkbox
-                      id="{{ 'read_' + i }}"
-                      [checked]="item.readAccess"
-                      formControlName="{{ 'readAccess_' + i }}"
-                      (change)="onChange($event, i, item)"
-                      [disabled]="!item.selected"
-                    ></mat-checkbox>
-                    <mat-label>Read</mat-label>
-                  </div>
-                  <div class="col-sm-1">
-                    <mat-checkbox
-                      id="{{ 'write_' + i }}"
-                      [checked]="item.writeAccess"
-                      formControlName="{{ 'writeAccess_' + i }}"
-                      (change)="onChange($event, i, item)"
-                      [disabled]="!item.selected"
-                    ></mat-checkbox>
-                    <mat-label>Write</mat-label>
-                  </div>
-                  <!-- <div class="col-sm-2" >
-                    <mat-checkbox id="{{ 'full_' + i }}" [checked]="item.fullAccess"
-                      formControlName="{{ 'fullAccess_' + i }}" (change)="onChange($event, i, item)"
-                      [disabled]="!item.selected"></mat-checkbox>
-                    <mat-label>Full Access</mat-label>
-                  </div> -->
+              <div class="tab-pane active" id="userAccessInfo">
+                <div class="row" style="margin-top: 20px;">
+                  <ng-container>
+                    <mat-table
+                      [dataSource]="dataSourceAccess"
+                      class="mat-elevation-z8"
+                    >
+                      <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef>
+                          Functionality Access
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                          {{ element.name }}
+                        </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="isSubscribed">
+                        <mat-header-cell *matHeaderCellDef>
+                          Subscribed
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element; let index = index">
+                          <!-- {{ element.isSubscribed }} -->
+                          <mat-slide-toggle
+                            id="{{ 'toggle_' + index }}"
+                            class="tp-margin"
+                            name="{{ 'enableFeature_' + i }}"
+                            [(ngModel)]="
+                              user.userAccess.accessInfo[index].isSubscribed
+                            "
+                          ></mat-slide-toggle>
+                        </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="readAccess">
+                        <mat-header-cell *matHeaderCellDef
+                          >Read</mat-header-cell
+                        >
+                        <mat-cell *matCellDef="let element; let index = index">
+                          <mat-checkbox
+                            id="{{ 'read_' + index }}"
+                            [checked]="element.readAccess"
+                            [(ngModel)]="
+                              user.userAccess.accessInfo[index].readAccess
+                            "
+                            name="{{ 'readAccess_' + index }}"
+                            [disabled]="
+                              !user.userAccess.accessInfo[index].isSubscribed
+                            "
+                          >
+                          </mat-checkbox>
+                        </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="writeAccess">
+                        <mat-header-cell *matHeaderCellDef
+                          >Write</mat-header-cell
+                        >
+                        <mat-cell *matCellDef="let element; let index = index">
+                          <mat-checkbox
+                            id="{{ 'write_' + index }}"
+                            [checked]="element.writeAccess"
+                            [(ngModel)]="
+                              user.userAccess.accessInfo[index].writeAccess
+                            "
+                            name="{{ 'writeAccess_' + index }}"
+                            [disabled]="
+                              !user.userAccess.accessInfo[index].isSubscribed
+                            "
+                          >
+                          </mat-checkbox>
+                        </mat-cell>
+                      </ng-container>
+
+                      <mat-header-row
+                        *matHeaderRowDef="displayedColumns"
+                      ></mat-header-row>
+                      <mat-row
+                        *matRowDef="let row; columns: displayedColumns"
+                      ></mat-row>
+                    </mat-table>
+                  </ng-container>
+                  <!-- </div> -->
                 </div>
               </div>
+
+              <div class="row" style="margin-top: 20px;">
+                <h4><b>Origin and Destinations</b></h4>
+                <!-- <div class="col-sm-12"> -->
+                <ng-container>
+                  <mat-table
+                    [dataSource]="dataSourceONDs"
+                    class="mat-elevation-z8"
+                  >
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="select">
+                      <mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox
+                          (change)="OnSelectAll($event, index, row)"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="
+                            selection.hasValue() && !isAllSelected()
+                          "
+                          [aria-label]="checkboxLabel()"
+                          name="selectAll"
+                        >
+                        </mat-checkbox>
+                        <mat-label>Select All</mat-label>
+                      </mat-header-cell>
+                      <mat-cell *matCellDef="let row; let index = index">
+                        <mat-checkbox
+                          (change)="OnSelect($event, index, row)"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)"
+                          name="selectOND"
+                        >
+                        </mat-checkbox>
+                      </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Origin">
+                      <mat-header-cell *matHeaderCellDef
+                        >Origin</mat-header-cell
+                      >
+                      <mat-cell *matCellDef="let element; let index = index"
+                        >{{ element.Origin }}
+                      </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Destination">
+                      <mat-header-cell *matHeaderCellDef
+                        >Destination</mat-header-cell
+                      >
+                      <mat-cell *matCellDef="let element; let index = index"
+                        >{{ element.Destination }}
+                      </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row
+                      *matHeaderRowDef="displayedColumnsONDs"
+                    ></mat-header-row>
+                    <mat-row
+                      *matRowDef="let row; columns: displayedColumnsONDs"
+                    ></mat-row>
+                  </mat-table>
+                </ng-container>
+                <!-- </div> -->
+              </div>
+
               <div class="row" style="margin-top: 20px">
                 <div class="col-sm-10">
                   <button
@@ -259,7 +365,7 @@
                     class="btn addUser  tnCss"
                   >
                     Add User
-                  </button>                  
+                  </button>
                 </div>
               </div>
             </div>

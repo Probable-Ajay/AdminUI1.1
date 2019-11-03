@@ -18,40 +18,42 @@ export class CompanyInformation {
   }
 }
 
-export class ContactInformation {
+export class UserInformation {
   firstName: string;
   lastName: string;
   middleName: string;
-  givenName: string;
   contactNumber: string;
-  emailID: string;
+  loginName: string;
   designationRole: string;
+  parentEmailID: string;
 
   constructor() {
     this.firstName = "";
     this.lastName = "";
     this.middleName = "";
-    this.givenName = "";
     this.contactNumber = "";
-    this.emailID = "";
+    this.loginName = "";
     this.designationRole = "";
+    this.parentEmailID = "";
   }
 }
 
-export class Functionality {
+export class AccessDetails {
   funcId: string;
   name: string;
-  isToggle: boolean;
+  isSubscribed: boolean;
   readAccess: boolean;
   writeAccess: boolean;
+  reportView: string;
   // fullAccess: boolean;
 
   constructor() {
     this.funcId = "";
     this.name = "";
-    this.isToggle = false;
+    this.isSubscribed = false;
     this.readAccess = false;
     this.writeAccess = false;
+    this.reportView = "";
     // this.fullAccess = false;
   }
 }
@@ -59,10 +61,19 @@ export class Functionality {
 export class UserAccess {
   // cloneMainUser: boolean;
   isSubUser: boolean;
-  functionalities: Functionality[];
+  accessInfo: AccessDetails[];
   constructor() {
     this.isSubUser = false;
-    this.functionalities = [];
+    this.accessInfo = [];
+  }
+}
+
+export class OriginDestinations {
+  Origin: string;
+  Destination: string;
+  constructor() {
+    this.Origin = "";
+    this.Destination = "";
   }
 }
 
@@ -77,16 +88,18 @@ export class UserAccess {
 //   }
 // }
 
-export class UserManagement {
+export class User {
   companyInfo: CompanyInformation;
-  contactInfo: ContactInformation;
+  userInfo: UserInformation;
   userAccess: UserAccess;
+  originAndDestinations: OriginDestinations[];
   // requirementSetup: RequirementSetup;
 
   constructor() {
     this.companyInfo = new CompanyInformation();
-    this.contactInfo = new ContactInformation();
+    this.userInfo = new UserInformation();
     this.userAccess = new UserAccess();
+    this.originAndDestinations = [];
     //this.requirementSetup = new RequirementSetup();
   }
 }

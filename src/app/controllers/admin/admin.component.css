@@ -67,3 +67,11 @@ button.excel {
   padding: 8px 20px;
   margin: -15px 0px;
 }
+
+.mat-table {
+  width: 70% !important;
+}
+.mat-header-cell {
+  color: black !important;
+  font-size: 16px !important;
+}
