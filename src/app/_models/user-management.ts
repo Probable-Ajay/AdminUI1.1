@@ -1,79 +1,76 @@
 export class CompanyInformation {
-  companyName: string;
-  companyAddress: string;
+  companyname: string;
+  companyaddress: string;
   countries: string;
-  companyType: string;
-  businessType: string;
-  companyContact: string;
-  emailID: string;
+  companytype: string;
+  businesstype: string;
+  companycontact: string;
+  emailid: string;
 
   constructor() {
-    this.companyName = "";
-    this.companyAddress = "";
+    this.companyname = "";
+    this.companyaddress = "";
     this.countries = "";
-    this.companyType = "";
-    this.businessType = "";
-    this.companyContact = "";
-    this.emailID = "";
+    this.companytype = "";
+    this.businesstype = "";
+    this.companycontact = "";
+    this.emailid = "";
   }
 }
 
-export class UserInformation {
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  contactNumber: string;
-  loginName: string;
-  designationRole: string;
-  parentEmailID: string;
+export class ContactInformation {
+  firstname: string;
+  lastname: string;
+  middlename: string;
+  givenname: string;
+  contactnumber: string;
+  userid: string;
+  designationrole: string;
 
   constructor() {
-    this.firstName = "";
-    this.lastName = "";
-    this.middleName = "";
-    this.contactNumber = "";
-    this.loginName = "";
-    this.designationRole = "";
-    this.parentEmailID = "";
+    this.firstname = "";
+    this.lastname = "";
+    this.middlename = "";
+    this.givenname = "";
+    this.contactnumber = "";
+    this.userid = "";
+    this.designationrole = "";
   }
 }
 
-export class AccessDetails {
-  funcId: string;
+export class Functionality {
+  funcid: string;
   name: string;
   isSubscribed: boolean;
-  readAccess: boolean;
-  writeAccess: boolean;
-  reportView: string;
+  readaccess: boolean;
+  writeaccess: boolean;
+  reportview: string;
   // fullAccess: boolean;
 
   constructor() {
-    this.funcId = "";
+    this.funcid = "";
     this.name = "";
     this.isSubscribed = false;
-    this.readAccess = false;
-    this.writeAccess = false;
-    this.reportView = "";
+    this.readaccess = false;
+    this.writeaccess = false;
+    this.reportview = "";
     // this.fullAccess = false;
   }
 }
 
 export class UserAccess {
-  // cloneMainUser: boolean;
-  isSubUser: boolean;
-  accessInfo: AccessDetails[];
+  functionalities: Functionality[];
   constructor() {
-    this.isSubUser = false;
-    this.accessInfo = [];
+    this.functionalities = [];
   }
 }
 
 export class OriginDestinations {
-  Origin: string;
-  Destination: string;
+  origin: string;
+  destination: string;
   constructor() {
-    this.Origin = "";
-    this.Destination = "";
+    this.origin = "";
+    this.destination = "";
   }
 }
 
@@ -88,18 +85,35 @@ export class OriginDestinations {
 //   }
 // }
 
-export class User {
-  companyInfo: CompanyInformation;
-  userInfo: UserInformation;
-  userAccess: UserAccess;
-  originAndDestinations: OriginDestinations[];
+export class UserModel {
+  companyinfo: CompanyInformation;
+  contactinfo: ContactInformation;
+  useraccess: UserAccess;
+  originanddestinations: OriginDestinations[];
+  issubuser: number;
+  parentuserid: string;
   // requirementSetup: RequirementSetup;
 
   constructor() {
-    this.companyInfo = new CompanyInformation();
-    this.userInfo = new UserInformation();
-    this.userAccess = new UserAccess();
-    this.originAndDestinations = [];
+    this.companyinfo = new CompanyInformation();
+    this.contactinfo = new ContactInformation();
+    this.useraccess = new UserAccess();
+    this.originanddestinations = [];
+    this.issubuser = 0;
+    this.parentuserid = "";
     //this.requirementSetup = new RequirementSetup();
   }
+}
+
+export interface countries {
+  countryname: string;
+}
+
+export class UsersListing {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  subuserId: string;
+  isActive: string;
+  createdAt: string;
 }

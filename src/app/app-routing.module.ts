@@ -30,7 +30,7 @@ const routes: Routes = [
     path: "dashboard",
     component: DashboardRoutesComponent,
     children: [
-      { path: "", redirectTo: "admin", pathMatch: "full" },
+      { path: "", redirectTo: "manageusers", pathMatch: "full" },
       { path: "shopPrice", component: ShoppingLeafComponent },
       { path: "shopStats", component: ShoppingStatsComponent },
       { path: "priceTrends", component: PriceTrendsComponent },

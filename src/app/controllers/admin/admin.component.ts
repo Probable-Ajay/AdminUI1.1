@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import {
-  User,
-  AccessDetails,
-  OriginDestinations
+  UserModel,
+  OriginDestinations,
+  Functionality
 } from "../../_models/user-management";
 
 import { first } from "rxjs/operators";
@@ -10,7 +10,8 @@ import { Router } from "@angular/router";
 import {
   AuthenticationService,
   AlertService,
-  AdminService
+  AdminService,
+  TokenService
 } from "../../_services";
 import {
   MatSlideToggleChange,
@@ -19,57 +20,58 @@ import {
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { MatTableDataSource } from "@angular/material/table";
 import { SelectionModel } from "@angular/cdk/collections";
+import { NgForm } from "@angular/forms";
 
 const OND_DATA: OriginDestinations[] = [
   {
-    Origin: "DEL",
-    Destination: "BLR"
+    origin: "DEL",
+    destination: "BLR"
   },
   {
-    Origin: "DEL",
-    Destination: "IXR"
+    origin: "DEL",
+    destination: "IXR"
   },
   {
-    Origin: "BOM",
-    Destination: "IXR"
+    origin: "BOM",
+    destination: "IXR"
   },
   {
-    Origin: "BOM",
-    Destination: "BBI"
+    origin: "BOM",
+    destination: "BBI"
   }
 ];
 export interface FunctionalityDetails {
-  funcId: string;
+  funcid: string;
   name: string;
   isSubscribed: boolean;
-  readAccess: boolean;
-  writeAccess: boolean;
-  reportView: string[];
+  readaccess: boolean;
+  writeaccess: boolean;
+  reportview: string[];
 }
 const ACCESS_DATA: FunctionalityDetails[] = [
   {
-    funcId: "SP",
+    funcid: "SP",
     name: "Shop Price",
     isSubscribed: false,
-    readAccess: false,
-    writeAccess: false,
-    reportView: ["Own View", "No View"]
+    readaccess: false,
+    writeaccess: false,
+    reportview: ["Own View", "No View"]
   },
   {
-    funcId: "PT",
+    funcid: "PT",
     name: "Price Trend",
     isSubscribed: false,
-    readAccess: false,
-    writeAccess: false,
-    reportView: ["Own View", "No View"]
+    readaccess: false,
+    writeaccess: false,
+    reportview: ["Own View", "No View"]
   },
   {
-    funcId: "SS",
+    funcid: "SS",
     name: "Shop Status",
     isSubscribed: false,
-    readAccess: false,
-    writeAccess: false,
-    reportView: ["Own View", "No View"]
+    readaccess: false,
+    writeaccess: false,
+    reportview: ["Own View", "No View"]
   }
 ];
 
@@ -79,37 +81,31 @@ const ACCESS_DATA: FunctionalityDetails[] = [
   styleUrls: ["./admin.component.css"]
 })
 export class AdminComponent implements OnInit {
-  user: User = new User();
+  user: UserModel = new UserModel();
   loading = false;
   isValidFormSubmitted = false;
-  @ViewChild("myForm", { static: false }) formValues;
-  public countries: any[] = [
-    "India",
-    "Indonesia",
-    "Iran",
-    "Iraq",
-    "Israel",
-    "Japan",
-    "Jordan"
-  ];
-  public companyType: any[] = ["Airline", "OTA", "TA", "META"];
-  public businessTypes: any[] = [
-    "Airlines",
-    "Online",
-    "Offline",
-    "Search engines"
-  ];
+  @ViewChild("userForm", { static: false }) formValues;
+  validateEmail = true;
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
+
+  public countries: any[];
+  public companyType: any[];
+  public businessTypes: any[];
+  public onds: OriginDestinations[];
+  loginemailid: string;
+  //dataSourceONDs: any;
 
   displayedColumns: string[] = [
     "name",
     "isSubscribed",
-    "readAccess",
-    "writeAccess"
+    "readaccess",
+    "writeaccess"
   ];
   dataSourceAccess = new MatTableDataSource<FunctionalityDetails>(ACCESS_DATA);
 
-  displayedColumnsONDs: string[] = ["select", "Origin", "Destination"];
-  dataSourceONDs = new MatTableDataSource<OriginDestinations>(OND_DATA);
+  displayedColumnsONDs: string[] = ["select", "origin", "destination"];
+  //OND_DATA = this.onds;
+  public dataSourceONDs = new MatTableDataSource<OriginDestinations>();
 
   selection = new SelectionModel<OriginDestinations>(true, []);
   selectedONDs: OriginDestinations[] = [];
@@ -118,27 +114,86 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private spinnerService: Ng4LoadingSpinnerService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private tokenService: TokenService
   ) {
     // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(["/dashboard/"]);
-    } else {
-      this.router.navigate(["/login/"]);
-    }
+    // if (this.authenticationService.currentUserValue) {
+    //   this.router.navigate(["/dashboard/"]);
+    // } else {
+    //   this.router.navigate(["/login/"]);
+    // }
   }
 
   ngOnInit(): void {
+    this.getcountries();
+    this.getcompanytypes();
+    this.getbusinesstypes();
+    this.getonds();
+    this.loginemailid = this.tokenService.getlocalStorage("loginname");
+    console.log(this.loginemailid);
     for (let i = 0; i < ACCESS_DATA.length; i++) {
-      let access = new AccessDetails();
+      let access = new Functionality();
       //access.isSubscribed = false;
-      this.user.userAccess.accessInfo[i] = access;
+      switch (i) {
+        case 0:
+          access.funcid = "SP";
+          access.name = "Shop Price";
+          break;
+        case 1:
+          access.funcid = "PT";
+          access.name = "Price Trend";
+          break;
+        case 2:
+          access.funcid = "SS";
+          access.name = "Shop Status";
+          break;
+        default:
+          break;
+      }
+      this.user.useraccess.functionalities[i] = access;
     }
+  }
 
-    for (let index = 0; index < OND_DATA.length; index++) {
-      let ond = new OriginDestinations();
-      this.user.originAndDestinations[index] = ond;
-    }
+  getcountries() {
+    this.adminService.getCountries().subscribe(res => {
+      if (res) {
+        this.countries = res;
+      }
+    });
+  }
+  getcompanytypes() {
+    this.adminService.getcompanytypes().subscribe(res => {
+      if (res) {
+        this.companyType = res;
+      }
+    });
+  }
+  getbusinesstypes() {
+    this.adminService.getbusinesstypes().subscribe(res => {
+      if (res) {
+        this.businessTypes = res;
+      }
+    });
+  }
+  getonds() {
+    this.adminService.getonds().subscribe(res => {
+      if (res) {
+        this.dataSourceONDs.data = res as OriginDestinations[];
+        this.onds = res as OriginDestinations[];
+        for (let index = 0; index < this.onds.length; index++) {
+          let ond = new OriginDestinations();
+          this.user.originanddestinations[index] = ond;
+        }
+      }
+    });
+  }
+  getfunctionalities() {
+    this.adminService.getfunctionalities().subscribe(res => {
+      if (res) {
+        console.log(res);
+      }
+    });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -164,7 +219,7 @@ export class AdminComponent implements OnInit {
     }
     return `${
       this.selection.isSelected(row) ? "deselect" : "select"
-    } row ${row.Origin + 1}`;
+    } row ${row.origin + 1}`;
   }
 
   OnSelect(event, index, row) {
@@ -195,21 +250,24 @@ export class AdminComponent implements OnInit {
 
     debugger;
     this.isValidFormSubmitted = false;
+    // if (form.invalid) {
+    //   return;
+    // }
     this.isValidFormSubmitted = true;
 
     this.spinnerService.show();
 
-    this.user.originAndDestinations = this.selectedONDs;
-    this.user.userAccess.isSubUser = true;
-    console.log(this.user);
+    this.user.originanddestinations = this.selectedONDs;
+    //this.user.issubuser = true;
+    // console.log(form.value);
 
     this.adminService
       .createUser(this.user)
       .pipe(first())
       .subscribe(
         data => {
+          debugger;
           this.spinnerService.hide();
-
           this.reset();
         },
         error => {
@@ -217,6 +275,8 @@ export class AdminComponent implements OnInit {
           this.reset();
         }
       );
+
+    this.reset();
   }
 
   reset() {

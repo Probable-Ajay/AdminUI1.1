@@ -47,8 +47,12 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
+  public setuserdetails(loginname: string) {
+    this.tokenService.setLocalStorage("loginname", loginname);
+  }
 
-  login(user: userRegistration) {
+  login(user: any) {
+    this.setuserdetails(user.username);
     const apiUrl = AppSettings.API_ENDPOINT + "login";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.http.post<any>(apiUrl, user, { headers }).pipe(
@@ -65,7 +69,6 @@ export class AuthenticationService {
   }
 
   setAuth(user: User) {
-    debugger;
     this.tokenService.saveToken(user["data"]["token"]);
     //localStorage.setItem("currentUser", JSON.stringify(user["data"]["token"]));
     this.currentUserSubject.next(user);

@@ -74,42 +74,42 @@
                         {{ element.lastName }}
                       </td>
                     </ng-container>
-                    <ng-container matColumnDef="loginName">
+                    <ng-container matColumnDef="subuserId">
                       <th mat-header-cell *matHeaderCellDef>
                         Login Name
                       </th>
                       <td mat-cell *matCellDef="let element">
-                        {{ element.loginName }}
+                        {{ element.subuserId }}
                       </td>
                     </ng-container>
 
-                    <ng-container matColumnDef="Status">
+                    <ng-container matColumnDef="isActive">
                       <th mat-header-cell *matHeaderCellDef>Status</th>
                       <td mat-cell *matCellDef="let element">
-                        {{ element.Status }}
+                        {{ element.isActive == 1 ? "Active" : "InActive" }}
                       </td>
                     </ng-container>
 
-                    <ng-container matColumnDef="creationDate">
+                    <ng-container matColumnDef="createdAt">
                       <th mat-header-cell *matHeaderCellDef>
                         Creation Date
                       </th>
                       <td mat-cell *matCellDef="let element">
-                        {{ element.creationDate }}
+                        {{ element.createdAt | date: "MM/dd/yyyy" }}
                       </td>
                     </ng-container>
-                    <ng-container matColumnDef="lastLogin">
+                    <!-- <ng-container matColumnDef="lastLogin">
                       <th mat-header-cell *matHeaderCellDef>
                         Last Login
                       </th>
                       <td mat-cell *matCellDef="let element">
                         {{ element.lastLogin }}
                       </td>
-                    </ng-container>
-                    <ng-container matColumnDef="Action">
+                    </ng-container> -->
+                    <!-- <ng-container matColumnDef="Action">
                       <th mat-header-cell *matHeaderCellDef>Action</th>
                       <td mat-cell *matCellDef="let element"></td>
-                    </ng-container>
+                    </ng-container> -->
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr
                       mat-row

@@ -1,22 +1,42 @@
 <mat-sidenav-container hasBackdrop="false">
-    <mat-sidenav #sidenavRight mode="side" opened class="left-sidenav" [fixedInViewport]="true" [fixedTopGap]="0"
-        [fixedBottomGap]="0">
-        <div *ngIf="!showIconsOnly" style="background: #ffffff; height:60px; padding:4%;">
-            <span class="logo-lg">
-                <img style="max-width: 95%; padding:5%;" src="/assets/images/logo.png" class="img-responsive" />
-            </span>
-        </div>
-        <div *ngIf="showIconsOnly" style="background: #ffffff; height:60px; padding:4%;">
-            <span class="logo-mini">
-                <img style="max-width: 82%; padding: 1%; padding-top: 10%;" src="/assets/images/mini-logo.png"
-                    class="img-responsive" />
-            </span>
-        </div>
-        <div *ngIf="showIconsOnly" style="width: 100%;">
-            <section class="sidebar">
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">MAIN</li>
-                    <li>
+  <mat-sidenav
+    #sidenavRight
+    mode="side"
+    opened
+    class="left-sidenav"
+    [fixedInViewport]="true"
+    [fixedTopGap]="0"
+    [fixedBottomGap]="0"
+  >
+    <div
+      *ngIf="!showIconsOnly"
+      style="background: #ffffff; height:60px; padding:4%;"
+    >
+      <span class="logo-lg">
+        <img
+          style="max-width: 95%; padding:5%;"
+          src="/assets/images/logo.png"
+          class="img-responsive"
+        />
+      </span>
+    </div>
+    <div
+      *ngIf="showIconsOnly"
+      style="background: #ffffff; height:60px; padding:4%;"
+    >
+      <span class="logo-mini">
+        <img
+          style="max-width: 82%; padding: 1%; padding-top: 10%;"
+          src="/assets/images/mini-logo.png"
+          class="img-responsive"
+        />
+      </span>
+    </div>
+    <div *ngIf="showIconsOnly" style="width: 100%;">
+      <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">MAIN</li>
+          <!-- <li>
                         <a routerLink="shopPrice">
                             <i class="fa fa-shopping-bag"></i>
                         </a>
@@ -30,27 +50,29 @@
                         <a routerLink="priceTrends">
                             <i class="fa fa-line-chart" aria-hidden="true"></i>
                         </a>
-                    </li>
-                    <li><a routerLink="admin">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li><a routerLink="manageusers">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li> <a routerLink="mock">
+                    </li> -->
+          <li>
+            <a routerLink="admin">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="manageusers">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+            </a>
+          </li>
+          <!-- <li> <a routerLink="mock">
                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                         </a>
-                    </li>
-                </ul>
-            </section>
-        </div>
-        <div *ngIf="!showIconsOnly">
-            <section class="sidebar paddingRight">
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">MAIN</li>
-                    <li>
+                    </li> -->
+        </ul>
+      </section>
+    </div>
+    <div *ngIf="!showIconsOnly">
+      <section class="sidebar paddingRight">
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">MAIN</li>
+          <!-- <li>
                         <a routerLink="shopPrice">
                             <i class="fa fa-shopping-bag"></i>
                             <span>Shop Price</span>
@@ -67,125 +89,167 @@
                             <i class="fa fa-line-chart" aria-hidden="true"></i>
                             <span>Price Trends</span>
                         </a>
-                    </li>
-                    <li>
-                        <a routerLink="admin">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
-                            <span>Admin</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="manageusers">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
-                            <span>Manage Users</span>
-                        </a>
-                    </li>
-                    <li>
+                    </li> -->
+          <li>
+            <a routerLink="admin">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              <span>Admin</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="manageusers">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              <span>Manage Users</span>
+            </a>
+          </li>
+          <!-- <li>
                         <a routerLink="mock">
                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                             <span>Mock</span>
                         </a>
-                    </li>
-                </ul>
-            </section>
+                    </li> -->
+        </ul>
+      </section>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav
+    #sidenavLeft
+    mode="over"
+    closed
+    position="end"
+    class="right-sidenav"
+    [fixedInViewport]="false"
+    [fixedTopGap]="60"
+    [fixedBottomGap]="0"
+  >
+    <aside class="control-sidebar control-sidebar-dark control-sidebar-open">
+      <h3 class="control-sidebar-heading">Filter</h3>
+      <div class="filterForm">
+        <h5>Report Type</h5>
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="radio" name="reortType" id="onDemand" class="hide" />
+            <label for="onDemand">On Demand</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="radio" id="schedule" name="reortType" class="hide" />
+            <label for="schedule">Schedule</label>
+          </div>
         </div>
-    </mat-sidenav>
-    <mat-sidenav #sidenavLeft mode="over" closed position="end" class="right-sidenav" [fixedInViewport]="false"
-        [fixedTopGap]="60" [fixedBottomGap]="0">
-        <aside class="control-sidebar control-sidebar-dark control-sidebar-open">
-            <h3 class="control-sidebar-heading">Filter</h3>
-            <div class="filterForm">
-                <h5>Report Type</h5>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <input type="radio" name="reortType" id="onDemand" class="hide" />
-                        <label for="onDemand">On Demand</label>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="radio" id="schedule" name="reortType" class="hide" />
-                        <label for="schedule">Schedule</label>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="text" name="reportId" class="form-control" placeholder="Enter Report ID/Name" />
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <!-- <input type="checkbox" name="" class="hide" id="showReoprt" /> -->
-                        <mat-checkbox [(ngModel)]="showReoprt"></mat-checkbox>
-                        <label for="showReoprt">Show Archived Reports<br /><small>(Include Historical
-                                Reports)</small></label>
-                    </div>
-                </div>
-
-                <h5>OND</h5>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="text" name="" class="form-control" placeholder="Origin" />
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="text" name="" class="form-control" placeholder="Destination" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <select class="form-control">
-                            <option>Journey Type</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <select class="form-control">
-                            <option>Class of Service</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button class="btn">Cancel</button>
-                        <button class="btn green">Apply</button>
-                        <button class="btn">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </mat-sidenav>
-
-    <mat-sidenav-content [formGroup]="options">
-        <div class="example-sidenav-content">
-            <div class="sticky-toolbar">
-                <div style="float:left; width:35%;">
-                    <button mat-button (click)="toggleRightNav()" style="float:left; margin-left:4%; margin-top: 2%;">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <button id='rtBttn' mat-button (click)="sidenavRight.toggle()" style="float:left; display: none;">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </div>
-                <div style="float:left; width:50%;">
-                    <button mat-button (click)="LogOut()" style="float:right; margin-top: 2%; margin-right: 2%;">
-                        <i class="fa fa-power-off"></i>
-                    </button>
-                    <button mat-button (click)="sidenavLeft.toggle()"
-                        style="float:right; margin-top: 2%; margin-right: 2%;">
-                        <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="push"></div>
-            <div style="background: #ECEFF4; top: 60px;">
-                <router-outlet></router-outlet>
-            </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <input
+              type="text"
+              name="reportId"
+              class="form-control"
+              placeholder="Enter Report ID/Name"
+            />
+          </div>
         </div>
-    </mat-sidenav-content>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <!-- <input type="checkbox" name="" class="hide" id="showReoprt" /> -->
+            <mat-checkbox [(ngModel)]="showReoprt"></mat-checkbox>
+            <label for="showReoprt"
+              >Show Archived Reports<br /><small
+                >(Include Historical Reports)</small
+              ></label
+            >
+          </div>
+        </div>
+
+        <h5>OND</h5>
+        <div class="row">
+          <div class="col-sm-12">
+            <input
+              type="text"
+              name=""
+              class="form-control"
+              placeholder="Origin"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <input
+              type="text"
+              name=""
+              class="form-control"
+              placeholder="Destination"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <select class="form-control">
+              <option>Journey Type</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <select class="form-control">
+              <option>Class of Service</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <button class="btn">Cancel</button>
+            <button class="btn green">Apply</button>
+            <button class="btn">Reset</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </mat-sidenav>
+
+  <mat-sidenav-content [formGroup]="options">
+    <div class="example-sidenav-content">
+      <div class="sticky-toolbar">
+        <div style="float:left; width:35%;">
+          <button
+            mat-button
+            (click)="toggleRightNav()"
+            style="float:left; margin-left:4%; margin-top: 2%;"
+          >
+            <i class="fa fa-bars"></i>
+          </button>
+          <button
+            id="rtBttn"
+            mat-button
+            (click)="sidenavRight.toggle()"
+            style="float:left; display: none;"
+          >
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+        <div style="float:left; width:50%;">
+          <button
+            mat-button
+            (click)="LogOut()"
+            style="float:right; margin-top: 2%; margin-right: 2%;"
+          >
+            <i class="fa fa-power-off"></i>
+          </button>
+          <!-- <button
+            mat-button
+            (click)="sidenavLeft.toggle()"
+            style="float:right; margin-top: 2%; margin-right: 2%;"
+          >
+            <i class="fa fa-ellipsis-v"></i>
+          </button> -->
+        </div>
+      </div>
+      <div class="push"></div>
+      <div style="background: #ECEFF4; top: 60px;">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

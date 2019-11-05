@@ -3,70 +3,57 @@ import { MatTableDataSource } from "@angular/material/table";
 import { Router, Route } from "@angular/router";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import {
-  User,
   OriginDestinations,
-  AccessDetails
+  Functionality,
+  UserModel
 } from "src/app/_models/user-management";
 
-import { AdminService, AuthenticationService } from "src/app/_services";
+import {
+  AdminService,
+  AuthenticationService,
+  TokenService
+} from "src/app/_services";
 import { first } from "rxjs/operators";
 import { DataSource, SelectionModel } from "@angular/cdk/collections";
 import { Observable } from "rxjs";
 import { UserService } from "src/app/_services/user.service";
+import { SubUser } from "../../../_models/sub-user";
 
 export interface FunctionalityDetails {
-  funcId: string;
+  funcid: string;
   name: string;
   isSubscribed: boolean;
-  readAccess: boolean;
-  writeAccess: boolean;
-  reportView: string[];
+  readaccess: boolean;
+  writeaccess: boolean;
+  reportview: string[];
 }
 const ACCESS_DATA: FunctionalityDetails[] = [
   {
-    funcId: "SP",
+    funcid: "SP",
     name: "Shop Price",
     isSubscribed: false,
-    readAccess: false,
-    writeAccess: false,
-    reportView: ["Own View", "No View"]
+    readaccess: false,
+    writeaccess: false,
+    reportview: ["Own View", "No View"]
   },
   {
-    funcId: "PT",
+    funcid: "PT",
     name: "Price Trend",
     isSubscribed: false,
-    readAccess: false,
-    writeAccess: false,
-    reportView: ["Own View", "No View"]
+    readaccess: false,
+    writeaccess: false,
+    reportview: ["Own View", "No View"]
   },
   {
-    funcId: "SS",
+    funcid: "SS",
     name: "Shop Status",
     isSubscribed: false,
-    readAccess: false,
-    writeAccess: false,
-    reportView: ["Own View", "No View"]
+    readaccess: false,
+    writeaccess: false,
+    reportview: ["Own View", "No View"]
   }
 ];
 
-const OND_DATA: OriginDestinations[] = [
-  {
-    Origin: "DEL",
-    Destination: "BLR"
-  },
-  {
-    Origin: "DEL",
-    Destination: "IXR"
-  },
-  {
-    Origin: "BOM",
-    Destination: "IXR"
-  },
-  {
-    Origin: "BOM",
-    Destination: "BBI"
-  }
-];
 export interface Users {
   firstName: string;
   lastName: string;
@@ -82,10 +69,13 @@ export interface Users {
   styleUrls: ["./create-sub-user.component.css"]
 })
 export class CreateSubUserComponent implements OnInit {
-  user: User = new User();
+  user: UserModel = new UserModel();
+  subuser: SubUser[];
   isValidFormSubmitted = false;
-  @ViewChild("myForm", { static: false }) formValues;
+  parentemailid: string;
+  @ViewChild("userForm", { static: false }) formValues;
   public userRoles: any[] = ["Super User", "Admin", "Analyst"];
+  public onds: OriginDestinations[];
 
   public reportViews: any[] = [
     { id: 1, type: "Own View" },
@@ -94,14 +84,14 @@ export class CreateSubUserComponent implements OnInit {
 
   displayedColumns: string[] = [
     "name",
-    "readAccess",
-    "writeAccess",
-    "reportView"
+    "readaccess",
+    "writeaccess",
+    "reportview"
   ];
-  dataSourceAccess = new MatTableDataSource<FunctionalityDetails>(ACCESS_DATA);
-
-  displayedColumnsONDs: string[] = ["select", "Origin", "Destination"];
-  dataSourceONDs = new MatTableDataSource<OriginDestinations>(OND_DATA);
+  //dataSourceAccess = new MatTableDataSource<FunctionalityDetails>(ACCESS_DATA);
+  public dataSourceAccess = new MatTableDataSource<Functionality>();
+  displayedColumnsONDs: string[] = ["select", "origin", "destination"];
+  public dataSourceONDs = new MatTableDataSource<OriginDestinations>();
 
   selection = new SelectionModel<OriginDestinations>(true, []);
   selectedONDs: OriginDestinations[] = [];
@@ -129,36 +119,67 @@ export class CreateSubUserComponent implements OnInit {
     }
     return `${
       this.selection.isSelected(row) ? "deselect" : "select"
-    } row ${row.Origin + 1}`;
+    } row ${row.origin + 1}`;
   }
-
-  dataSource1 = new UserDataSource(this.userService);
 
   constructor(
     private spinnerService: Ng4LoadingSpinnerService,
     private userService: UserService,
     private authService: AuthenticationService,
-    private router: Router
+    private adminService: AdminService,
+    private router: Router,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit() {
-    for (let i = 0; i < ACCESS_DATA.length; i++) {
-      let access = new AccessDetails();
-      this.user.userAccess.accessInfo[i] = access;
-    }
-    this.user.userAccess.accessInfo[0].funcId = "SP";
-    this.user.userAccess.accessInfo[0].name = "Shop Price";
+    this.getonds();
+    this.parentemailid = this.tokenService.getlocalStorage("loginname");
+    this.getuserconfiguration();
+  }
+  getuserconfiguration() {
+    this.userService.getuserconfiguration(this.parentemailid).subscribe(res => {
+      if (res) {
+        debugger;
+        this.dataSourceAccess.data = JSON.parse(res[0][0].userConfigJson)
+          .useraccess.functionalities as Functionality[];
 
-    this.user.userAccess.accessInfo[1].funcId = "PT";
-    this.user.userAccess.accessInfo[1].name = "Price Trend";
+        for (let i = 0; i < this.dataSourceAccess.data.length; i++) {
+          let access = new Functionality();
+          this.user.useraccess.functionalities[i] = access;
+          switch (i) {
+            case 0:
+              this.user.useraccess.functionalities[i].funcid = "SP";
+              this.user.useraccess.functionalities[i].name = "Shop Price";
+              break;
+            case 1:
+              this.user.useraccess.functionalities[i].funcid = "PT";
+              this.user.useraccess.functionalities[i].name = "Price Trend";
+              break;
+            case 2:
+              this.user.useraccess.functionalities[i].funcid = "SS";
+              this.user.useraccess.functionalities[i].name = "Shop Status";
+              break;
+            default:
+              break;
+          }
+        }
+      }
+    });
+  }
 
-    this.user.userAccess.accessInfo[2].funcId = "SS";
-    this.user.userAccess.accessInfo[2].name = "Shop Status";
-
-    for (let index = 0; index < OND_DATA.length; index++) {
-      let ond = new OriginDestinations();
-      this.user.originAndDestinations[index] = ond;
-    }
+  getonds() {
+    this.adminService.getonds().subscribe(res => {
+      if (res) {
+        debugger;
+        //this.dataSourceONDs = new MatTableDataSource(res);
+        this.dataSourceONDs.data = res as OriginDestinations[];
+        this.onds = res as OriginDestinations[];
+        for (let index = 0; index < this.onds.length; index++) {
+          let ond = new OriginDestinations();
+          this.user.originanddestinations[index] = ond;
+        }
+      }
+    });
   }
 
   OnSelect(event, index, row) {
@@ -175,34 +196,35 @@ export class CreateSubUserComponent implements OnInit {
     const index = array.indexOf(element);
     array.splice(index, 1);
   }
-  OnSelectAll(event, index, row) {
+  OnSelectAll(event) {
     event ? this.masterToggle() : null;
     if (event.checked) {
-      this.selectedONDs = OND_DATA;
+      this.selectedONDs = this.onds;
     } else {
       this.selectedONDs = [];
     }
   }
   onSubmit() {
-    this.user.userInfo.parentEmailID = "anuj.varshney@outlook.com";
-    this.user.originAndDestinations = this.selectedONDs;
+    this.user.parentuserid = this.parentemailid;
+    this.user.originanddestinations = this.selectedONDs;
     debugger;
-    console.log(JSON.stringify(this.user));
 
     this.isValidFormSubmitted = false;
 
     this.isValidFormSubmitted = true;
 
+    this.user.issubuser = 1;
     //this.spinnerService.show();
+    console.log(JSON.stringify(this.user));
 
     this.userService
       .createSubUser(this.user)
       .pipe(first())
       .subscribe(
         data => {
+          debugger;
           this.spinnerService.hide();
-          // reset logic
-          //this.user = null;
+          this.reset();
           this.router.navigate["/dashboard/manageusers"];
         },
         error => {
@@ -216,14 +238,4 @@ export class CreateSubUserComponent implements OnInit {
     this.formValues.resetForm(); // Added this
     this.selection.clear();
   }
-}
-
-export class UserDataSource extends DataSource<any> {
-  constructor(private userService: UserService) {
-    super();
-  }
-  connect(): Observable<User[]> {
-    return this.userService.getUser("anuj.varshney@outlook.com");
-  }
-  disconnect() {}
 }

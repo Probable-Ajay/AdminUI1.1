@@ -37,8 +37,7 @@ export class UserLoginComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.tokenService.getToken()) {
-      debugger;
-      this.router.navigate(["/dashboard/admin"]);
+      this.router.navigate(["/dashboard/manageusers"]);
     }
     //this.authService.populate();
   }
@@ -68,13 +67,19 @@ export class UserLoginComponent implements OnInit {
 
     this.spinnerService.show();
 
+    // if (
+    //   this.loginForm.get("username").value == "anuj.varshney@outlook.com" &&
+    //   this.loginForm.get("password").value == "discover"
+    // ) {
+    //   this.router.navigate(["/dashboard/admin"]);
+    // }
     this.authService
       .login(this.loginForm.value)
       .pipe(first())
       .subscribe(data => {
         if (data.status == "success") {
           this.spinnerService.hide();
-          this.router.navigateByUrl("/dashboard/admin");
+          this.router.navigateByUrl("/dashboard/manageusers");
         } else {
           //this.alertService.error(data.message);
           this.alertService.error(data.message, true);
