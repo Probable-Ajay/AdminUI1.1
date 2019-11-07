@@ -102,10 +102,13 @@
                   <div class="col-sm-4">
                     <mat-form-field>
                       <input
+                        type="text"
                         matInput
                         placeholder="Phone"
                         name="companycontact"
                         [(ngModel)]="user.companyinfo.companycontact"
+                        #companycontact="ngModel"
+                        pattern="[0-9]+"
                         required
                       />
                     </mat-form-field>
@@ -117,9 +120,11 @@
                       <input
                         type="email"
                         matInput
-                        placeholder="Email ID"
+                        placeholder="E-mail ID"
                         name="emailid"
                         [(ngModel)]="user.companyinfo.emailid"
+                        #emailid="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         required
                       />
                     </mat-form-field>
@@ -172,9 +177,12 @@
                     <mat-form-field>
                       <input
                         matInput
+                        type="text"
                         placeholder="Contact Number"
                         name="contactnumber"
                         [(ngModel)]="user.contactinfo.contactnumber"
+                        #contactnumber="ngModel"
+                        pattern="[0-9]+"
                         required
                       />
                     </mat-form-field>
@@ -184,9 +192,11 @@
                       <input
                         type="email"
                         matInput
-                        placeholder="Email ID"
+                        placeholder="E-mail ID"
                         name="userid"
                         [(ngModel)]="user.contactinfo.userid"
+                        #userid="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         required
                       />
                     </mat-form-field>
@@ -239,7 +249,8 @@
                             class="tp-margin"
                             name="{{ 'enableFeature_' + i }}"
                             [(ngModel)]="
-                              user.useraccess.functionalities[index].isSubscribed
+                              user.useraccess.functionalities[index]
+                                .isSubscribed
                             "
                           ></mat-slide-toggle>
                         </mat-cell>
@@ -257,7 +268,8 @@
                             "
                             name="{{ 'readAccess_' + index }}"
                             [disabled]="
-                              !user.useraccess.functionalities[index].isSubscribed
+                              !user.useraccess.functionalities[index]
+                                .isSubscribed
                             "
                           >
                           </mat-checkbox>
@@ -276,7 +288,8 @@
                             "
                             name="{{ 'writeAccess_' + index }}"
                             [disabled]="
-                              !user.useraccess.functionalities[index].isSubscribed
+                              !user.useraccess.functionalities[index]
+                                .isSubscribed
                             "
                           >
                           </mat-checkbox>

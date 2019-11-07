@@ -139,7 +139,6 @@ export class CreateSubUserComponent implements OnInit {
   getuserconfiguration() {
     this.userService.getuserconfiguration(this.parentemailid).subscribe(res => {
       if (res) {
-        debugger;
         this.dataSourceAccess.data = JSON.parse(res[0][0].userConfigJson)
           .useraccess.functionalities as Functionality[];
 
@@ -170,7 +169,6 @@ export class CreateSubUserComponent implements OnInit {
   getonds() {
     this.adminService.getonds().subscribe(res => {
       if (res) {
-        debugger;
         //this.dataSourceONDs = new MatTableDataSource(res);
         this.dataSourceONDs.data = res as OriginDestinations[];
         this.onds = res as OriginDestinations[];

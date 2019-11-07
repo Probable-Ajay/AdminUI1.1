@@ -51,12 +51,21 @@
                   <div class="col-sm-4">
                     <mat-form-field>
                       <input
+                        type="email"
                         matInput
                         placeholder="Login Email"
                         name="loginName"
                         [(ngModel)]="user.contactinfo.userid"
+                        #email="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         required
                       />
+                      <!-- <br />
+                      <div *ngIf="email.touched">
+                        <p *ngIf="email.errors?.pattern">
+                          Please enter a valid email address!
+                        </p>
+                      </div> -->
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">

@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
 import { TokenService } from "src/app/_services";
 import { UsersListing } from "../../../_models/user-management";
 import { UserService } from "src/app/_services/user.service";
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 
 @Component({
   selector: "app-sub-user",
@@ -36,13 +37,14 @@ export class SubUserComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private tokenService: TokenService,
-    private userService: UserService
+    private userService: UserService,
+    private spinner: Ng4LoadingSpinnerService
   ) {}
   // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   ngOnInit() {
-    debugger;
+    this.spinner.show();
     this.parentemailid = this.tokenService.getlocalStorage("loginname");
 
     this.getallsubusers();
@@ -54,6 +56,7 @@ export class SubUserComponent implements OnInit {
     this.userService.getallsubusers(this.parentemailid).subscribe(res => {
       if (res) {
         this.dataSource.data = res[0] as UsersListing[];
+        this.spinner.hide();
       }
     });
   }
