@@ -184,3 +184,6 @@ body {
   /* padding: 8px 45px; */
   border-radius: 4px !important;
 }
+.mat-checkbox-inner-container-no-side-margin {
+  margin-left: 13px;
+}
