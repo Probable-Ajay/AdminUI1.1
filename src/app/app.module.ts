@@ -5,18 +5,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { apiRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AdminComponent } from "./controllers/admin/admin.component";
-import { UserRegistrationComponent } from "./controllers/user-registration";
 import { UserLoginComponent } from "./controllers/user-login";
 import { DashboardRoutesComponent } from "./controllers/dashboard-routes";
-import { ShoppingLeafComponent } from "./controllers/shopping-leaf";
-import { ShoppingStatsComponent } from "./controllers/shopping-stats";
-import { PriceTrendsComponent } from "./controllers/price-trends";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SidebarModule } from "ng-sidebar";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MockingGroundComponent } from "./controllers/mocking-ground";
 import { FlexLayoutModule } from "@angular/flex-layout";
-
 import { A11yModule } from "@angular/cdk/a11y";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { PortalModule } from "@angular/cdk/portal";
@@ -65,58 +59,12 @@ import { SubUserComponent } from "./controllers/admin/sub-user/sub-user.componen
 import { CreateSubUserComponent } from "./controllers/admin/create-sub-user/create-sub-user.component";
 import { Ng4LoadingSpinnerModule } from "ng4-loading-spinner";
 
-// Protected Routes for Release...
-// const appRoutes: Routes = [
-//   { path: '', redirectTo: 'UserRegistrationComponent', data: { title: 'Encryption' }, pathMatch: 'full' },
-//   { path: 'UserRegistrationComponent', component: UserRegistrationComponent },
-//   { path: 'login', component: UserLoginComponent },
-//   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] },
-//   { path: 'dashboard', component: DashboardRoutesComponent,
-//     children: [
-//       { path: '', redirectTo: 'shopLeaf', pathMatch: 'full' },
-//       { path: 'shopLeaf', component: ShoppingLeafComponent, canActivate: [AuthGuardService] },
-//       { path: 'shoppingStats', component: ShoppingStatsComponent, canActivate: [AuthGuardService] },
-//       { path: 'priceTrends', component: PriceTrendsComponent, canActivate: [AuthGuardService] }
-//     ]
-//   }
-// ];
-
-//Unprotected Routes for Testing...
-// const appRoutes: Routes = [
-//   {
-//     path: "",
-//     redirectTo: "requestDemo",
-//     data: { title: "Encryption" },
-//     pathMatch: "full"
-//   },
-//   { path: "registration", component: UserRegistrationComponent },
-//   { path: "requestDemo", component: RequestDemoComponent },
-//   { path: "login", component: UserLoginComponent },
-//   {
-//     path: "dashboard",
-//     component: DashboardRoutesComponent,
-//     children: [
-//       { path: "", redirectTo: "admin", pathMatch: "full" },
-//       { path: "shopPrice", component: ShoppingLeafComponent },
-//       { path: "shopStats", component: ShoppingStatsComponent },
-//       { path: "priceTrends", component: PriceTrendsComponent },
-//       { path: "admin", component: AdminComponent },
-//       { path: "mock", component: MockingGroundComponent }
-//     ]
-//   }
-// ];
-
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    UserRegistrationComponent,
     UserLoginComponent,
     DashboardRoutesComponent,
-    ShoppingLeafComponent,
-    ShoppingStatsComponent,
-    PriceTrendsComponent,
-    MockingGroundComponent,
     RequestDemoComponent,
     AlertComponent,
     SubUserComponent,

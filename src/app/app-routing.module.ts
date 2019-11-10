@@ -1,13 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AdminComponent } from "./controllers/admin";
-import { UserRegistrationComponent } from "./controllers/user-registration";
 import { UserLoginComponent } from "./controllers/user-login";
 import { DashboardRoutesComponent } from "./controllers/dashboard-routes";
-import { ShoppingLeafComponent } from "./controllers/shopping-leaf";
-import { ShoppingStatsComponent } from "./controllers/shopping-stats";
-import { PriceTrendsComponent } from "./controllers/price-trends";
-import { MockingGroundComponent } from "./controllers/mocking-ground";
 import { RequestDemoComponent } from "./controllers/request-demo";
 import { SubUserComponent } from "./controllers/admin/sub-user/sub-user.component";
 import { CreateSubUserComponent } from "./controllers/admin/create-sub-user/create-sub-user.component";
@@ -20,10 +15,6 @@ const routes: Routes = [
     data: { title: "Encryption" },
     pathMatch: "full"
   },
-  {
-    path: "registration",
-    component: UserRegistrationComponent
-  },
   { path: "requestDemo", component: RequestDemoComponent },
   { path: "login", component: UserLoginComponent },
   {
@@ -31,13 +22,9 @@ const routes: Routes = [
     component: DashboardRoutesComponent,
     children: [
       { path: "", redirectTo: "manageusers", pathMatch: "full" },
-      { path: "shopPrice", component: ShoppingLeafComponent },
-      { path: "shopStats", component: ShoppingStatsComponent },
-      { path: "priceTrends", component: PriceTrendsComponent },
       { path: "admin", component: AdminComponent },
       { path: "manageusers", component: SubUserComponent },
-      { path: "createsubuser", component: CreateSubUserComponent },
-      { path: "mock", component: MockingGroundComponent }
+      { path: "createsubuser", component: CreateSubUserComponent }
     ]
   }
 ];
