@@ -53,11 +53,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
-import { RequestDemoComponent } from "./controllers/request-demo";
 import { AlertComponent } from "./controllers/alert/alert.component";
-import { SubUserComponent } from "./controllers/admin/sub-user/sub-user.component";
-import { CreateSubUserComponent } from "./controllers/admin/create-sub-user/create-sub-user.component";
 import { Ng4LoadingSpinnerModule } from "ng4-loading-spinner";
+import { UserRegistrationComponent } from "./controllers/user-registration/user-registration.component";
 
 @NgModule({
   declarations: [
@@ -65,10 +63,8 @@ import { Ng4LoadingSpinnerModule } from "ng4-loading-spinner";
     AdminComponent,
     UserLoginComponent,
     DashboardRoutesComponent,
-    RequestDemoComponent,
     AlertComponent,
-    SubUserComponent,
-    CreateSubUserComponent
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,

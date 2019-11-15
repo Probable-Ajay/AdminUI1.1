@@ -3,10 +3,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { AdminComponent } from "./controllers/admin";
 import { UserLoginComponent } from "./controllers/user-login";
 import { DashboardRoutesComponent } from "./controllers/dashboard-routes";
-import { RequestDemoComponent } from "./controllers/request-demo";
-import { SubUserComponent } from "./controllers/admin/sub-user/sub-user.component";
-import { CreateSubUserComponent } from "./controllers/admin/create-sub-user/create-sub-user.component";
 import { AuthGuard } from "./_helpers";
+import { UserRegistrationComponent } from "./controllers/user-registration";
 
 const routes: Routes = [
   {
@@ -15,16 +13,17 @@ const routes: Routes = [
     data: { title: "Encryption" },
     pathMatch: "full"
   },
-  { path: "requestDemo", component: RequestDemoComponent },
+  {
+    path: "registration",
+    component: UserRegistrationComponent
+  },
   { path: "login", component: UserLoginComponent },
   {
     path: "dashboard",
     component: DashboardRoutesComponent,
     children: [
       { path: "", redirectTo: "manageusers", pathMatch: "full" },
-      { path: "admin", component: AdminComponent },
-      { path: "manageusers", component: SubUserComponent },
-      { path: "createsubuser", component: CreateSubUserComponent }
+      { path: "admin", component: AdminComponent }
     ]
   }
 ];

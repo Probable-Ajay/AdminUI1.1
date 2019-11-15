@@ -37,28 +37,8 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN</li>
           <li>
-            <a routerLink="shopPrice">
-              <i class="fa fa-shopping-bag"></i>
-            </a>
-          </li>
-          <li>
-            <a routerLink="shopStats">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a routerLink="priceTrends">
-              <i class="fa fa-line-chart" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
             <a routerLink="admin">
               <i class="fa fa-user-plus" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a routerLink="manageusers">
-              <i class="fa fa-users" aria-hidden="true"></i>
             </a>
           </li>
         </ul>
@@ -69,134 +49,14 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN</li>
           <li>
-            <a routerLink="shopPrice">
-              <i class="fa fa-shopping-bag"></i>
-              <span>Shop Price</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="shopStats">
-              <i class="fa fa-search" aria-hidden="true"></i>
-              <span>Shopping Stats</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="priceTrends">
-              <i class="fa fa-line-chart" aria-hidden="true"></i>
-              <span>Price Trends</span>
-            </a>
-          </li>
-          <li>
             <a routerLink="admin">
               <i class="fa fa-user-plus" aria-hidden="true"></i>
               <span>Admin</span>
             </a>
           </li>
-          <li>
-            <a routerLink="manageusers">
-              <i class="fa fa-users" aria-hidden="true"></i>
-              <span>Manage Users</span>
-            </a>
-          </li>
         </ul>
       </section>
     </div>
-  </mat-sidenav>
-  <mat-sidenav
-    #sidenavLeft
-    mode="over"
-    closed
-    position="end"
-    class="right-sidenav"
-    [fixedInViewport]="false"
-    [fixedTopGap]="60"
-    [fixedBottomGap]="0"
-  >
-    <aside class="control-sidebar control-sidebar-dark control-sidebar-open">
-      <h3 class="control-sidebar-heading">Filter</h3>
-      <div class="filterForm">
-        <h5>Report Type</h5>
-        <div class="row">
-          <div class="col-sm-6">
-            <input type="radio" name="reortType" id="onDemand" class="hide" />
-            <label for="onDemand">On Demand</label>
-          </div>
-          <div class="col-sm-6">
-            <input type="radio" id="schedule" name="reortType" class="hide" />
-            <label for="schedule">Schedule</label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <input
-              type="text"
-              name="reportId"
-              class="form-control"
-              placeholder="Enter Report ID/Name"
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <!-- <input type="checkbox" name="" class="hide" id="showReoprt" /> -->
-            <mat-checkbox [(ngModel)]="showReoprt"></mat-checkbox>
-            <label for="showReoprt"
-              >Show Archived Reports<br /><small
-                >(Include Historical Reports)</small
-              ></label
-            >
-          </div>
-        </div>
-
-        <h5>OND</h5>
-        <div class="row">
-          <div class="col-sm-12">
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Origin"
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Destination"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <select class="form-control">
-              <option>Journey Type</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <select class="form-control">
-              <option>Class of Service</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <button class="btn">Cancel</button>
-            <button class="btn green">Apply</button>
-            <button class="btn">Reset</button>
-          </div>
-        </div>
-      </div>
-    </aside>
   </mat-sidenav>
 
   <mat-sidenav-content [formGroup]="options">

@@ -37,7 +37,7 @@ export class UserLoginComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.tokenService.getToken()) {
-      this.router.navigate(["/dashboard/manageusers"]);
+      this.router.navigate(["/dashboard/admin"]);
     }
     //this.authService.populate();
   }
@@ -79,7 +79,7 @@ export class UserLoginComponent implements OnInit {
       .subscribe(data => {
         if (data.status == "success") {
           this.spinnerService.hide();
-          this.router.navigateByUrl("/dashboard/manageusers");
+          this.router.navigateByUrl("/dashboard/admin");
         } else {
           //this.alertService.error(data.message);
           this.alertService.error(data.message, true);
