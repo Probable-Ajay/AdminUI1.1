@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import {
   AuthenticationService,
   AlertService,
+  AdminService,
   RequestDemoService
 } from "../../_services";
 import { User } from "../../_models";
@@ -22,20 +23,7 @@ export class RequestDemoComponent implements OnInit {
   submitted = false;
   responseMessage: string;
   response = false;
-  public Locations: any[] = [
-    "Delhi",
-    "Bangalore",
-    "Hyderabad",
-    "Ahmedabad",
-    "Chennai",
-    "Kolkata",
-    "Surat",
-    "Pune",
-    "Jaipur",
-    "Lucknow",
-    "Kanpur",
-    "Nagpur"
-  ];
+  public countries: any[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +31,7 @@ export class RequestDemoComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private requestDemoService: RequestDemoService,
     private alertService: AlertService,
+    private adminService: AdminService,
     private spinnerService: Ng4LoadingSpinnerService
   ) {
     // redirect to home if already logged in
@@ -52,6 +41,7 @@ export class RequestDemoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getcountries();
     this.requestDemoForm = this.formBuilder.group({
       companyName: ["", Validators.required],
       name: ["", [Validators.required, Validators.maxLength(60)]],
@@ -59,6 +49,14 @@ export class RequestDemoComponent implements OnInit {
       contactNo: ["", [Validators.required, Validators.minLength(10)]],
       location: ["", Validators.required],
       notes: ""
+    });
+  }
+
+  getcountries() {
+    this.adminService.getCountries().subscribe(res => {
+      if (res) {
+        this.countries = res;
+      }
     });
   }
 
@@ -85,7 +83,7 @@ export class RequestDemoComponent implements OnInit {
           this.responseMessage =
             "We have received your demo request with reference no : " +
             data[0][0]["id"] +
-            " and our will get back to you shortly.";
+            " and our team will get back to you shortly.";
           this.response = true;
           //this.router.navigate(["/login"]);
           this.reset();

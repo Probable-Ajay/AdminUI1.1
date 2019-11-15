@@ -29,8 +29,8 @@ p {
 .loginBox .tableCellBox {
     display: table-cell;
     width: 50%;
-    padding: 80px 110px;
-    height: 630px;
+    padding: 55px 100px;
+    height: auto;
 }
 
 .loginFormBox {
@@ -42,11 +42,12 @@ p {
 }
 
 .loginBox h2 {
-    font-size: 52px;
+    font-size: 45px;
     font-family: 'Roboto-Regular';
     font-weight: bold;
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
+    margin-top:25px;
 }
 
 .loginBox h2:after {
@@ -55,7 +56,7 @@ p {
     width: 100px;
     height: 9px;
     background: #fff;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .loginBanner .contentBox {
@@ -70,7 +71,7 @@ p {
     width: 140px;
     position: absolute;
     left: -50px;
-    top: -50px;
+    top: -55px;
 }
 
 .loginBanner .contentBox:after {
@@ -86,7 +87,7 @@ p {
 
 .loginBanner .contentBox p {
     font-size: 18px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-family: 'Roboto-Regular';
 }
 
@@ -100,7 +101,7 @@ p {
 
 .loginFormBox h4 {
     font-size: 28px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-weight: bold;
     font-family: 'Roboto-Regular';
 }
