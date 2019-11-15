@@ -9,7 +9,7 @@ import {
 } from "../../_services";
 import { userRegistration } from "../../_models";
 import { validateBasis } from "@angular/flex-layout";
-
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 @Component({
   selector: "app-user-registration",
   templateUrl: "./user-registration.component.html",
@@ -27,7 +27,8 @@ export class UserRegistrationComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private loginService: LoginService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private spinnerService: Ng4LoadingSpinnerService
   ) {
     // redirect to home if already logged in
     // if (this.authenticationService.currentUserValue) {
@@ -59,15 +60,21 @@ export class UserRegistrationComponent implements OnInit {
       return;
     }
     this.loading = true;
+    this.spinnerService.show();
+
+    console.log(JSON.stringify(this.registerForm.value));
+
     this.authenticationService
       .register(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
+          this.spinnerService.hide();
           this.alertService.success("Registration successful", true);
           this.router.navigate(["/login"]);
         },
         error => {
+          this.spinnerService.hide();
           this.alertService.error(error);
           this.loading = false;
         }
