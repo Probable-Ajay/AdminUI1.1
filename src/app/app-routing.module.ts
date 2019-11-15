@@ -9,7 +9,7 @@ import { UserRegistrationComponent } from "./controllers/user-registration";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "requestDemo",
+    redirectTo: "login",
     data: { title: "Encryption" },
     pathMatch: "full"
   },
@@ -22,7 +22,7 @@ const routes: Routes = [
     path: "dashboard",
     component: DashboardRoutesComponent,
     children: [
-      { path: "", redirectTo: "manageusers", pathMatch: "full" },
+      { path: "", redirectTo: "admin", pathMatch: "full" },
       { path: "admin", component: AdminComponent }
     ]
   }
