@@ -16,7 +16,7 @@ import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
   styleUrls: ["./user-registration.component.css"]
 })
 export class UserRegistrationComponent implements OnInit {
-  registrationDetails: userRegistration = new userRegistration();
+  reg: userRegistration = new userRegistration();
 
   registerForm: FormGroup;
   loading = false;
@@ -29,20 +29,17 @@ export class UserRegistrationComponent implements OnInit {
     private loginService: LoginService,
     private alertService: AlertService,
     private spinnerService: Ng4LoadingSpinnerService
-  ) {
-    // redirect to home if already logged in
-    // if (this.authenticationService.currentUserValue) {
-    //   this.router.navigate(["/"]);
-    // }
-  }
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       firstName: ["", [Validators.required, Validators.maxLength(60)]],
       lastName: ["", [Validators.required, Validators.maxLength(60)]],
+      middleName: ["", [Validators.required, Validators.maxLength(60)]],
+      givenName: [""],
       userId: ["", Validators.required],
       contactNumber: ["", [Validators.required, Validators.minLength(10)]],
-      companyName: ["", [Validators.required, Validators.maxLength(60)]],
+      userDesignation: "Admin",
       password: ["", [Validators.required, Validators.minLength(8)]],
       isActive: 0,
       isSubUser: 0
@@ -69,14 +66,15 @@ export class UserRegistrationComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          debugger;
           this.spinnerService.hide();
-          this.alertService.success("Registration successful", true);
-          this.router.navigate(["/login"]);
+          this.alertService.success(data[0][0].TextMessage, true);
+          // this.router.navigate(["/login"]);
+          this.registerForm.reset();
         },
         error => {
           this.spinnerService.hide();
           this.alertService.error(error);
-          this.loading = false;
         }
       );
   }

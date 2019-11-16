@@ -38,9 +38,15 @@
             /></a>
           </p>
           <h4>User Registration</h4>
-          <form [formGroup]="registerForm" (ngSubmit)="SignUp()">
+
+          <form [formGroup]="registerForm">
             <div class="loginForm mainLogin">
               <div id="login-body">
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-10">
+                    <alert></alert>
+                  </div>
+                </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
                     <mat-form-field>
@@ -50,18 +56,21 @@
                         placeholder="First Name"
                         formControlName="firstName"
                         class="form-control"
-                        [ngClass]="{
-                          'is-invalid': submitted && f.firstName.errors
-                        }"
+                        required
                       />
-                      <div
-                        *ngIf="submitted && f.firstName.errors"
-                        class="invalid-feedback"
-                      >
-                        <div *ngIf="f.firstName.errors.required">
-                          First Name is required
-                        </div>
-                      </div>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-sm-10">
+                    <mat-form-field>
+                      <input
+                        type="text"
+                        matInput
+                        placeholder="Middle Name"
+                        formControlName="middleName"
+                        class="form-control"
+                      />
                     </mat-form-field>
                   </div>
                 </div>
@@ -74,18 +83,8 @@
                         placeholder="Last Name"
                         formControlName="lastName"
                         class="form-control"
-                        [ngClass]="{
-                          'is-invalid': submitted && f.lastName.errors
-                        }"
+                        required
                       />
-                      <div
-                        *ngIf="submitted && f.lastName.errors"
-                        class="invalid-feedback"
-                      >
-                        <div *ngIf="f.lastName.errors.required">
-                          Last Name is required
-                        </div>
-                      </div>
                     </mat-form-field>
                   </div>
                 </div>
@@ -98,18 +97,8 @@
                         placeholder="EmailID"
                         formControlName="userId"
                         class="form-control"
-                        [ngClass]="{
-                          'is-invalid': submitted && f.userId.errors
-                        }"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                       />
-                      <div
-                        *ngIf="submitted && f.userId.errors"
-                        class="invalid-feedback"
-                      >
-                        <div *ngIf="f.userId.errors.required">
-                          Email is required
-                        </div>
-                      </div>
                     </mat-form-field>
                   </div>
                 </div>
@@ -122,45 +111,13 @@
                         placeholder="Contact Number"
                         formControlName="contactNumber"
                         class="form-control"
-                        [ngClass]="{
-                          'is-invalid': submitted && f.contactNumber.errors
-                        }"
+                        pattern="[0-9]+"
+                        required
                       />
-                      <div
-                        *ngIf="submitted && f.contactNumber.errors"
-                        class="invalid-feedback"
-                      >
-                        <div *ngIf="f.contactNumber.errors.required">
-                          Contact Number is required
-                        </div>
-                      </div>
                     </mat-form-field>
                   </div>
                 </div>
-                <div class="row" style="margin-top: 20px">
-                  <div class="col-sm-10">
-                    <mat-form-field>
-                      <input
-                        matInput
-                        type="text"
-                        placeholder="Company Name"
-                        formControlName="companyName"
-                        class="form-control"
-                        [ngClass]="{
-                          'is-invalid': submitted && f.companyName.errors
-                        }"
-                      />
-                      <div
-                        *ngIf="submitted && f.companyName.errors"
-                        class="invalid-feedback"
-                      >
-                        <div *ngIf="f.companyName.errors.required">
-                          Company Name is required
-                        </div>
-                      </div>
-                    </mat-form-field>
-                  </div>
-                </div>
+
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
                     <mat-form-field>
@@ -170,24 +127,19 @@
                         placeholder="Password"
                         formControlName="password"
                         class="form-control"
-                        [ngClass]="{
-                          'is-invalid': submitted && f.password.errors
-                        }"
+                        required
                       />
-                      <div
-                        *ngIf="submitted && f.password.errors"
-                        class="invalid-feedback"
-                      >
-                        <div *ngIf="f.password.errors.required">
-                          Contact Number is required
-                        </div>
-                      </div>
                     </mat-form-field>
                   </div>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-10">
-                    <button mat-button class="btn loginBtn BtnCss">
+                    <button
+                      type="button"
+                      (click)="SignUp()"
+                      mat-button
+                      class="btn loginBtn BtnCss"
+                    >
                       Sign up
                     </button>
                   </div>

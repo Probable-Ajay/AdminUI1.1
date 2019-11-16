@@ -1,21 +1,25 @@
 export class userRegistration {
   firstName: String;
+  middleName: string;
   lastName: String;
+  givenName: string;
   userId: String;
   contactNumber: String;
-  companyName: string;
+  userDesignation: string;
+  password: String;
   isActive: boolean;
   isSubUser: boolean;
-  password: String;
 
   constructor() {
     this.firstName = "";
+    this.middleName = "";
     this.lastName = "";
+    this.givenName = "";
     this.userId = "";
     this.contactNumber = "";
-    this.companyName = "";
+    this.userDesignation = "";
+    this.password = "";
     this.isActive = false;
     this.isSubUser = false;
-    this.password = "";
   }
 }

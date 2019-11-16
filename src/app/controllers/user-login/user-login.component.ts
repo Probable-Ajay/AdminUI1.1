@@ -67,12 +67,6 @@ export class UserLoginComponent implements OnInit {
 
     this.spinnerService.show();
 
-    // if (
-    //   this.loginForm.get("username").value == "anuj.varshney@outlook.com" &&
-    //   this.loginForm.get("password").value == "discover"
-    // ) {
-    //   this.router.navigate(["/dashboard/admin"]);
-    // }
     this.authService
       .login(this.loginForm.value)
       .pipe(first())

@@ -55,17 +55,19 @@ export class AuthenticationService {
     this.setuserdetails(user.username);
     const apiUrl = AppSettings.API_ENDPOINT + "login";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
-    return this.http.post<any>(apiUrl, user, { headers }).pipe(
-      map(user => {
-        if (user.status == "success" && user["data"]["token"]) {
-          this.setAuth(user);
-          return user;
-        } else {
-          this.purgeAuth();
-          return user;
-        }
-      })
-    );
+    return this.http
+      .post<any>(apiUrl, user, { headers })
+      .pipe(
+        map(user => {
+          if (user.status == "success" && user["data"]["token"]) {
+            this.setAuth(user);
+            return user;
+          } else {
+            this.purgeAuth();
+            return user;
+          }
+        })
+      );
   }
 
   setAuth(user: User) {
@@ -82,34 +84,12 @@ export class AuthenticationService {
   }
 
   register(user: userRegistration) {
-    const apiUrl = AppSettings.API_ENDPOINT + "users/create";
+    debugger;
+    console.log(JSON.stringify(user));
+    const apiUrl = AppSettings.API_ENDPOINT + "admin/create";
     const headers = new HttpHeaders().set("Content-Type", "application/json");
-    return this.http.post<any>(apiUrl, { user }, { headers }).pipe(
-      map(user => {
-        // login successful if there's a jwt token in the response
-        if (user) {
-          // // store user details and jwt token in local storage to keep user logged in between page refreshes
-          // localStorage.setItem("auth-token", JSON.stringify(user));
-          // this.currentUserSubject.next(user);
-        }
-
-        return user;
-      })
-    );
+    return this.http.post(apiUrl, user, { headers });
   }
-
-  // register(user: userRegistration) {
-  //   const apiUrl = AppSettings.API_ENDPOINT + "users/create";
-  //   const headers = new HttpHeaders().set("Content-Type", "application/json");
-  //   return this.http.post(apiUrl, user, { headers });
-  // }
-
-  // requestDemo(params: RegisterDemo) {
-  //   const apiUrl = AppSettings.API_ENDPOINT + "demo/create";
-  //   const headers = new HttpHeaders().set("Content-Type", "application/json");
-
-  //   return this.http.post(apiUrl, params, { headers });
-  // }
 
   logout() {
     this.purgeAuth();
