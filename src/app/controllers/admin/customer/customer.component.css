@@ -1,0 +1,64 @@
+.newcustomer {
+    background-color: #f1f1f1;
+    padding: 8px 20px;
+    margin: -15px 0px;
+  }
+  
+  table {
+    width: 100% !important;
+    border: 1px solid #cccccc;
+  }
+  td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    border-right: 1px solid #cccccc;
+    align-self: stretch;
+      text-align: center;
+  }
+  
+  .nav-tabs-custom {
+    border: 1px solid #eceff4 !important;
+    margin-bottom: 20px !important;
+    background: #fff !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1) !important;
+    border-radius: 3px !important;
+    padding: 13px !important;
+  }
+  
+  .mat-icon-button {
+    padding      : 0;
+    min-width    : 0;
+    width        : 30px;
+    height       : 25px;
+    flex-shrink  : 0;
+    line-height  : 40px;
+    border-radius: 50%;
+  
+  }
+  
+  .material-icons {
+    font-size: 22px;
+  }
+  
+  .mat-icon-button .mat-icon,
+  .mat-icon-button i {
+    line-height: 15px;
+  }
+  
+  .mat-button.mat-accent,
+  .mat-icon-button.mat-accent,
+  .mat-stroked-button.mat-accent {
+    color: #82b727;
+  }
+
+  td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+  padding-left: 5px;
+}
+
+td.mat-cell[_ngcontent-uci-c14],
+td.mat-footer-cell[_ngcontent-uci-c14],
+th.mat-header-cell[_ngcontent-uci-c14] {
+  border-right: 1px solid #eceff4;
+  align-self  : stretch;
+  text-align  : center;
+}

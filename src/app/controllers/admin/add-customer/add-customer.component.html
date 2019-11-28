@@ -1,0 +1,287 @@
+<div>
+    <section class="content-header">
+      <h1><i class="fa fa-users" aria-hidden="true"></i> Create Customer</h1>
+    </section>
+  
+    <form #userForm="ngForm">
+      <section class="content shopPrice">
+        <div class="row" style="margin-bottom: 0; overflow-y: auto;">
+          <div class="col-xs-12">
+            <div class="nav-tabs-custom">
+              <!-- <div class="row newcustomer">
+                              <h3>New Customer</h3>
+                          </div> -->
+              <div class="tab-content">
+                <div class="tab-pane active" id="createSubUser">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          placeholder="First Name"
+                          [(ngModel)]="user.contactinfo.firstname"
+                          name="firstname"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          placeholder="Middle Name"
+                          name="middlename"
+                          [(ngModel)]="user.contactinfo.middlename"
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          placeholder="Last Name"
+                          name="lastname"
+                          [(ngModel)]="user.contactinfo.lastname"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      <mat-form-field>
+                        <input
+                          type="email"
+                          matInput
+                          placeholder="Login Email"
+                          name="loginName"
+                          [(ngModel)]="user.contactinfo.userid"
+                          #email="ngModel"
+                          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                          required
+                        />
+                        <!-- <br />
+                        <div *ngIf="email.touched">
+                          <p *ngIf="email.errors?.pattern">
+                            Please enter a valid email address!
+                          </p>
+                        </div> -->
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-4">
+                      <mat-form-field>
+                        <mat-label>Uer Role</mat-label>
+                        <mat-select
+                          name="designationrole"
+                          [(ngModel)]="user.contactinfo.designationrole"
+                          required
+                        >
+                          <mat-option
+                            *ngFor="let role of userRoles"
+                            [value]="role"
+                          >
+                            {{ role }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <!-- <h4><b>Functionality Access</b></h4> -->
+                <div class="tab-pane active" id="userAccessInfo">
+                  <div class="row" style="margin-top: 20px;">
+                    <!-- <div class="col-sm-12"> -->
+                    <ng-container>
+                      <mat-table
+                        [dataSource]="dataSourceAccess"
+                        class="mat-elevation-z8"
+                      >
+                        <ng-container matColumnDef="name">
+                          <mat-header-cell *matHeaderCellDef>
+                            Functionality Access
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let element">
+                            {{ element.name }}
+                          </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="readaccess">
+                          <mat-header-cell *matHeaderCellDef
+                            >Read</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element; let index = index">
+                            <mat-checkbox
+                              [checked]="element.readaccess"
+                              [(ngModel)]="
+                                user.useraccess.functionalities[index].readaccess
+                              "
+                              name="{{ 'readAccess_' + index }}"
+                            >
+                            </mat-checkbox>
+                          </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="writeaccess">
+                          <mat-header-cell *matHeaderCellDef
+                            >Write</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element; let index = index">
+                            <mat-checkbox
+                              [checked]="element.writeaccess"
+                              [(ngModel)]="
+                                user.useraccess.functionalities[index].writeaccess
+                              "
+                              name="{{ 'writeAccess_' + index }}"
+                            >
+                            </mat-checkbox>
+                          </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="reportview">
+                          <mat-header-cell *matHeaderCellDef
+                            >Report View</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element; let index = index">
+                            <mat-form-field>
+                              <mat-select
+                                [(ngModel)]="
+                                  user.useraccess.functionalities[index]
+                                    .reportview
+                                "
+                                name="{{ 'reportView_' + index }}"
+                                required
+                              >
+                                <mat-option
+                                  *ngFor="let view of reportViews"
+                                  [value]="view.type"
+                                >
+                                  {{ view.type }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </mat-cell>
+                        </ng-container>
+  
+                        <mat-header-row
+                          *matHeaderRowDef="displayedColumns"
+                        ></mat-header-row>
+                        <mat-row
+                          *matRowDef="let row; columns: displayedColumns"
+                        ></mat-row>
+                      </mat-table>
+                    </ng-container>
+                    <!-- </div> -->
+                  </div>
+                  <div class="row" style="margin-top: 20px;">
+                    <h4><b>Origin and Destinations</b></h4>
+                    <!-- <div class="col-sm-12"> -->
+                    <ng-container>
+                      <mat-table
+                        [dataSource]="dataSourceONDs"
+                        class="mat-elevation-z8"
+                      >
+                        <!-- Checkbox Column -->
+                        <ng-container matColumnDef="select">
+                          <mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox
+                              (change)="OnSelectAll($event)"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="
+                                selection.hasValue() && !isAllSelected()
+                              "
+                              [aria-label]="checkboxLabel()"
+                              name="selectAll"
+                            >
+                            </mat-checkbox>
+                            <mat-label>Select All</mat-label>
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let row; let index = index">
+                            <mat-checkbox
+                              (change)="OnSelect($event, index, row)"
+                              [checked]="selection.isSelected(row)"
+                              [aria-label]="checkboxLabel(row)"
+                              name="selectOND"
+                            >
+                            </mat-checkbox>
+                          </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="origin">
+                          <mat-header-cell *matHeaderCellDef
+                            >Origin</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element; let index = index"
+                            >{{ element.origin }}
+                            <!-- <mat-checkbox
+                              [checked]="element.Origin"
+                              formControlName="Origin"
+                              >{{ element.Origin }}
+                            </mat-checkbox> -->
+                          </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="destination">
+                          <mat-header-cell *matHeaderCellDef
+                            >Destination</mat-header-cell
+                          >
+                          <mat-cell *matCellDef="let element; let index = index"
+                            >{{ element.destination }}
+                            <!-- <mat-checkbox
+                              [checked]="element.Destination"
+                              formControlName="Destination"
+                              >{{ element.Destination }}
+                            </mat-checkbox> -->
+                          </mat-cell>
+                        </ng-container>
+  
+                        <mat-header-row
+                          *matHeaderRowDef="displayedColumnsONDs"
+                        ></mat-header-row>
+                        <mat-row
+                          *matRowDef="let row; columns: displayedColumnsONDs"
+                        ></mat-row>
+                      </mat-table>
+                    </ng-container>
+                    <!-- </div> -->
+                  </div>
+  
+                  <div class="row" style="margin-top: 20px">
+                    <!-- <div class="col-sm-2">
+                      <button type="button" mat-button class="btn addUser BtnCss">
+                        Save
+                      </button>
+                    </div> -->
+                    <div class="col-sm-2">
+                      <button
+                        type="button"
+                        (click)="onSubmit()"
+                        mat-button
+                        class="btn addUser BtnCss"
+                      >
+                        Create Customer
+                      </button>
+                    </div>
+                    <div class="col-sm-2">
+                      <button
+                        type="button"
+                        (click)="reset()"
+                        mat-button
+                        class="btn addUser BtnCss"
+                      >
+                        Reset
+                      </button>
+                    </div>
+                    <div class="col-sm-2">
+                      <button
+                        routerLink="/dashboard/customermanagement"
+                        mat-button
+                        class="btn addUser BtnCss"
+                      >
+                        &laquo; Back
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+  </div>
+  
