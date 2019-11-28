@@ -158,3 +158,17 @@ p {
         padding: 100px 80px 120px;
     }
 }
+
+.mat-paginator-page-size-label {
+    margin: 0 4px;
+    width: 102% !important;
+}
+.mat-form-field-infix {
+    width: 100% !important;
+  }
+  tr.mat-footer-row, tr.mat-row {
+    height: 40px !important;
+}
+tr.mat-header-row {
+    height: 40px !important;
+}
