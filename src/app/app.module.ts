@@ -56,6 +56,10 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { AlertComponent } from "./controllers/alert/alert.component";
 import { Ng4LoadingSpinnerModule } from "ng4-loading-spinner";
 import { UserRegistrationComponent } from "./controllers/user-registration/user-registration.component";
+import { DialogModalComponent } from './controllers/dialog-modal/dialog-modal.component';
+import { CustomerComponent } from './controllers/admin/customer/customer.component';
+import { AddCustomerComponent } from './controllers/admin/add-customer/add-customer.component';
+import { EditCustomerComponent } from './controllers/admin/edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,11 @@ import { UserRegistrationComponent } from "./controllers/user-registration/user-
     UserLoginComponent,
     DashboardRoutesComponent,
     AlertComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    DialogModalComponent,
+    CustomerComponent,
+    AddCustomerComponent,
+    EditCustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -130,6 +138,7 @@ import { UserRegistrationComponent } from "./controllers/user-registration/user-
     Ng4LoadingSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogModalComponent]
 })
 export class AppModule {}
