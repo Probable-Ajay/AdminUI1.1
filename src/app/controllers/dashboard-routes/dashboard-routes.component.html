@@ -35,7 +35,7 @@
     <div *ngIf="showIconsOnly" style="width: 100%;">
       <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">MAIN</li>
+          <li class="header">Admin</li>
           <li>
             <a routerLink="admin">
               <i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -47,11 +47,17 @@
     <div *ngIf="!showIconsOnly">
       <section class="sidebar paddingRight">
         <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">MAIN</li>
-          <li>
+          <li class="header">Admin</li>
+          <!-- <li>
             <a routerLink="admin">
               <i class="fa fa-user-plus" aria-hidden="true"></i>
               <span>Admin</span>
+            </a>
+          </li> -->
+          <li>
+            <a routerLink="customermanagement">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              <span>Manage Users</span>
             </a>
           </li>
         </ul>
