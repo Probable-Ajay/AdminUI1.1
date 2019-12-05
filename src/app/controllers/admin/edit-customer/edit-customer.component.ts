@@ -260,22 +260,22 @@ export class EditCustomerComponent implements OnInit {
     //this.user.issubuser = true;
     // console.log(form.value);
 
-    this.adminService
-      .createUser(this.user)
-      .pipe(first())
-      .subscribe(
-        data => {
-          debugger;
-          this.spinnerService.hide();
-          this.reset();
-        },
-        error => {
-          this.spinnerService.hide();
-          this.reset();
-        }
-      );
+    // this.adminService
+    //   .createUser(this.user)
+    //   .pipe(first())
+    //   .subscribe(
+    //     data => {
+    //       debugger;
+    //       this.spinnerService.hide();
+    //       this.reset();
+    //     },
+    //     error => {
+    //       this.spinnerService.hide();
+    //       this.reset();
+    //     }
+    //   );
 
-    this.reset();
+    // this.reset();
   }
 
   reset() {
